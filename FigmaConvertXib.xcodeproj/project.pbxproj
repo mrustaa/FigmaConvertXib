@@ -1,0 +1,403 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		46A9773824A27D2B0088EFED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A9773724A27D2B0088EFED /* AppDelegate.swift */; };
+		46A9773A24A27D2B0088EFED /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A9773924A27D2B0088EFED /* SceneDelegate.swift */; };
+		46A9773F24A27D2B0088EFED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46A9773D24A27D2B0088EFED /* Main.storyboard */; };
+		46A9774124A27D2D0088EFED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46A9774024A27D2D0088EFED /* Assets.xcassets */; };
+		46A9774424A27D2D0088EFED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46A9774224A27D2D0088EFED /* LaunchScreen.storyboard */; };
+		46A9776624A27D5E0088EFED /* FigmaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A9774C24A27D5D0088EFED /* FigmaViewController.swift */; };
+		46A9777824A27D5E0088EFED /* FigmaConvertToViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A9776324A27D5E0088EFED /* FigmaConvertToViews.swift */; };
+		46A9777A24A27D5E0088EFED /* FigmaConvertToXib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A9776524A27D5E0088EFED /* FigmaConvertToXib.swift */; };
+		46A9777E24A2BF040088EFED /* Figma.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A9777D24A2BF040088EFED /* Figma.swift */; };
+		46A9778324A2CE7E0088EFED /* result.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46A9778224A2CE7E0088EFED /* result.xib */; };
+		46A9778A24A2CF4F0088EFED /* DesignButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A9778524A2CF4F0088EFED /* DesignButton.swift */; };
+		46A9778B24A2CF4F0088EFED /* DesignImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A9778624A2CF4F0088EFED /* DesignImage.swift */; };
+		46A9778C24A2CF4F0088EFED /* DesignTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A9778724A2CF4F0088EFED /* DesignTextField.swift */; };
+		46A9778D24A2CF4F0088EFED /* DesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A9778824A2CF4F0088EFED /* DesignView.swift */; };
+		46A9778E24A2CF4F0088EFED /* DesignVisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A9778924A2CF4F0088EFED /* DesignVisualEffectView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		46A9773424A27D2B0088EFED /* FigmaConvertXib.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FigmaConvertXib.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		46A9773724A27D2B0088EFED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		46A9773924A27D2B0088EFED /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		46A9773E24A27D2B0088EFED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		46A9774024A27D2D0088EFED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		46A9774324A27D2D0088EFED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		46A9774524A27D2D0088EFED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		46A9774C24A27D5D0088EFED /* FigmaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FigmaViewController.swift; sourceTree = "<group>"; };
+		46A9776324A27D5E0088EFED /* FigmaConvertToViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FigmaConvertToViews.swift; sourceTree = "<group>"; };
+		46A9776524A27D5E0088EFED /* FigmaConvertToXib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FigmaConvertToXib.swift; sourceTree = "<group>"; };
+		46A9777D24A2BF040088EFED /* Figma.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Figma.swift; sourceTree = "<group>"; };
+		46A9778224A2CE7E0088EFED /* result.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = result.xib; sourceTree = "<group>"; };
+		46A9778524A2CF4F0088EFED /* DesignButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignButton.swift; sourceTree = "<group>"; };
+		46A9778624A2CF4F0088EFED /* DesignImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignImage.swift; sourceTree = "<group>"; };
+		46A9778724A2CF4F0088EFED /* DesignTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignTextField.swift; sourceTree = "<group>"; };
+		46A9778824A2CF4F0088EFED /* DesignView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignView.swift; sourceTree = "<group>"; };
+		46A9778924A2CF4F0088EFED /* DesignVisualEffectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignVisualEffectView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		46A9773124A27D2B0088EFED /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		46A9772B24A27D2B0088EFED = {
+			isa = PBXGroup;
+			children = (
+				46A9773624A27D2B0088EFED /* FigmaConvertXib */,
+				46A9773524A27D2B0088EFED /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		46A9773524A27D2B0088EFED /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				46A9773424A27D2B0088EFED /* FigmaConvertXib.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		46A9773624A27D2B0088EFED /* FigmaConvertXib */ = {
+			isa = PBXGroup;
+			children = (
+				46A9778424A2CF4F0088EFED /* Designable */,
+				46A9774B24A27D5D0088EFED /* Figma */,
+				46A9773724A27D2B0088EFED /* AppDelegate.swift */,
+				46A9773924A27D2B0088EFED /* SceneDelegate.swift */,
+				46A9773D24A27D2B0088EFED /* Main.storyboard */,
+				46A9774024A27D2D0088EFED /* Assets.xcassets */,
+				46A9774224A27D2D0088EFED /* LaunchScreen.storyboard */,
+				46A9774524A27D2D0088EFED /* Info.plist */,
+			);
+			path = FigmaConvertXib;
+			sourceTree = "<group>";
+		};
+		46A9774B24A27D5D0088EFED /* Figma */ = {
+			isa = PBXGroup;
+			children = (
+				46A9778124A2CAA60088EFED /* Xib */,
+				46A9777D24A2BF040088EFED /* Figma.swift */,
+				46A9776324A27D5E0088EFED /* FigmaConvertToViews.swift */,
+				46A9776524A27D5E0088EFED /* FigmaConvertToXib.swift */,
+				46A9774C24A27D5D0088EFED /* FigmaViewController.swift */,
+			);
+			path = Figma;
+			sourceTree = "<group>";
+		};
+		46A9778124A2CAA60088EFED /* Xib */ = {
+			isa = PBXGroup;
+			children = (
+				46A9778224A2CE7E0088EFED /* result.xib */,
+			);
+			path = Xib;
+			sourceTree = "<group>";
+		};
+		46A9778424A2CF4F0088EFED /* Designable */ = {
+			isa = PBXGroup;
+			children = (
+				46A9778524A2CF4F0088EFED /* DesignButton.swift */,
+				46A9778624A2CF4F0088EFED /* DesignImage.swift */,
+				46A9778724A2CF4F0088EFED /* DesignTextField.swift */,
+				46A9778824A2CF4F0088EFED /* DesignView.swift */,
+				46A9778924A2CF4F0088EFED /* DesignVisualEffectView.swift */,
+			);
+			path = Designable;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		46A9773324A27D2B0088EFED /* FigmaConvertXib */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 46A9774824A27D2D0088EFED /* Build configuration list for PBXNativeTarget "FigmaConvertXib" */;
+			buildPhases = (
+				46A9773024A27D2B0088EFED /* Sources */,
+				46A9773124A27D2B0088EFED /* Frameworks */,
+				46A9773224A27D2B0088EFED /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FigmaConvertXib;
+			productName = FigmaConvertXib;
+			productReference = 46A9773424A27D2B0088EFED /* FigmaConvertXib.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		46A9772C24A27D2B0088EFED /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1150;
+				LastUpgradeCheck = 1150;
+				ORGANIZATIONNAME = mrusta;
+				TargetAttributes = {
+					46A9773324A27D2B0088EFED = {
+						CreatedOnToolsVersion = 11.5;
+					};
+				};
+			};
+			buildConfigurationList = 46A9772F24A27D2B0088EFED /* Build configuration list for PBXProject "FigmaConvertXib" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 46A9772B24A27D2B0088EFED;
+			productRefGroup = 46A9773524A27D2B0088EFED /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				46A9773324A27D2B0088EFED /* FigmaConvertXib */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		46A9773224A27D2B0088EFED /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46A9774424A27D2D0088EFED /* LaunchScreen.storyboard in Resources */,
+				46A9778324A2CE7E0088EFED /* result.xib in Resources */,
+				46A9774124A27D2D0088EFED /* Assets.xcassets in Resources */,
+				46A9773F24A27D2B0088EFED /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		46A9773024A27D2B0088EFED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46A9777A24A27D5E0088EFED /* FigmaConvertToXib.swift in Sources */,
+				46A9778B24A2CF4F0088EFED /* DesignImage.swift in Sources */,
+				46A9778D24A2CF4F0088EFED /* DesignView.swift in Sources */,
+				46A9773824A27D2B0088EFED /* AppDelegate.swift in Sources */,
+				46A9773A24A27D2B0088EFED /* SceneDelegate.swift in Sources */,
+				46A9778E24A2CF4F0088EFED /* DesignVisualEffectView.swift in Sources */,
+				46A9777824A27D5E0088EFED /* FigmaConvertToViews.swift in Sources */,
+				46A9778C24A2CF4F0088EFED /* DesignTextField.swift in Sources */,
+				46A9778A24A2CF4F0088EFED /* DesignButton.swift in Sources */,
+				46A9777E24A2BF040088EFED /* Figma.swift in Sources */,
+				46A9776624A27D5E0088EFED /* FigmaViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		46A9773D24A27D2B0088EFED /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				46A9773E24A27D2B0088EFED /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		46A9774224A27D2D0088EFED /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				46A9774324A27D2D0088EFED /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		46A9774624A27D2D0088EFED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		46A9774724A27D2D0088EFED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		46A9774924A27D2D0088EFED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Y7546NLJW9;
+				INFOPLIST_FILE = FigmaConvertXib/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = mrusta.FigmaConvertXib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		46A9774A24A27D2D0088EFED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Y7546NLJW9;
+				INFOPLIST_FILE = FigmaConvertXib/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = mrusta.FigmaConvertXib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		46A9772F24A27D2B0088EFED /* Build configuration list for PBXProject "FigmaConvertXib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				46A9774624A27D2D0088EFED /* Debug */,
+				46A9774724A27D2D0088EFED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		46A9774824A27D2D0088EFED /* Build configuration list for PBXNativeTarget "FigmaConvertXib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				46A9774924A27D2D0088EFED /* Debug */,
+				46A9774A24A27D2D0088EFED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 46A9772C24A27D2B0088EFED /* Project object */;
+}
