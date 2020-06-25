@@ -22,6 +22,8 @@
 		46A9778C24A2CF4F0088EFED /* DesignTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A9778724A2CF4F0088EFED /* DesignTextField.swift */; };
 		46A9778D24A2CF4F0088EFED /* DesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A9778824A2CF4F0088EFED /* DesignView.swift */; };
 		46A9778E24A2CF4F0088EFED /* DesignVisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A9778924A2CF4F0088EFED /* DesignVisualEffectView.swift */; };
+		46A9779624A383EC0088EFED /* FigmaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A9779524A383EC0088EFED /* FigmaData.swift */; };
+		46A9779824A49C770088EFED /* FigmaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A9779724A49C770088EFED /* FigmaModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		46A9778724A2CF4F0088EFED /* DesignTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignTextField.swift; sourceTree = "<group>"; };
 		46A9778824A2CF4F0088EFED /* DesignView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignView.swift; sourceTree = "<group>"; };
 		46A9778924A2CF4F0088EFED /* DesignVisualEffectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignVisualEffectView.swift; sourceTree = "<group>"; };
+		46A9779524A383EC0088EFED /* FigmaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaData.swift; sourceTree = "<group>"; };
+		46A9779724A49C770088EFED /* FigmaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +95,8 @@
 			children = (
 				46A9778124A2CAA60088EFED /* Xib */,
 				46A9777D24A2BF040088EFED /* Figma.swift */,
+				46A9779724A49C770088EFED /* FigmaModel.swift */,
+				46A9779524A383EC0088EFED /* FigmaData.swift */,
 				46A9776324A27D5E0088EFED /* FigmaConvertToViews.swift */,
 				46A9776524A27D5E0088EFED /* FigmaConvertToXib.swift */,
 				46A9774C24A27D5D0088EFED /* FigmaViewController.swift */,
@@ -198,6 +204,8 @@
 				46A9778E24A2CF4F0088EFED /* DesignVisualEffectView.swift in Sources */,
 				46A9777824A27D5E0088EFED /* FigmaConvertToViews.swift in Sources */,
 				46A9778C24A2CF4F0088EFED /* DesignTextField.swift in Sources */,
+				46A9779624A383EC0088EFED /* FigmaData.swift in Sources */,
+				46A9779824A49C770088EFED /* FigmaModel.swift in Sources */,
 				46A9778A24A2CF4F0088EFED /* DesignButton.swift in Sources */,
 				46A9777E24A2BF040088EFED /* Figma.swift in Sources */,
 				46A9776624A27D5E0088EFED /* FigmaViewController.swift in Sources */,

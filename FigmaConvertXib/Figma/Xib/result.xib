@@ -8,8 +8,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TestXibView" customModule="PatternsSwift" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view clipsSubviews="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9FR-NK-ZBh" customClass="DesignView" customModule="PatternsSwift" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="111.0" height="68.0"/>
+        <view clipsSubviews="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oZg-jT-Xyc" customClass="DesignView" customModule="PatternsSwift" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="144.0" height="102.0"/>
             <userDefinedRuntimeAttributes>
                 <userDefinedRuntimeAttribute type="color" keyPath="fillColor">
                     <color key="value" red="0.7686274647712708" green="0.7686274647712708" blue="0.7686274647712708" alpha="1.0" colorSpace="custom" customColorSpace="sRGB"/>

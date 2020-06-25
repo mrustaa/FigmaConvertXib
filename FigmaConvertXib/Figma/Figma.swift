@@ -1,13 +1,9 @@
-// To parse the JSON, add this file to your project and do:
-//
-//   let fileResponse = try FileResponse(json)
-//   let commentsResponse = try CommentsResponse(json)
-//   let commentRequest = try CommentRequest(json)
-//   let projectsResponse = try ProjectsResponse(json)
-//   let projectFilesResponse = try ProjectFilesResponse(json)
+
+
 
 import UIKit
 import Foundation
+
 
 //MARK: - FileResponse
 
@@ -52,7 +48,7 @@ class DocumentClass {
 
 class FillClass {
     
-    var blendMode: BlendMode = .modeDefault
+    var blendMode: BlendMode_ = .modeDefault
     var type: FillType = .solid
     
     var visible: Bool = true /// gradint
@@ -73,7 +69,7 @@ class FillClass {
         
         
         if let blendMode = dict["blendMode"] as? String {
-            self.blendMode = BlendMode.blendMode(blendMode)
+            self.blendMode = BlendMode_.blendMode(blendMode)
         }
         
         if let visible = dict["visible"] as? Bool {
@@ -136,7 +132,7 @@ class PageClass {
     let type: NodeType
     var backgroundColor: UIColor = .clear
     var children: [PageClass] = []
-    var blendMode: BlendMode = .modeDefault
+    var blendMode: BlendMode_ = .modeDefault
     var absoluteBoundingBox: CGRect = CGRect.zero
     var clipsContent: Bool = false
     var strokeWeight: CGFloat = 0.0
@@ -206,7 +202,7 @@ class PageClass {
         
         
         if let blendMode = dict["blendMode"] as? String {
-            self.blendMode = BlendMode.blendMode(blendMode)
+            self.blendMode = BlendMode_.blendMode(blendMode)
         }
         
         if let absoluteBoundingBox = dict["absoluteBoundingBox"] as? [String: Any] {
@@ -435,7 +431,7 @@ enum NodeType: String {
 
 //MARK: - 5 BlendMode
 
-enum BlendMode: String {
+enum BlendMode_: String {
     
     case modeDefault = ""
     
@@ -459,8 +455,8 @@ enum BlendMode: String {
     case screen = "SCREEN"
     case softLight = "SOFT_LIGHT"
     
-    static func blendMode(_ str: String) -> BlendMode {
-        var bMode: BlendMode = .color
+    static func blendMode(_ str: String) -> BlendMode_ {
+        var bMode: BlendMode_ = .color
         
         switch str {
         case "COLOR": bMode = .color

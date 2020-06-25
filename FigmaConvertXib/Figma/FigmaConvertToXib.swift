@@ -141,7 +141,7 @@ class FigmaConvertToXib: NSObject {
     }
     
     
-    func saveImage(image: UIImage, imageRef: String) -> Void {
+    func saveImage(image: UIImage, imageRef: String) {
         
         let data = image.pngData()!
         
@@ -149,16 +149,12 @@ class FigmaConvertToXib: NSObject {
         let a = "file://\(p)/"
         guard let urlPathA = URL(string: a) else { return}
         let urlPath = urlPathA.appendingPathComponent("\(imageRef).png")
-            
-//            let imgPath = "file://\(path())/\(imageRef).png"
-//            guard let urlPath = URL(string: imgPath) else { return}
-            
+        
+        do {
             try data.write(to: urlPath)
             print("\n 🏞 \(urlPathA.absoluteString)")
-//            return true
         } catch {
             print(error.localizedDescription)
-//            return false
         }
     }
     
