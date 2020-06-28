@@ -58,13 +58,13 @@ extension CGRect {
 }
 
 
-
-
 class FigmaConvertToXib: NSObject {
     
     var figmaImagesURLs: [String: String] = [:]
     
-    func add(page: PageClass) {
+    func add(page: F_View, imagesURLs: [String: String]) {
+        
+        figmaImagesURLs = imagesURLs
         
 //        let randomId1 = generateID()
 //        let randomId2 = generateID()
@@ -202,7 +202,7 @@ class FigmaConvertToXib: NSObject {
     
     //MARK: - Create Fills
     
-    func createViewFills(page: PageClass, fill: FillClass, level: Int) -> String {
+    func createViewFills(page: F_View, fill: F_Fill, level: Int) -> String {
         
         let tabs = tabsString(level: level)
         
@@ -292,7 +292,7 @@ class FigmaConvertToXib: NSObject {
     
     //MARK: - Create Views
     
-    func createView(page: PageClass, level: Int, mainView: Bool = false) -> String {
+    func createView(page: F_View, level: Int, mainView: Bool = false) -> String {
         
         let tabs = tabsString(level: level)
         
@@ -310,14 +310,6 @@ class FigmaConvertToXib: NSObject {
         //MARK: HEADER
         
         
-        // var xmlAlpha = ""
-        //
-        //        if page.fills.count == 1 {
-        //            let fill: FillClass = page.fills[0]
-        //
-        //            xmlAlpha = "alpha=\"\(fill.opacity)\" "
-        //        }
-        
         var viewHEADER = ""
         var viewEND = ""
         
@@ -325,7 +317,7 @@ class FigmaConvertToXib: NSObject {
         
         if image {
             
-            var imageFill: FillClass!
+            var imageFill: F_Fill!
             
             for fill in page.fills {
                 if fill.type == .image {
@@ -408,7 +400,7 @@ class FigmaConvertToXib: NSObject {
             
             if page.fills.count == 1 {
                 
-                let fill: FillClass = page.fills[0]
+                let fill: F_Fill = page.fills[0]
                 if fill.type == .solid, fill.visible {
                     
                     xmlFillColor = """
@@ -419,7 +411,7 @@ class FigmaConvertToXib: NSObject {
                 }
             } else {
                 
-                for fill: FillClass in page.fills {
+                for fill: F_Fill in page.fills {
                     if fill.visible {
                         
                         xmlFillSubviews = xmlFillSubviews + createViewFills(page: page, fill: fill, level: level + 2)
@@ -429,7 +421,7 @@ class FigmaConvertToXib: NSObject {
             
         } else {
             
-            for fill: FillClass in page.fills {
+            for fill: F_Fill in page.fills {
                 
                 switch fill.type {
                 case .solid:
@@ -463,7 +455,7 @@ class FigmaConvertToXib: NSObject {
         var xmlBorder = ""
         if !page.strokes.isEmpty { // page.strokeWeight != 0 // page.strokes.count == 1
             
-            let stroke: FillClass = page.strokes[0]
+            let stroke: F_Fill = page.strokes[0]
             
             if stroke.visible {
                 if stroke.type == .solid {
@@ -487,9 +479,9 @@ class FigmaConvertToXib: NSObject {
         
         var xmlViewSubviews = ""
         
-        if !page.children.isEmpty {
+        if !page.subviews.isEmpty {
             
-            for cpage: PageClass in page.children {
+            for cpage: F_View in page.subviews {
                 if cpage.visible,
                     cpage.type != .vector,
                     cpage.type != .booleanOperation {

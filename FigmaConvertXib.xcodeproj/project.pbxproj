@@ -15,15 +15,36 @@
 		46A9776624A27D5E0088EFED /* FigmaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A9774C24A27D5D0088EFED /* FigmaViewController.swift */; };
 		46A9777824A27D5E0088EFED /* FigmaConvertToViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A9776324A27D5E0088EFED /* FigmaConvertToViews.swift */; };
 		46A9777A24A27D5E0088EFED /* FigmaConvertToXib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A9776524A27D5E0088EFED /* FigmaConvertToXib.swift */; };
-		46A9777E24A2BF040088EFED /* Figma.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A9777D24A2BF040088EFED /* Figma.swift */; };
 		46A9778324A2CE7E0088EFED /* result.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46A9778224A2CE7E0088EFED /* result.xib */; };
 		46A9778A24A2CF4F0088EFED /* DesignButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A9778524A2CF4F0088EFED /* DesignButton.swift */; };
 		46A9778B24A2CF4F0088EFED /* DesignImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A9778624A2CF4F0088EFED /* DesignImage.swift */; };
-		46A9778C24A2CF4F0088EFED /* DesignTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A9778724A2CF4F0088EFED /* DesignTextField.swift */; };
 		46A9778D24A2CF4F0088EFED /* DesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A9778824A2CF4F0088EFED /* DesignView.swift */; };
-		46A9778E24A2CF4F0088EFED /* DesignVisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A9778924A2CF4F0088EFED /* DesignVisualEffectView.swift */; };
 		46A9779624A383EC0088EFED /* FigmaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A9779524A383EC0088EFED /* FigmaData.swift */; };
-		46A9779824A49C770088EFED /* FigmaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A9779724A49C770088EFED /* FigmaModel.swift */; };
+		46A9779C24A648240088EFED /* FigmaJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A9779B24A648240088EFED /* FigmaJson.swift */; };
+		46E56D4F24A64A1500E11DD5 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E56D4E24A64A1500E11DD5 /* Response.swift */; };
+		46E56D5124A64A6700E11DD5 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E56D5024A64A6700E11DD5 /* Document.swift */; };
+		46E56D5324A64AC900E11DD5 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E56D5224A64AC900E11DD5 /* Page.swift */; };
+		46E56D5524A64C0D00E11DD5 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E56D5424A64C0D00E11DD5 /* Color.swift */; };
+		46E56D5724A64C9500E11DD5 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E56D5624A64C9500E11DD5 /* View.swift */; };
+		46E56D5A24A6548A00E11DD5 /* Fill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E56D5924A6548A00E11DD5 /* Fill.swift */; };
+		46E56D7324A66F7C00E11DD5 /* GTWalsheimPro-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46E56D6124A66F7C00E11DD5 /* GTWalsheimPro-Medium.ttf */; };
+		46E56D7424A66F7C00E11DD5 /* GTWalsheimPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46E56D6224A66F7C00E11DD5 /* GTWalsheimPro-Regular.ttf */; };
+		46E56D7524A66F7C00E11DD5 /* GTWalsheimPro-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46E56D6324A66F7C00E11DD5 /* GTWalsheimPro-Bold.ttf */; };
+		46E56D7624A66F7C00E11DD5 /* ProximaNova-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 46E56D6524A66F7C00E11DD5 /* ProximaNova-Semibold.otf */; };
+		46E56D7724A66F7C00E11DD5 /* ProximaNova-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 46E56D6624A66F7C00E11DD5 /* ProximaNova-Bold.otf */; };
+		46E56D7824A66F7C00E11DD5 /* ProximaNova-Extrabold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 46E56D6724A66F7C00E11DD5 /* ProximaNova-Extrabold.otf */; };
+		46E56D7924A66F7C00E11DD5 /* ProximaNova-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 46E56D6824A66F7C00E11DD5 /* ProximaNova-Regular.otf */; };
+		46E56D7A24A66F7C00E11DD5 /* SFProText-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 46E56D6A24A66F7C00E11DD5 /* SFProText-Regular.otf */; };
+		46E56D7B24A66F7C00E11DD5 /* SanFranciscoText-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 46E56D6B24A66F7C00E11DD5 /* SanFranciscoText-Regular.otf */; };
+		46E56D7C24A66F7C00E11DD5 /* SFProText-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 46E56D6C24A66F7C00E11DD5 /* SFProText-Semibold.otf */; };
+		46E56D7D24A66F7C00E11DD5 /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 46E56D6D24A66F7C00E11DD5 /* SF-Pro-Display-Regular.otf */; };
+		46E56D7E24A66F7C00E11DD5 /* SF-Pro-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 46E56D6E24A66F7C00E11DD5 /* SF-Pro-Display-Bold.otf */; };
+		46E56D7F24A66F7C00E11DD5 /* SF-Pro-Display-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 46E56D6F24A66F7C00E11DD5 /* SF-Pro-Display-Heavy.otf */; };
+		46E56D8024A66F7C00E11DD5 /* SanFranciscoText-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 46E56D7024A66F7C00E11DD5 /* SanFranciscoText-Bold.otf */; };
+		46E56D8124A66F7C00E11DD5 /* SFProDisplay-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 46E56D7124A66F7C00E11DD5 /* SFProDisplay-Heavy.otf */; };
+		46E56D8224A66F7C00E11DD5 /* SanFranciscoDisplay-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 46E56D7224A66F7C00E11DD5 /* SanFranciscoDisplay-Regular.otf */; };
+		46E56E7024A91DBA00E11DD5 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E56E6F24A91DBA00E11DD5 /* Font.swift */; };
+		46E56E7224A91EDB00E11DD5 /* Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E56E7124A91EDB00E11DD5 /* Frame.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,15 +58,36 @@
 		46A9774C24A27D5D0088EFED /* FigmaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FigmaViewController.swift; sourceTree = "<group>"; };
 		46A9776324A27D5E0088EFED /* FigmaConvertToViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FigmaConvertToViews.swift; sourceTree = "<group>"; };
 		46A9776524A27D5E0088EFED /* FigmaConvertToXib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FigmaConvertToXib.swift; sourceTree = "<group>"; };
-		46A9777D24A2BF040088EFED /* Figma.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Figma.swift; sourceTree = "<group>"; };
 		46A9778224A2CE7E0088EFED /* result.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = result.xib; sourceTree = "<group>"; };
 		46A9778524A2CF4F0088EFED /* DesignButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignButton.swift; sourceTree = "<group>"; };
 		46A9778624A2CF4F0088EFED /* DesignImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignImage.swift; sourceTree = "<group>"; };
-		46A9778724A2CF4F0088EFED /* DesignTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignTextField.swift; sourceTree = "<group>"; };
 		46A9778824A2CF4F0088EFED /* DesignView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignView.swift; sourceTree = "<group>"; };
-		46A9778924A2CF4F0088EFED /* DesignVisualEffectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignVisualEffectView.swift; sourceTree = "<group>"; };
 		46A9779524A383EC0088EFED /* FigmaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaData.swift; sourceTree = "<group>"; };
-		46A9779724A49C770088EFED /* FigmaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaModel.swift; sourceTree = "<group>"; };
+		46A9779B24A648240088EFED /* FigmaJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaJson.swift; sourceTree = "<group>"; };
+		46E56D4E24A64A1500E11DD5 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		46E56D5024A64A6700E11DD5 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
+		46E56D5224A64AC900E11DD5 /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
+		46E56D5424A64C0D00E11DD5 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		46E56D5624A64C9500E11DD5 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		46E56D5924A6548A00E11DD5 /* Fill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fill.swift; sourceTree = "<group>"; };
+		46E56D6124A66F7C00E11DD5 /* GTWalsheimPro-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GTWalsheimPro-Medium.ttf"; sourceTree = "<group>"; };
+		46E56D6224A66F7C00E11DD5 /* GTWalsheimPro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GTWalsheimPro-Regular.ttf"; sourceTree = "<group>"; };
+		46E56D6324A66F7C00E11DD5 /* GTWalsheimPro-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GTWalsheimPro-Bold.ttf"; sourceTree = "<group>"; };
+		46E56D6524A66F7C00E11DD5 /* ProximaNova-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Semibold.otf"; sourceTree = "<group>"; };
+		46E56D6624A66F7C00E11DD5 /* ProximaNova-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Bold.otf"; sourceTree = "<group>"; };
+		46E56D6724A66F7C00E11DD5 /* ProximaNova-Extrabold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Extrabold.otf"; sourceTree = "<group>"; };
+		46E56D6824A66F7C00E11DD5 /* ProximaNova-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Regular.otf"; sourceTree = "<group>"; };
+		46E56D6A24A66F7C00E11DD5 /* SFProText-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Regular.otf"; sourceTree = "<group>"; };
+		46E56D6B24A66F7C00E11DD5 /* SanFranciscoText-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SanFranciscoText-Regular.otf"; sourceTree = "<group>"; };
+		46E56D6C24A66F7C00E11DD5 /* SFProText-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Semibold.otf"; sourceTree = "<group>"; };
+		46E56D6D24A66F7C00E11DD5 /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
+		46E56D6E24A66F7C00E11DD5 /* SF-Pro-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.otf"; sourceTree = "<group>"; };
+		46E56D6F24A66F7C00E11DD5 /* SF-Pro-Display-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Heavy.otf"; sourceTree = "<group>"; };
+		46E56D7024A66F7C00E11DD5 /* SanFranciscoText-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SanFranciscoText-Bold.otf"; sourceTree = "<group>"; };
+		46E56D7124A66F7C00E11DD5 /* SFProDisplay-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Heavy.otf"; sourceTree = "<group>"; };
+		46E56D7224A66F7C00E11DD5 /* SanFranciscoDisplay-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SanFranciscoDisplay-Regular.otf"; sourceTree = "<group>"; };
+		46E56E6F24A91DBA00E11DD5 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		46E56E7124A91EDB00E11DD5 /* Frame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frame.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,8 +136,8 @@
 			isa = PBXGroup;
 			children = (
 				46A9778124A2CAA60088EFED /* Xib */,
-				46A9777D24A2BF040088EFED /* Figma.swift */,
-				46A9779724A49C770088EFED /* FigmaModel.swift */,
+				46E56D5F24A66F7C00E11DD5 /* Fonts */,
+				46E56D4D24A649F200E11DD5 /* Model */,
 				46A9779524A383EC0088EFED /* FigmaData.swift */,
 				46A9776324A27D5E0088EFED /* FigmaConvertToViews.swift */,
 				46A9776524A27D5E0088EFED /* FigmaConvertToXib.swift */,
@@ -115,13 +157,82 @@
 		46A9778424A2CF4F0088EFED /* Designable */ = {
 			isa = PBXGroup;
 			children = (
+				46A9778824A2CF4F0088EFED /* DesignView.swift */,
 				46A9778524A2CF4F0088EFED /* DesignButton.swift */,
 				46A9778624A2CF4F0088EFED /* DesignImage.swift */,
-				46A9778724A2CF4F0088EFED /* DesignTextField.swift */,
-				46A9778824A2CF4F0088EFED /* DesignView.swift */,
-				46A9778924A2CF4F0088EFED /* DesignVisualEffectView.swift */,
 			);
 			path = Designable;
+			sourceTree = "<group>";
+		};
+		46E56D4D24A649F200E11DD5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				46E56D4E24A64A1500E11DD5 /* Response.swift */,
+				46E56D5024A64A6700E11DD5 /* Document.swift */,
+				46E56D5224A64AC900E11DD5 /* Page.swift */,
+				46E56D5624A64C9500E11DD5 /* View.swift */,
+				46E56D5924A6548A00E11DD5 /* Fill.swift */,
+				46E56E6F24A91DBA00E11DD5 /* Font.swift */,
+				46A9779B24A648240088EFED /* FigmaJson.swift */,
+				46E56D5824A64E4C00E11DD5 /* Properties */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		46E56D5824A64E4C00E11DD5 /* Properties */ = {
+			isa = PBXGroup;
+			children = (
+				46E56D5424A64C0D00E11DD5 /* Color.swift */,
+				46E56E7124A91EDB00E11DD5 /* Frame.swift */,
+			);
+			path = Properties;
+			sourceTree = "<group>";
+		};
+		46E56D5F24A66F7C00E11DD5 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				46E56D6024A66F7C00E11DD5 /* GTWalsheimPro */,
+				46E56D6424A66F7C00E11DD5 /* ProximaNova  */,
+				46E56D6924A66F7C00E11DD5 /* SanFrancisco */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		46E56D6024A66F7C00E11DD5 /* GTWalsheimPro */ = {
+			isa = PBXGroup;
+			children = (
+				46E56D6124A66F7C00E11DD5 /* GTWalsheimPro-Medium.ttf */,
+				46E56D6224A66F7C00E11DD5 /* GTWalsheimPro-Regular.ttf */,
+				46E56D6324A66F7C00E11DD5 /* GTWalsheimPro-Bold.ttf */,
+			);
+			path = GTWalsheimPro;
+			sourceTree = "<group>";
+		};
+		46E56D6424A66F7C00E11DD5 /* ProximaNova  */ = {
+			isa = PBXGroup;
+			children = (
+				46E56D6524A66F7C00E11DD5 /* ProximaNova-Semibold.otf */,
+				46E56D6624A66F7C00E11DD5 /* ProximaNova-Bold.otf */,
+				46E56D6724A66F7C00E11DD5 /* ProximaNova-Extrabold.otf */,
+				46E56D6824A66F7C00E11DD5 /* ProximaNova-Regular.otf */,
+			);
+			path = "ProximaNova ";
+			sourceTree = "<group>";
+		};
+		46E56D6924A66F7C00E11DD5 /* SanFrancisco */ = {
+			isa = PBXGroup;
+			children = (
+				46E56D6A24A66F7C00E11DD5 /* SFProText-Regular.otf */,
+				46E56D6B24A66F7C00E11DD5 /* SanFranciscoText-Regular.otf */,
+				46E56D6C24A66F7C00E11DD5 /* SFProText-Semibold.otf */,
+				46E56D6D24A66F7C00E11DD5 /* SF-Pro-Display-Regular.otf */,
+				46E56D6E24A66F7C00E11DD5 /* SF-Pro-Display-Bold.otf */,
+				46E56D6F24A66F7C00E11DD5 /* SF-Pro-Display-Heavy.otf */,
+				46E56D7024A66F7C00E11DD5 /* SanFranciscoText-Bold.otf */,
+				46E56D7124A66F7C00E11DD5 /* SFProDisplay-Heavy.otf */,
+				46E56D7224A66F7C00E11DD5 /* SanFranciscoDisplay-Regular.otf */,
+			);
+			path = SanFrancisco;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,9 +293,25 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46E56D8124A66F7C00E11DD5 /* SFProDisplay-Heavy.otf in Resources */,
+				46E56D7324A66F7C00E11DD5 /* GTWalsheimPro-Medium.ttf in Resources */,
+				46E56D7E24A66F7C00E11DD5 /* SF-Pro-Display-Bold.otf in Resources */,
+				46E56D7F24A66F7C00E11DD5 /* SF-Pro-Display-Heavy.otf in Resources */,
+				46E56D8224A66F7C00E11DD5 /* SanFranciscoDisplay-Regular.otf in Resources */,
+				46E56D7424A66F7C00E11DD5 /* GTWalsheimPro-Regular.ttf in Resources */,
+				46E56D7524A66F7C00E11DD5 /* GTWalsheimPro-Bold.ttf in Resources */,
+				46E56D7A24A66F7C00E11DD5 /* SFProText-Regular.otf in Resources */,
+				46E56D7B24A66F7C00E11DD5 /* SanFranciscoText-Regular.otf in Resources */,
 				46A9774424A27D2D0088EFED /* LaunchScreen.storyboard in Resources */,
+				46E56D8024A66F7C00E11DD5 /* SanFranciscoText-Bold.otf in Resources */,
+				46E56D7C24A66F7C00E11DD5 /* SFProText-Semibold.otf in Resources */,
 				46A9778324A2CE7E0088EFED /* result.xib in Resources */,
+				46E56D7624A66F7C00E11DD5 /* ProximaNova-Semibold.otf in Resources */,
+				46E56D7724A66F7C00E11DD5 /* ProximaNova-Bold.otf in Resources */,
 				46A9774124A27D2D0088EFED /* Assets.xcassets in Resources */,
+				46E56D7824A66F7C00E11DD5 /* ProximaNova-Extrabold.otf in Resources */,
+				46E56D7924A66F7C00E11DD5 /* ProximaNova-Regular.otf in Resources */,
+				46E56D7D24A66F7C00E11DD5 /* SF-Pro-Display-Regular.otf in Resources */,
 				46A9773F24A27D2B0088EFED /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -200,14 +327,19 @@
 				46A9778B24A2CF4F0088EFED /* DesignImage.swift in Sources */,
 				46A9778D24A2CF4F0088EFED /* DesignView.swift in Sources */,
 				46A9773824A27D2B0088EFED /* AppDelegate.swift in Sources */,
+				46A9779C24A648240088EFED /* FigmaJson.swift in Sources */,
 				46A9773A24A27D2B0088EFED /* SceneDelegate.swift in Sources */,
-				46A9778E24A2CF4F0088EFED /* DesignVisualEffectView.swift in Sources */,
 				46A9777824A27D5E0088EFED /* FigmaConvertToViews.swift in Sources */,
-				46A9778C24A2CF4F0088EFED /* DesignTextField.swift in Sources */,
+				46E56D4F24A64A1500E11DD5 /* Response.swift in Sources */,
+				46E56D5524A64C0D00E11DD5 /* Color.swift in Sources */,
+				46E56D5724A64C9500E11DD5 /* View.swift in Sources */,
+				46E56E7024A91DBA00E11DD5 /* Font.swift in Sources */,
 				46A9779624A383EC0088EFED /* FigmaData.swift in Sources */,
-				46A9779824A49C770088EFED /* FigmaModel.swift in Sources */,
+				46E56D5124A64A6700E11DD5 /* Document.swift in Sources */,
+				46E56D5A24A6548A00E11DD5 /* Fill.swift in Sources */,
+				46E56D5324A64AC900E11DD5 /* Page.swift in Sources */,
 				46A9778A24A2CF4F0088EFED /* DesignButton.swift in Sources */,
-				46A9777E24A2BF040088EFED /* Figma.swift in Sources */,
+				46E56E7224A91EDB00E11DD5 /* Frame.swift in Sources */,
 				46A9776624A27D5E0088EFED /* FigmaViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

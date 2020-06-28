@@ -18,12 +18,21 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="CdB-hj-PdY">
+                        <textField key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" id="7cE-MW-xS9">
+                            <rect key="frame" x="85.5" y="5" width="243" height="34"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
                         <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="GrD-TN-Pkd"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="titleTextField" destination="7cE-MW-xS9" id="b2g-WD-IKl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="132" y="100"/>
+            <point key="canvasLocation" x="131.8840579710145" y="99.776785714285708"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8VU-rM-XGk">

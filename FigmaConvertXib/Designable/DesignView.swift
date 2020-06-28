@@ -4,8 +4,6 @@ import UIKit
 
 @IBDesignable
 class DesignView: UIView {
-
-    
     
     @IBInspectable var fillColor: UIColor = .clear
     
