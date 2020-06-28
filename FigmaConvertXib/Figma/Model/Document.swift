@@ -8,11 +8,11 @@
 
 import Foundation
 
-class F_Document {
+class FigmaDocument {
     
     let id, name: String
     let type: Type_
-    var pages: [F_Page] = []
+    var pages: [FigmaPage] = []
     
     init(_ d: [String:Any]) {
         
@@ -20,17 +20,17 @@ class F_Document {
         name = dString(d, "name")
         
         let type = dString(d, "type")
-        self.type = F_Document.Type_.install(type)
+        self.type = FigmaDocument.Type_.install(type)
         
         if let arrayPages = dArr(d, "children") {
             for page in arrayPages {
-                pages.append( F_Page(page) )
+                pages.append( FigmaPage(page) )
             }
         }
     }
 }
 
-extension F_Document {
+extension FigmaDocument {
 
     enum Type_: String {
         

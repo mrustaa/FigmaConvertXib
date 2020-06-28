@@ -45,6 +45,9 @@
 		46E56D8224A66F7C00E11DD5 /* SanFranciscoDisplay-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 46E56D7224A66F7C00E11DD5 /* SanFranciscoDisplay-Regular.otf */; };
 		46E56E7024A91DBA00E11DD5 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E56E6F24A91DBA00E11DD5 /* Font.swift */; };
 		46E56E7224A91EDB00E11DD5 /* Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E56E7124A91EDB00E11DD5 /* Frame.swift */; };
+		46E56EC224A92C9A00E11DD5 /* Shape (3) 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 46E56EBF24A92C9A00E11DD5 /* Shape (3) 1.png */; };
+		46E56EC324A92C9A00E11DD5 /* Shape (2) 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 46E56EC024A92C9A00E11DD5 /* Shape (2) 1.png */; };
+		46E56EC424A92C9A00E11DD5 /* Shape (1) 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 46E56EC124A92C9A00E11DD5 /* Shape (1) 1.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +91,9 @@
 		46E56D7224A66F7C00E11DD5 /* SanFranciscoDisplay-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SanFranciscoDisplay-Regular.otf"; sourceTree = "<group>"; };
 		46E56E6F24A91DBA00E11DD5 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		46E56E7124A91EDB00E11DD5 /* Frame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frame.swift; sourceTree = "<group>"; };
+		46E56EBF24A92C9A00E11DD5 /* Shape (3) 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Shape (3) 1.png"; sourceTree = "<group>"; };
+		46E56EC024A92C9A00E11DD5 /* Shape (2) 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Shape (2) 1.png"; sourceTree = "<group>"; };
+		46E56EC124A92C9A00E11DD5 /* Shape (1) 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Shape (1) 1.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,7 +126,6 @@
 		46A9773624A27D2B0088EFED /* FigmaConvertXib */ = {
 			isa = PBXGroup;
 			children = (
-				46A9778424A2CF4F0088EFED /* Designable */,
 				46A9774B24A27D5D0088EFED /* Figma */,
 				46A9773724A27D2B0088EFED /* AppDelegate.swift */,
 				46A9773924A27D2B0088EFED /* SceneDelegate.swift */,
@@ -136,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				46A9778124A2CAA60088EFED /* Xib */,
+				46A9778424A2CF4F0088EFED /* Designable */,
 				46E56D5F24A66F7C00E11DD5 /* Fonts */,
 				46E56D4D24A649F200E11DD5 /* Model */,
 				46A9779524A383EC0088EFED /* FigmaData.swift */,
@@ -150,6 +156,9 @@
 			isa = PBXGroup;
 			children = (
 				46A9778224A2CE7E0088EFED /* result.xib */,
+				46E56EC124A92C9A00E11DD5 /* Shape (1) 1.png */,
+				46E56EC024A92C9A00E11DD5 /* Shape (2) 1.png */,
+				46E56EBF24A92C9A00E11DD5 /* Shape (3) 1.png */,
 			);
 			path = Xib;
 			sourceTree = "<group>";
@@ -167,6 +176,7 @@
 		46E56D4D24A649F200E11DD5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				46E56D5824A64E4C00E11DD5 /* Properties */,
 				46E56D4E24A64A1500E11DD5 /* Response.swift */,
 				46E56D5024A64A6700E11DD5 /* Document.swift */,
 				46E56D5224A64AC900E11DD5 /* Page.swift */,
@@ -174,7 +184,6 @@
 				46E56D5924A6548A00E11DD5 /* Fill.swift */,
 				46E56E6F24A91DBA00E11DD5 /* Font.swift */,
 				46A9779B24A648240088EFED /* FigmaJson.swift */,
-				46E56D5824A64E4C00E11DD5 /* Properties */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -298,9 +307,11 @@
 				46E56D7E24A66F7C00E11DD5 /* SF-Pro-Display-Bold.otf in Resources */,
 				46E56D7F24A66F7C00E11DD5 /* SF-Pro-Display-Heavy.otf in Resources */,
 				46E56D8224A66F7C00E11DD5 /* SanFranciscoDisplay-Regular.otf in Resources */,
+				46E56EC324A92C9A00E11DD5 /* Shape (2) 1.png in Resources */,
 				46E56D7424A66F7C00E11DD5 /* GTWalsheimPro-Regular.ttf in Resources */,
 				46E56D7524A66F7C00E11DD5 /* GTWalsheimPro-Bold.ttf in Resources */,
 				46E56D7A24A66F7C00E11DD5 /* SFProText-Regular.otf in Resources */,
+				46E56EC224A92C9A00E11DD5 /* Shape (3) 1.png in Resources */,
 				46E56D7B24A66F7C00E11DD5 /* SanFranciscoText-Regular.otf in Resources */,
 				46A9774424A27D2D0088EFED /* LaunchScreen.storyboard in Resources */,
 				46E56D8024A66F7C00E11DD5 /* SanFranciscoText-Bold.otf in Resources */,
@@ -308,6 +319,7 @@
 				46A9778324A2CE7E0088EFED /* result.xib in Resources */,
 				46E56D7624A66F7C00E11DD5 /* ProximaNova-Semibold.otf in Resources */,
 				46E56D7724A66F7C00E11DD5 /* ProximaNova-Bold.otf in Resources */,
+				46E56EC424A92C9A00E11DD5 /* Shape (1) 1.png in Resources */,
 				46A9774124A27D2D0088EFED /* Assets.xcassets in Resources */,
 				46E56D7824A66F7C00E11DD5 /* ProximaNova-Extrabold.otf in Resources */,
 				46E56D7924A66F7C00E11DD5 /* ProximaNova-Regular.otf in Resources */,

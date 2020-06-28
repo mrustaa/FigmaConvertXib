@@ -8,11 +8,11 @@
 
 import UIKit
 
-class F_View {
+class FigmaView {
     
     let id, name: String
-    let type: F_Document.Type_
-    var subviews: [F_View] = []
+    let type: FigmaDocument.Type_
+    var subviews: [FigmaView] = []
     
     var blendMode: BlendMode = .modeDefault
     
@@ -24,18 +24,17 @@ class F_View {
     var clipsContent: Bool = false
     
     var backgroundColor: UIColor = .clear
-    var fills: [F_Fill] = []
+    var fills: [FigmaFill] = []
     
     var strokeWeight: CGFloat = 0.0
     var strokeColor: UIColor = .clear
-    var strokes: [F_Fill] = []
+    var strokes: [FigmaFill] = []
     
     var cornerRadius: CGFloat = 0.0
     var text: String = ""
-    var fontStyle: F_Font?
+    var fontStyle: FigmaFont?
     
-    
-    init(_ page: F_Page) {
+    init(_ page: FigmaPage) {
         
         id = page.id
         name = page.name
@@ -51,11 +50,11 @@ class F_View {
         name = dString(dict, "name")
         
         let t = dString(dict, "type")
-        type = F_Document.Type_.install(t)
+        type = FigmaDocument.Type_.install(t)
         
         
         if let backgroundColor_ = dDict(dict, "backgroundColor") {
-            backgroundColor = F_Color.color(backgroundColor_)
+            backgroundColor = FigmaColor.color(backgroundColor_)
         }
         
         if let visible = dict["visible"] as? Bool {
@@ -65,18 +64,18 @@ class F_View {
         if let arrayFills = dict["fills"] as? [ [String: Any] ] {
             self.fills = []
             for dictFill in arrayFills {
-                self.fills.append( F_Fill(dictFill) )
+                self.fills.append( FigmaFill(dictFill) )
             }
         }
         
         if let arrayStrokes = dict["strokes"] as? [ [String: Any] ] {
             self.strokes = []
             for dict in arrayStrokes {
-                self.strokes.append( F_Fill(dict) )
+                self.strokes.append( FigmaFill(dict) )
             }
             for strokes in arrayStrokes {
                 if let color = strokes["color"] as? [String: Any] {
-                    self.strokeColor = F_Color.color(color)
+                    self.strokeColor = FigmaColor.color(color)
                 }
             }
         }
@@ -90,7 +89,7 @@ class F_View {
         }
         
         if let absoluteBoundingBox = dict["absoluteBoundingBox"] as? [String: Any] {
-            self.absoluteBoundingBox = FigmaRect.rect(absoluteBoundingBox)
+            self.absoluteBoundingBox = FigmaFrame.rect(absoluteBoundingBox)
         }
         
         if let clipsContent = dict["clipsContent"] as? Bool {
@@ -106,20 +105,20 @@ class F_View {
         }
         
         if let style = dict["style"] as? [String: Any] {
-            self.fontStyle = F_Font(style)
+            self.fontStyle = FigmaFont(style)
         }
         
         if let arrayPages = dict["children"] as? [ [String: Any] ] {
             subviews = []
             for page in arrayPages {
-                subviews.append( F_View(page) )
+                subviews.append( FigmaView(page) )
             }
         }
         
     }
 }
 
-extension F_View {
+extension FigmaView {
     
     enum BlendMode: String {
         

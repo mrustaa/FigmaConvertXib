@@ -64,7 +64,7 @@ class FigmaViewController: UIViewController {
                 let page = FigmaData.current.resporse?.document.pages[0],
                 let imagesURLs = FigmaData.current.imagesURLs else { return }
             
-            let figmaView: (UIView, F_View) = _self.convertToViews.add(page: page, imagesURLs: imagesURLs)
+            let figmaView: (UIView, FigmaView) = _self.convertToViews.add(page: page, imagesURLs: imagesURLs)
             _self.figmaView = figmaView.0
             
             _self.addFigmaView(view: figmaView.0)

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FigmaRect {
+class FigmaFrame {
     
     class func rect(_ rect: [String: Any]) -> CGRect {
         let x = rect["x"] as! CGFloat

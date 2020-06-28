@@ -8,7 +8,7 @@
 
 import UIKit
 
-class F_Font {
+class FigmaFont {
     
     var fontFamily: String = ""
     var fontPostScriptName: String?
@@ -18,8 +18,8 @@ class F_Font {
     var letterSpacing: CGFloat = 0.0
     var lineHeightPercent: CGFloat = 0.0
     var lineHeightPx: CGFloat = 0.0
-    var textAlignHorizontal: F_Font.AlignHorizontal = .left
-    var textAlignVertical: F_Font.AlignVertical = .center
+    var textAlignHorizontal: AlignHorizontal = .left
+    var textAlignVertical: AlignVertical = .center
     
     init(_ dict: [String:Any]) {
         
@@ -49,15 +49,15 @@ class F_Font {
         }
         
         if let textAlignHorizontal = dict["textAlignHorizontal"] as? String {
-            self.textAlignHorizontal = F_Font.AlignHorizontal.type(textAlignHorizontal)
+            self.textAlignHorizontal = AlignHorizontal.type(textAlignHorizontal)
         }
         if let textAlignVertical = dict["textAlignVertical"] as? String {
-            self.textAlignVertical = F_Font.AlignVertical.type(textAlignVertical)
+            self.textAlignVertical = AlignVertical.type(textAlignVertical)
         }
     }
 }
 
-extension F_Font {
+extension FigmaFont {
     
     enum AlignHorizontal: String {
         
@@ -66,8 +66,8 @@ extension F_Font {
         case left = "LEFT"
         case right = "RIGHT"
         
-        static func type(_ str: String) -> F_Font.AlignHorizontal {
-            var type: F_Font.AlignHorizontal = .left
+        static func type(_ str: String) -> AlignHorizontal {
+            var type: AlignHorizontal = .left
             
             switch str {
             case "CENTER": type = .center
@@ -81,7 +81,7 @@ extension F_Font {
     }
 }
 
-extension F_Font {
+extension FigmaFont {
     
     enum AlignVertical: String {
         
@@ -89,8 +89,8 @@ extension F_Font {
         case center = "CENTER"
         case top = "TOP"
         
-        static func type(_ str: String) -> F_Font.AlignVertical {
-            var type: F_Font.AlignVertical = .center
+        static func type(_ str: String) -> AlignVertical {
+            var type: AlignVertical = .center
             
             switch str {
             case "BOTTOM": type = .bottom

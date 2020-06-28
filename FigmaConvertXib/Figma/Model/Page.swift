@@ -8,7 +8,7 @@
 
 import UIKit
 
-class F_Page {
+class FigmaPage {
     
     var backgroundColor: UIColor
     
@@ -16,8 +16,8 @@ class F_Page {
 //    var prototypeDevice: PrototypeDevice
     
     let id, name: String
-    let type: F_Document.Type_
-    var subviews: [F_View] = []
+    let type: FigmaDocument.Type_
+    var subviews: [FigmaView] = []
     
     var realFrame: CGRect = CGRect.zero
     
@@ -27,17 +27,17 @@ class F_Page {
         name = dString(d, "name")
         
         let t = dString(d, "type")
-        type = F_Document.Type_.install(t)
+        type = FigmaDocument.Type_.install(t)
         
         subviews = []
         if let arrayPages = dArr(d, "children") {
             for page in arrayPages {
-                subviews.append( F_View(page) )
+                subviews.append( FigmaView(page) )
             }
         }
         
         let color = dDict(d, "backgroundColor")!
-        backgroundColor = F_Color.color(color)
+        backgroundColor = FigmaColor.color(color)
     }
     
 }

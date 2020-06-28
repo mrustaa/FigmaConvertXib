@@ -8,9 +8,9 @@
 
 import Foundation
 
-class F_Response {
+class FigmaResponse {
     
-    var document: F_Document
+    var document: FigmaDocument
     var schemaVersion: Double
     var thumbnail: URL
     var lastModified: Date
@@ -27,7 +27,7 @@ class F_Response {
         role = dString(d, "role")
         
         let doc = dDict(d, "document")!
-        document = F_Document(doc)
+        document = FigmaDocument(doc)
         
     }
 }

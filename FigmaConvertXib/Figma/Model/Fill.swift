@@ -8,17 +8,17 @@
 
 import UIKit
 
-class F_Fill {
+class FigmaFill {
     
-    var blendMode: F_View.BlendMode = .modeDefault
-    var type: F_Fill.Type_ = .solid
+    var blendMode: FigmaView.BlendMode = .modeDefault
+    var type: FigmaFill.Type_ = .solid
     
     var visible: Bool = true /// gradint
     var gradientHandlePositions: [CGPoint] = [] /// gradint
     var gradientStops: [UIColor] = [] /// gradint
     var gradientPosition: [CGFloat] = [] /// gradint
         
-    var scaleMode: F_Fill.ScaleMode = .fill /// image
+    var scaleMode: FigmaFill.ScaleMode = .fill /// image
     var imageRef: String = "" /// image
         
     var opacity: CGFloat = 1.0 /// color
@@ -27,11 +27,11 @@ class F_Fill {
     init(_ dict: [String:Any]) {
         
         let type = dict["type"] as! String
-        self.type = F_Fill.Type_.type(type)
+        self.type = FigmaFill.Type_.type(type)
         
         
         if let blendMode = dict["blendMode"] as? String {
-            self.blendMode = F_View.BlendMode.blendMode(blendMode)
+            self.blendMode = FigmaView.BlendMode.blendMode(blendMode)
         }
         
         if let visible = dict["visible"] as? Bool {
@@ -39,7 +39,7 @@ class F_Fill {
         }
         
         if let scaleMode = dict["scaleMode"] as? String {
-            self.scaleMode = F_Fill.ScaleMode.type(scaleMode)
+            self.scaleMode = FigmaFill.ScaleMode.type(scaleMode)
         }
         if let imageRef = dict["imageRef"] as? String {
             self.imageRef = imageRef
@@ -50,7 +50,7 @@ class F_Fill {
             self.opacity = opacity
         }
         if let color = dict["color"] as? [String: Any] {
-            self.color = F_Color.color(color)
+            self.color = FigmaColor.color(color)
         }
         
         if let gradientHandlePositions = dict["gradientHandlePositions"] as? [ [String:CGFloat] ] {
@@ -67,7 +67,7 @@ class F_Fill {
             self.gradientStops = []
             for gradient in gradientStops {
                 if let color = gradient["color"] as? [String: Any] {
-                    let color = F_Color.color(color)
+                    let color = FigmaColor.color(color)
                     self.gradientStops.append(color)
                 }
             }
@@ -87,7 +87,7 @@ class F_Fill {
      
 }
 
-extension F_Fill {
+extension FigmaFill {
     
     enum Type_: String {
         
@@ -117,7 +117,7 @@ extension F_Fill {
     }
 }
 
-extension F_Fill {
+extension FigmaFill {
     
     enum ScaleMode: String {
 

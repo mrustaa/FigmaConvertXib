@@ -36,7 +36,7 @@ class FigmaData {
     
     //MARK: - Result
     
-    var resporse: F_Response?
+    var resporse: FigmaResponse?
     var imagesURLs: [String: String]?
     
     
@@ -55,7 +55,7 @@ class FigmaData {
             
 //            var welcome: Welcome = try! JSONDecoder().decode(Welcome.self, from: data)
             
-            _self.resporse = F_Response(json)
+            _self.resporse = FigmaResponse(json)
             
             guard (_self.imagesURLs != nil) else { return }
             completion?()

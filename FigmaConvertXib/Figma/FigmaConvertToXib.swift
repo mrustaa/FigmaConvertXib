@@ -62,7 +62,7 @@ class FigmaConvertToXib: NSObject {
     
     var figmaImagesURLs: [String: String] = [:]
     
-    func add(page: F_View, imagesURLs: [String: String]) {
+    func add(page: FigmaView, imagesURLs: [String: String]) {
         
         figmaImagesURLs = imagesURLs
         
@@ -202,7 +202,7 @@ class FigmaConvertToXib: NSObject {
     
     //MARK: - Create Fills
     
-    func createViewFills(page: F_View, fill: F_Fill, level: Int) -> String {
+    func createViewFills(page: FigmaView, fill: FigmaFill, level: Int) -> String {
         
         let tabs = tabsString(level: level)
         
@@ -292,7 +292,7 @@ class FigmaConvertToXib: NSObject {
     
     //MARK: - Create Views
     
-    func createView(page: F_View, level: Int, mainView: Bool = false) -> String {
+    func createView(page: FigmaView, level: Int, mainView: Bool = false) -> String {
         
         let tabs = tabsString(level: level)
         
@@ -317,7 +317,7 @@ class FigmaConvertToXib: NSObject {
         
         if image {
             
-            var imageFill: F_Fill!
+            var imageFill: FigmaFill!
             
             for fill in page.fills {
                 if fill.type == .image {
@@ -400,7 +400,7 @@ class FigmaConvertToXib: NSObject {
             
             if page.fills.count == 1 {
                 
-                let fill: F_Fill = page.fills[0]
+                let fill: FigmaFill = page.fills[0]
                 if fill.type == .solid, fill.visible {
                     
                     xmlFillColor = """
@@ -411,7 +411,7 @@ class FigmaConvertToXib: NSObject {
                 }
             } else {
                 
-                for fill: F_Fill in page.fills {
+                for fill: FigmaFill in page.fills {
                     if fill.visible {
                         
                         xmlFillSubviews = xmlFillSubviews + createViewFills(page: page, fill: fill, level: level + 2)
@@ -421,7 +421,7 @@ class FigmaConvertToXib: NSObject {
             
         } else {
             
-            for fill: F_Fill in page.fills {
+            for fill: FigmaFill in page.fills {
                 
                 switch fill.type {
                 case .solid:
@@ -455,7 +455,7 @@ class FigmaConvertToXib: NSObject {
         var xmlBorder = ""
         if !page.strokes.isEmpty { // page.strokeWeight != 0 // page.strokes.count == 1
             
-            let stroke: F_Fill = page.strokes[0]
+            let stroke: FigmaFill = page.strokes[0]
             
             if stroke.visible {
                 if stroke.type == .solid {
@@ -481,7 +481,7 @@ class FigmaConvertToXib: NSObject {
         
         if !page.subviews.isEmpty {
             
-            for cpage: F_View in page.subviews {
+            for cpage: FigmaView in page.subviews {
                 if cpage.visible,
                     cpage.type != .vector,
                     cpage.type != .booleanOperation {

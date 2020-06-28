@@ -12,7 +12,7 @@ class FigmaConvertToViews: NSObject {
     var figmaImagesURLs: [String: String] = [:]
     
     
-    func add(page: F_Page, imagesURLs: [String: String]) -> (UIView, F_View) {
+    func add(page: FigmaPage, imagesURLs: [String: String]) -> (UIView, FigmaView) {
         
         figmaImagesURLs = imagesURLs
         
@@ -22,7 +22,7 @@ class FigmaConvertToViews: NSObject {
     }
     
     
-    func pageConvert(page: F_Page) -> (UIView, F_View) {
+    func pageConvert(page: FigmaPage) -> (UIView, FigmaView) {
         
         let view = UIView(frame: CGRect.zero)
         view.backgroundColor = page.backgroundColor
@@ -34,7 +34,7 @@ class FigmaConvertToViews: NSObject {
         var maxH: CGFloat = 0
         
         /// поиск минальных X Y
-        for subview: F_View in page.subviews {
+        for subview: FigmaView in page.subviews {
             
             if minX == 0 {
                 minX = subview.absoluteBoundingBox.origin.x
@@ -51,7 +51,7 @@ class FigmaConvertToViews: NSObject {
         
         /// поиск максимального размера Всей Страницы
         ///  исходя из его Subviews
-        for subview: F_View in page.subviews {
+        for subview: FigmaView in page.subviews {
             
             var x = subview.absoluteBoundingBox.origin.x
             var y = subview.absoluteBoundingBox.origin.y
@@ -84,7 +84,7 @@ class FigmaConvertToViews: NSObject {
         
         
         
-        for subview: F_View in page.subviews {
+        for subview: FigmaView in page.subviews {
             
             
             /// добавление subviews
@@ -122,11 +122,11 @@ class FigmaConvertToViews: NSObject {
             
         }
         
-        return (view, F_View(page))
+        return (view, FigmaView(page))
     }
     
     
-    func add(figma_view: F_View, frame: CGRect) -> UIView {
+    func add(figma_view: FigmaView, frame: CGRect) -> UIView {
         
         let view: UIView = pageConvert(figma_view: figma_view)
         view.frame = frame
@@ -137,7 +137,7 @@ class FigmaConvertToViews: NSObject {
         return view
     }
     
-    func add(figma_view: F_View, imagesURLs: [String: String]) -> UIView {
+    func add(figma_view: FigmaView, imagesURLs: [String: String]) -> UIView {
         
         self.figmaImagesURLs = imagesURLs
 //        self.mainView = mainView
@@ -155,9 +155,9 @@ class FigmaConvertToViews: NSObject {
         return view
     }
     
-    func separatorChildrenViewsType(figma_view: F_View, mailView: UIView) {
+    func separatorChildrenViewsType(figma_view: FigmaView, mailView: UIView) {
         
-        for cpage: F_View in figma_view.subviews {
+        for cpage: FigmaView in figma_view.subviews {
             
             if cpage.visible,
                 cpage.type != .vector,
@@ -212,7 +212,7 @@ class FigmaConvertToViews: NSObject {
     
     //MARK: - View
     
-    func pageConvert(figma_view: F_View) -> UIView {
+    func pageConvert(figma_view: FigmaView) -> UIView {
         
         let view = UIView(frame: figma_view.absoluteBoundingBox)
         
@@ -220,7 +220,7 @@ class FigmaConvertToViews: NSObject {
             
             view.backgroundColor = .clear
             
-            for fill: F_Fill in figma_view.fills {
+            for fill: FigmaFill in figma_view.fills {
                 
                 switch fill.type {
                 case .solid:
@@ -281,7 +281,7 @@ class FigmaConvertToViews: NSObject {
             view.clipsToBounds = figma_view.clipsContent
             view.layer.cornerRadius = radiusMax(radius: figma_view.cornerRadius, frame: view.bounds)
             
-            for fill: F_Fill in figma_view.fills {
+            for fill: FigmaFill in figma_view.fills {
                 
                 switch fill.type {
                 case .solid:
@@ -321,7 +321,7 @@ class FigmaConvertToViews: NSObject {
                 }
             }
             
-            for stroke: F_Fill in figma_view.strokes {
+            for stroke: FigmaFill in figma_view.strokes {
                 if stroke.type == .solid {
                     if stroke.visible {
                         view.layer.borderColor = stroke.color.withAlphaComponent(stroke.opacity).cgColor
@@ -342,14 +342,14 @@ class FigmaConvertToViews: NSObject {
     
     //MARK: - Image
     
-    func pageConvertToImage(page: F_View) -> UIImageView {
+    func pageConvertToImage(page: FigmaView) -> UIImageView {
         
         let imageView = UIImageView(frame: page.absoluteBoundingBox)
 //        imageView.backgroundColor = page.backgroundColor
         imageView.clipsToBounds = page.clipsContent
         imageView.layer.cornerRadius = radiusMax(radius: page.cornerRadius, frame: imageView.bounds)
         
-        var imageFill: F_Fill!
+        var imageFill: FigmaFill!
         
         for fill in page.fills {
             if fill.type == .image {
@@ -361,7 +361,7 @@ class FigmaConvertToViews: NSObject {
             return imageView
         }
         
-        for stroke: F_Fill in page.strokes {
+        for stroke: FigmaFill in page.strokes {
             if stroke.type == .solid {
                 if stroke.visible {
                     imageView.layer.borderColor = stroke.color.withAlphaComponent(stroke.opacity).cgColor
@@ -399,7 +399,7 @@ class FigmaConvertToViews: NSObject {
     
     //MARK: - Label
     
-    func pageConvertToLabel(page: F_View) -> UILabel {
+    func pageConvertToLabel(page: FigmaView) -> UILabel {
         
         let label = UILabel(frame: page.absoluteBoundingBox)
         label.text = page.text
@@ -461,7 +461,7 @@ class FigmaConvertToViews: NSObject {
             
         }
         
-        for fill: F_Fill in page.fills {
+        for fill: FigmaFill in page.fills {
             
             switch fill.type {
             case .solid:
@@ -477,7 +477,7 @@ class FigmaConvertToViews: NSObject {
         // label.layer.borderColor = page.strokeColor.cgColor
         // label.layer.borderWidth = page.strokeWeight
         
-        for stroke: F_Fill in page.strokes {
+        for stroke: FigmaFill in page.strokes {
             if stroke.type == .solid {
                 if stroke.visible {
                     label.layer.borderColor = stroke.color.withAlphaComponent(stroke.opacity).cgColor
