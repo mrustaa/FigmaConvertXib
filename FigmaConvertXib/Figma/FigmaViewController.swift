@@ -2,11 +2,11 @@
 
 import UIKit
 
+
 class FigmaViewController: UIViewController {
     
     //MARK: - Properties
     
-    @IBOutlet weak var titleTextField: UITextField!
     var scrollView: UIScrollView!
     
     var figmaImagesURLs: [String: String] = [:]
@@ -54,12 +54,12 @@ class FigmaViewController: UIViewController {
     
     func updateFigmaFiles() {
         
-        var text: String? = nil
-        if let t = titleTextField.text, t.count > 0 {
-            text = t
-        }
+//        var text: String? = nil
+//        if let t = titleTextField.text, t.count > 0 {
+//            text = t
+//        }
         
-        FigmaData.current.requestFiles(documentId: text, completion: { [weak self] in
+        FigmaData.current.requestFiles(completion: { [weak self] in
             guard let _self = self,
                 let page = FigmaData.current.resporse?.document.pages[0],
                 let imagesURLs = FigmaData.current.imagesURLs else { return }
@@ -68,9 +68,6 @@ class FigmaViewController: UIViewController {
             _self.figmaView = figmaView.0
             
             _self.addFigmaView(view: figmaView.0)
-            
-            
-//            _self.convertToViews.add(view: page, imagesURLs: imagesURLs, mainView: _self.view)
             _self.convertToXib.add(page: figmaView.1, imagesURLs: imagesURLs)
         })
     }
@@ -99,12 +96,15 @@ class FigmaViewController: UIViewController {
         scrollView.addSubview(view)
     }
     
+    @IBAction func resetZoom(_ sender: Any) {
+        scrollView.zoomScale = 1.0
+    }
     
 }
 
 extension FigmaViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-       titleTextField.endEditing(true)
+//       titleTextField.endEditing(true)
     }
     
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
@@ -112,9 +112,9 @@ extension FigmaViewController: UIScrollViewDelegate {
     }
     
     func scrollViewDidZoom(_ scrollView: UIScrollView) {
-        let zoomScale = scrollView.zoomScale
+//        let zoomScale = scrollView.zoomScale
         
-        print(" \(zoomScale) ")
+//        print(" \(zoomScale) ")
         
         let w = Double(scrollView.bounds.size.width - scrollView.contentSize.width)
         let h = Double(scrollView.bounds.size.height - scrollView.contentSize.height)

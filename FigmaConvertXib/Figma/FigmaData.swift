@@ -18,6 +18,7 @@ class FigmaData {
     typealias Completion = () -> Void
     
     public enum documentId: String {
+        case RuStAm4iK = "PLRDJ59Baio6xjpmylVt3T"
         case Short = "Zy47vycoawoNCIcEg8ygH5"
         case All = "9KadDT1iy1EX0wJMY7qhSY"
         case Coffee = "M0q8R4TA8Lb4TB5lJSIq98"
@@ -81,7 +82,7 @@ class FigmaData {
         
         let typeURL = (type == .Images ? "/images" : "")
         
-        var srtURL = "\(apiURL)\(FigmaData.documentId.Short.rawValue)\(typeURL)"
+        var srtURL = "\(apiURL)\(FigmaData.documentId.RuStAm4iK.rawValue)\(typeURL)"
         if let customDocId = customDocId {
             srtURL = "\(apiURL)\(customDocId)\(typeURL)"
         }
