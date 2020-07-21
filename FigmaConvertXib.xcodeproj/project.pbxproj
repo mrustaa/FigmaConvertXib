@@ -7,6 +7,54 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		460947CA24B73C8500A63D75 /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 460947C924B73C8500A63D75 /* images.xcassets */; };
+		460947CC24B73C9700A63D75 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460947CB24B73C9700A63D75 /* ViewController.swift */; };
+		460947D024B73C9E00A63D75 /* LocalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460947CD24B73C9D00A63D75 /* LocalData.swift */; };
+		460947D124B73C9E00A63D75 /* LoadingSpiner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460947CE24B73C9D00A63D75 /* LoadingSpiner.swift */; };
+		460947D224B73C9E00A63D75 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460947CF24B73C9D00A63D75 /* Alert.swift */; };
+		460947DB24B73CB900A63D75 /* TableAdapterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460947D524B73CB900A63D75 /* TableAdapterView.swift */; };
+		460947DC24B73CB900A63D75 /* TableAdapterTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460947D624B73CB900A63D75 /* TableAdapterTypes.swift */; };
+		460947DD24B73CB900A63D75 /* TableAdapterCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460947D824B73CB900A63D75 /* TableAdapterCellData.swift */; };
+		460947DE24B73CB900A63D75 /* TableAdapterItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460947D924B73CB900A63D75 /* TableAdapterItem.swift */; };
+		460947DF24B73CB900A63D75 /* TableAdapterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460947DA24B73CB900A63D75 /* TableAdapterCell.swift */; };
+		460947E324B73CCA00A63D75 /* StoryboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460947E124B73CCA00A63D75 /* StoryboardController.swift */; };
+		460947E424B73CCA00A63D75 /* XibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460947E224B73CCA00A63D75 /* XibView.swift */; };
+		460947F224B73CEB00A63D75 /* FigmaFill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460947E624B73CEB00A63D75 /* FigmaFill.swift */; };
+		460947F324B73CEB00A63D75 /* FigmaNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460947E724B73CEB00A63D75 /* FigmaNode.swift */; };
+		460947F524B73CEB00A63D75 /* FigmaJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460947E924B73CEB00A63D75 /* FigmaJson.swift */; };
+		460947F624B73CEB00A63D75 /* FigmaResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460947EA24B73CEB00A63D75 /* FigmaResponse.swift */; };
+		460947F724B73CEB00A63D75 /* FigmaFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460947EC24B73CEB00A63D75 /* FigmaFrame.swift */; };
+		460947F824B73CEB00A63D75 /* FimgaColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460947ED24B73CEB00A63D75 /* FimgaColor.swift */; };
+		460947F924B73CEB00A63D75 /* FigmaDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460947EE24B73CEB00A63D75 /* FigmaDocument.swift */; };
+		460947FB24B73CEC00A63D75 /* FigmaFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460947F024B73CEB00A63D75 /* FigmaFont.swift */; };
+		460947FC24B73CEC00A63D75 /* FigmaPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460947F124B73CEB00A63D75 /* FigmaPage.swift */; };
+		4609480424B73D0300A63D75 /* XibFigmaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460947FE24B73D0300A63D75 /* XibFigmaView.swift */; };
+		4609480524B73D0300A63D75 /* XibFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460947FF24B73D0300A63D75 /* XibFrame.swift */; };
+		4609480624B73D0300A63D75 /* XibColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4609480024B73D0300A63D75 /* XibColor.swift */; };
+		4609480724B73D0300A63D75 /* XibBool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4609480124B73D0300A63D75 /* XibBool.swift */; };
+		4609480824B73D0300A63D75 /* FigmaConvertToXib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4609480224B73D0300A63D75 /* FigmaConvertToXib.swift */; };
+		4609480924B73D0300A63D75 /* XibGenerateID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4609480324B73D0300A63D75 /* XibGenerateID.swift */; };
+		4609480E24B73D2400A63D75 /* TitleTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4609480C24B73D2400A63D75 /* TitleTextCell.xib */; };
+		4609480F24B73D2400A63D75 /* TitleTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4609480D24B73D2400A63D75 /* TitleTextCell.swift */; };
+		4610576924B7A4A2008AF0FD /* FigmaViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4610576824B7A4A1008AF0FD /* FigmaViewController.storyboard */; };
+		4610576B24B7C336008AF0FD /* XibFontName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4610576A24B7C336008AF0FD /* XibFontName.swift */; };
+		4610576D24B891B9008AF0FD /* XibFigmaFill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4610576C24B891B9008AF0FD /* XibFigmaFill.swift */; };
+		4610577124B89EAC008AF0FD /* FigmaDownloadImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4610577024B89EAC008AF0FD /* FigmaDownloadImages.swift */; };
+		4624E56024C51B8B00BEC63E /* DesignExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4624E55F24C51B8B00BEC63E /* DesignExtentions.swift */; };
+		4624E56224C51C8B00BEC63E /* DesignEllipse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4624E56124C51C8B00BEC63E /* DesignEllipse.swift */; };
+		4624E56824C5203400BEC63E /* new_result.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4624E56724C5203300BEC63E /* new_result.xib */; };
+		4640619124C735EA00E4070B /* XibFigmaViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4640619024C735EA00E4070B /* XibFigmaViews.swift */; };
+		467262F524C4DF6F00FD5F70 /* XibSizePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467262F424C4DF6F00FD5F70 /* XibSizePoint.swift */; };
+		467262F724C4F29E00FD5F70 /* XibAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467262F624C4F29E00FD5F70 /* XibAttribute.swift */; };
+		467262F924C4FCD500FD5F70 /* XibFigmaEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467262F824C4FCD500FD5F70 /* XibFigmaEffect.swift */; };
+		467262FB24C4FF5A00FD5F70 /* XibNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467262FA24C4FF5A00FD5F70 /* XibNumber.swift */; };
+		467262FD24C502FD00FD5F70 /* XibFigmaFillGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467262FC24C502FD00FD5F70 /* XibFigmaFillGradient.swift */; };
+		467262FF24C508AC00FD5F70 /* XibCornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467262FE24C508AC00FD5F70 /* XibCornerRadius.swift */; };
+		4672630124C508F200FD5F70 /* XibAutoresizingMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4672630024C508F200FD5F70 /* XibAutoresizingMask.swift */; };
+		469D465224BF40E100F8547E /* FigmaBlendMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469D465124BF40E100F8547E /* FigmaBlendMode.swift */; };
+		469D465424BF416D00F8547E /* FigmaDocumentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469D465324BF416D00F8547E /* FigmaDocumentType.swift */; };
+		469D465624BF9C7500F8547E /* FigmaEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469D465524BF9C7500F8547E /* FigmaEffect.swift */; };
+		469D465824BF9CAA00F8547E /* FigmaEffectType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469D465724BF9CAA00F8547E /* FigmaEffectType.swift */; };
 		46A9773824A27D2B0088EFED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A9773724A27D2B0088EFED /* AppDelegate.swift */; };
 		46A9773A24A27D2B0088EFED /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A9773924A27D2B0088EFED /* SceneDelegate.swift */; };
 		46A9773F24A27D2B0088EFED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46A9773D24A27D2B0088EFED /* Main.storyboard */; };
@@ -14,19 +62,12 @@
 		46A9774424A27D2D0088EFED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46A9774224A27D2D0088EFED /* LaunchScreen.storyboard */; };
 		46A9776624A27D5E0088EFED /* FigmaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A9774C24A27D5D0088EFED /* FigmaViewController.swift */; };
 		46A9777824A27D5E0088EFED /* FigmaConvertToViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A9776324A27D5E0088EFED /* FigmaConvertToViews.swift */; };
-		46A9777A24A27D5E0088EFED /* FigmaConvertToXib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A9776524A27D5E0088EFED /* FigmaConvertToXib.swift */; };
-		46A9778324A2CE7E0088EFED /* result.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46A9778224A2CE7E0088EFED /* result.xib */; };
-		46A9778A24A2CF4F0088EFED /* DesignButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A9778524A2CF4F0088EFED /* DesignButton.swift */; };
-		46A9778B24A2CF4F0088EFED /* DesignImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A9778624A2CF4F0088EFED /* DesignImage.swift */; };
 		46A9778D24A2CF4F0088EFED /* DesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A9778824A2CF4F0088EFED /* DesignView.swift */; };
 		46A9779624A383EC0088EFED /* FigmaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A9779524A383EC0088EFED /* FigmaData.swift */; };
-		46A9779C24A648240088EFED /* FigmaJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A9779B24A648240088EFED /* FigmaJson.swift */; };
-		46E56D4F24A64A1500E11DD5 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E56D4E24A64A1500E11DD5 /* Response.swift */; };
-		46E56D5124A64A6700E11DD5 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E56D5024A64A6700E11DD5 /* Document.swift */; };
-		46E56D5324A64AC900E11DD5 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E56D5224A64AC900E11DD5 /* Page.swift */; };
-		46E56D5524A64C0D00E11DD5 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E56D5424A64C0D00E11DD5 /* Color.swift */; };
-		46E56D5724A64C9500E11DD5 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E56D5624A64C9500E11DD5 /* View.swift */; };
-		46E56D5A24A6548A00E11DD5 /* Fill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E56D5924A6548A00E11DD5 /* Fill.swift */; };
+		46B3220F24C349AE0088EB2A /* test.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46B3220E24C349AE0088EB2A /* test.xib */; };
+		46BAF21324C6722100A02A1C /* DesignImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BAF21224C6722100A02A1C /* DesignImageView.swift */; };
+		46BAF21724C7035900A02A1C /* new_result 2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46BAF21624C7035900A02A1C /* new_result 2.xib */; };
+		46BAF21924C7039D00A02A1C /* test2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46BAF21824C7039D00A02A1C /* test2.xib */; };
 		46E56D7324A66F7C00E11DD5 /* GTWalsheimPro-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46E56D6124A66F7C00E11DD5 /* GTWalsheimPro-Medium.ttf */; };
 		46E56D7424A66F7C00E11DD5 /* GTWalsheimPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46E56D6224A66F7C00E11DD5 /* GTWalsheimPro-Regular.ttf */; };
 		46E56D7524A66F7C00E11DD5 /* GTWalsheimPro-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46E56D6324A66F7C00E11DD5 /* GTWalsheimPro-Bold.ttf */; };
@@ -43,11 +84,57 @@
 		46E56D8024A66F7C00E11DD5 /* SanFranciscoText-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 46E56D7024A66F7C00E11DD5 /* SanFranciscoText-Bold.otf */; };
 		46E56D8124A66F7C00E11DD5 /* SFProDisplay-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 46E56D7124A66F7C00E11DD5 /* SFProDisplay-Heavy.otf */; };
 		46E56D8224A66F7C00E11DD5 /* SanFranciscoDisplay-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 46E56D7224A66F7C00E11DD5 /* SanFranciscoDisplay-Regular.otf */; };
-		46E56E7024A91DBA00E11DD5 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E56E6F24A91DBA00E11DD5 /* Font.swift */; };
-		46E56E7224A91EDB00E11DD5 /* Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E56E7124A91EDB00E11DD5 /* Frame.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		460947C924B73C8500A63D75 /* images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = images.xcassets; sourceTree = "<group>"; };
+		460947CB24B73C9700A63D75 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		460947CD24B73C9D00A63D75 /* LocalData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalData.swift; sourceTree = "<group>"; };
+		460947CE24B73C9D00A63D75 /* LoadingSpiner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingSpiner.swift; sourceTree = "<group>"; };
+		460947CF24B73C9D00A63D75 /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		460947D524B73CB900A63D75 /* TableAdapterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableAdapterView.swift; sourceTree = "<group>"; };
+		460947D624B73CB900A63D75 /* TableAdapterTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableAdapterTypes.swift; sourceTree = "<group>"; };
+		460947D824B73CB900A63D75 /* TableAdapterCellData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableAdapterCellData.swift; sourceTree = "<group>"; };
+		460947D924B73CB900A63D75 /* TableAdapterItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableAdapterItem.swift; sourceTree = "<group>"; };
+		460947DA24B73CB900A63D75 /* TableAdapterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableAdapterCell.swift; sourceTree = "<group>"; };
+		460947E124B73CCA00A63D75 /* StoryboardController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardController.swift; sourceTree = "<group>"; };
+		460947E224B73CCA00A63D75 /* XibView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XibView.swift; sourceTree = "<group>"; };
+		460947E624B73CEB00A63D75 /* FigmaFill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FigmaFill.swift; sourceTree = "<group>"; };
+		460947E724B73CEB00A63D75 /* FigmaNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FigmaNode.swift; sourceTree = "<group>"; };
+		460947E924B73CEB00A63D75 /* FigmaJson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FigmaJson.swift; sourceTree = "<group>"; };
+		460947EA24B73CEB00A63D75 /* FigmaResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FigmaResponse.swift; sourceTree = "<group>"; };
+		460947EC24B73CEB00A63D75 /* FigmaFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FigmaFrame.swift; sourceTree = "<group>"; };
+		460947ED24B73CEB00A63D75 /* FimgaColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FimgaColor.swift; sourceTree = "<group>"; };
+		460947EE24B73CEB00A63D75 /* FigmaDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FigmaDocument.swift; sourceTree = "<group>"; };
+		460947F024B73CEB00A63D75 /* FigmaFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FigmaFont.swift; sourceTree = "<group>"; };
+		460947F124B73CEB00A63D75 /* FigmaPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FigmaPage.swift; sourceTree = "<group>"; };
+		460947FE24B73D0300A63D75 /* XibFigmaView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XibFigmaView.swift; sourceTree = "<group>"; };
+		460947FF24B73D0300A63D75 /* XibFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XibFrame.swift; sourceTree = "<group>"; };
+		4609480024B73D0300A63D75 /* XibColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XibColor.swift; sourceTree = "<group>"; };
+		4609480124B73D0300A63D75 /* XibBool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XibBool.swift; sourceTree = "<group>"; };
+		4609480224B73D0300A63D75 /* FigmaConvertToXib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FigmaConvertToXib.swift; sourceTree = "<group>"; };
+		4609480324B73D0300A63D75 /* XibGenerateID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XibGenerateID.swift; sourceTree = "<group>"; };
+		4609480C24B73D2400A63D75 /* TitleTextCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TitleTextCell.xib; sourceTree = "<group>"; };
+		4609480D24B73D2400A63D75 /* TitleTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleTextCell.swift; sourceTree = "<group>"; };
+		4610576824B7A4A1008AF0FD /* FigmaViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FigmaViewController.storyboard; sourceTree = "<group>"; };
+		4610576A24B7C336008AF0FD /* XibFontName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibFontName.swift; sourceTree = "<group>"; };
+		4610576C24B891B9008AF0FD /* XibFigmaFill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibFigmaFill.swift; sourceTree = "<group>"; };
+		4610577024B89EAC008AF0FD /* FigmaDownloadImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaDownloadImages.swift; sourceTree = "<group>"; };
+		4624E55F24C51B8B00BEC63E /* DesignExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignExtentions.swift; sourceTree = "<group>"; };
+		4624E56124C51C8B00BEC63E /* DesignEllipse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignEllipse.swift; sourceTree = "<group>"; };
+		4624E56724C5203300BEC63E /* new_result.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = new_result.xib; sourceTree = "<group>"; };
+		4640619024C735EA00E4070B /* XibFigmaViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibFigmaViews.swift; sourceTree = "<group>"; };
+		467262F424C4DF6F00FD5F70 /* XibSizePoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibSizePoint.swift; sourceTree = "<group>"; };
+		467262F624C4F29E00FD5F70 /* XibAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibAttribute.swift; sourceTree = "<group>"; };
+		467262F824C4FCD500FD5F70 /* XibFigmaEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibFigmaEffect.swift; sourceTree = "<group>"; };
+		467262FA24C4FF5A00FD5F70 /* XibNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibNumber.swift; sourceTree = "<group>"; };
+		467262FC24C502FD00FD5F70 /* XibFigmaFillGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibFigmaFillGradient.swift; sourceTree = "<group>"; };
+		467262FE24C508AC00FD5F70 /* XibCornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibCornerRadius.swift; sourceTree = "<group>"; };
+		4672630024C508F200FD5F70 /* XibAutoresizingMask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibAutoresizingMask.swift; sourceTree = "<group>"; };
+		469D465124BF40E100F8547E /* FigmaBlendMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaBlendMode.swift; sourceTree = "<group>"; };
+		469D465324BF416D00F8547E /* FigmaDocumentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaDocumentType.swift; sourceTree = "<group>"; };
+		469D465524BF9C7500F8547E /* FigmaEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaEffect.swift; sourceTree = "<group>"; };
+		469D465724BF9CAA00F8547E /* FigmaEffectType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaEffectType.swift; sourceTree = "<group>"; };
 		46A9773424A27D2B0088EFED /* FigmaConvertXib.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FigmaConvertXib.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46A9773724A27D2B0088EFED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		46A9773924A27D2B0088EFED /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -57,19 +144,12 @@
 		46A9774524A27D2D0088EFED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		46A9774C24A27D5D0088EFED /* FigmaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FigmaViewController.swift; sourceTree = "<group>"; };
 		46A9776324A27D5E0088EFED /* FigmaConvertToViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FigmaConvertToViews.swift; sourceTree = "<group>"; };
-		46A9776524A27D5E0088EFED /* FigmaConvertToXib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FigmaConvertToXib.swift; sourceTree = "<group>"; };
-		46A9778224A2CE7E0088EFED /* result.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = result.xib; sourceTree = "<group>"; };
-		46A9778524A2CF4F0088EFED /* DesignButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignButton.swift; sourceTree = "<group>"; };
-		46A9778624A2CF4F0088EFED /* DesignImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignImage.swift; sourceTree = "<group>"; };
 		46A9778824A2CF4F0088EFED /* DesignView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignView.swift; sourceTree = "<group>"; };
 		46A9779524A383EC0088EFED /* FigmaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaData.swift; sourceTree = "<group>"; };
-		46A9779B24A648240088EFED /* FigmaJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaJson.swift; sourceTree = "<group>"; };
-		46E56D4E24A64A1500E11DD5 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
-		46E56D5024A64A6700E11DD5 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
-		46E56D5224A64AC900E11DD5 /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
-		46E56D5424A64C0D00E11DD5 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		46E56D5624A64C9500E11DD5 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
-		46E56D5924A6548A00E11DD5 /* Fill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fill.swift; sourceTree = "<group>"; };
+		46B3220E24C349AE0088EB2A /* test.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = test.xib; sourceTree = "<group>"; };
+		46BAF21224C6722100A02A1C /* DesignImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignImageView.swift; sourceTree = "<group>"; };
+		46BAF21624C7035900A02A1C /* new_result 2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "new_result 2.xib"; sourceTree = "<group>"; };
+		46BAF21824C7039D00A02A1C /* test2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = test2.xib; sourceTree = "<group>"; };
 		46E56D6124A66F7C00E11DD5 /* GTWalsheimPro-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GTWalsheimPro-Medium.ttf"; sourceTree = "<group>"; };
 		46E56D6224A66F7C00E11DD5 /* GTWalsheimPro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GTWalsheimPro-Regular.ttf"; sourceTree = "<group>"; };
 		46E56D6324A66F7C00E11DD5 /* GTWalsheimPro-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GTWalsheimPro-Bold.ttf"; sourceTree = "<group>"; };
@@ -86,8 +166,6 @@
 		46E56D7024A66F7C00E11DD5 /* SanFranciscoText-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SanFranciscoText-Bold.otf"; sourceTree = "<group>"; };
 		46E56D7124A66F7C00E11DD5 /* SFProDisplay-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Heavy.otf"; sourceTree = "<group>"; };
 		46E56D7224A66F7C00E11DD5 /* SanFranciscoDisplay-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SanFranciscoDisplay-Regular.otf"; sourceTree = "<group>"; };
-		46E56E6F24A91DBA00E11DD5 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
-		46E56E7124A91EDB00E11DD5 /* Frame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frame.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +179,139 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		460947D324B73CA100A63D75 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				460947CF24B73C9D00A63D75 /* Alert.swift */,
+				460947CE24B73C9D00A63D75 /* LoadingSpiner.swift */,
+				460947CD24B73C9D00A63D75 /* LocalData.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		460947D424B73CB900A63D75 /* TableAdapter */ = {
+			isa = PBXGroup;
+			children = (
+				460947D724B73CB900A63D75 /* Cell */,
+				460947D524B73CB900A63D75 /* TableAdapterView.swift */,
+				460947D624B73CB900A63D75 /* TableAdapterTypes.swift */,
+			);
+			path = TableAdapter;
+			sourceTree = "<group>";
+		};
+		460947D724B73CB900A63D75 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				460947D824B73CB900A63D75 /* TableAdapterCellData.swift */,
+				460947D924B73CB900A63D75 /* TableAdapterItem.swift */,
+				460947DA24B73CB900A63D75 /* TableAdapterCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		460947E024B73CCA00A63D75 /* LoadNib */ = {
+			isa = PBXGroup;
+			children = (
+				460947E124B73CCA00A63D75 /* StoryboardController.swift */,
+				460947E224B73CCA00A63D75 /* XibView.swift */,
+			);
+			path = LoadNib;
+			sourceTree = "<group>";
+		};
+		460947E524B73CEB00A63D75 /* FimgaModel */ = {
+			isa = PBXGroup;
+			children = (
+				46C73DF224BAF29C00530305 /* Layers */,
+				460947EB24B73CEB00A63D75 /* Properties */,
+				460947E924B73CEB00A63D75 /* FigmaJson.swift */,
+				460947EA24B73CEB00A63D75 /* FigmaResponse.swift */,
+			);
+			path = FimgaModel;
+			sourceTree = "<group>";
+		};
+		460947EB24B73CEB00A63D75 /* Properties */ = {
+			isa = PBXGroup;
+			children = (
+				460947EC24B73CEB00A63D75 /* FigmaFrame.swift */,
+				460947ED24B73CEB00A63D75 /* FimgaColor.swift */,
+				460947F024B73CEB00A63D75 /* FigmaFont.swift */,
+			);
+			path = Properties;
+			sourceTree = "<group>";
+		};
+		460947FD24B73D0300A63D75 /* ConvertXib */ = {
+			isa = PBXGroup;
+			children = (
+				467262F324C4DEDA00FD5F70 /* Properties */,
+				461DAF0F24C5EC70002852F2 /* Old */,
+				461DAF1024C5EC74002852F2 /* DownloadImage */,
+				460947FE24B73D0300A63D75 /* XibFigmaView.swift */,
+				4640619024C735EA00E4070B /* XibFigmaViews.swift */,
+				4610576C24B891B9008AF0FD /* XibFigmaFill.swift */,
+				467262FC24C502FD00FD5F70 /* XibFigmaFillGradient.swift */,
+				467262F824C4FCD500FD5F70 /* XibFigmaEffect.swift */,
+				4610576A24B7C336008AF0FD /* XibFontName.swift */,
+			);
+			path = ConvertXib;
+			sourceTree = "<group>";
+		};
+		4609480A24B73D2400A63D75 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				4609480B24B73D2400A63D75 /* TitleTextCell */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		4609480B24B73D2400A63D75 /* TitleTextCell */ = {
+			isa = PBXGroup;
+			children = (
+				4609480C24B73D2400A63D75 /* TitleTextCell.xib */,
+				4609480D24B73D2400A63D75 /* TitleTextCell.swift */,
+			);
+			path = TitleTextCell;
+			sourceTree = "<group>";
+		};
+		461DAF0F24C5EC70002852F2 /* Old */ = {
+			isa = PBXGroup;
+			children = (
+				4609480224B73D0300A63D75 /* FigmaConvertToXib.swift */,
+			);
+			path = Old;
+			sourceTree = "<group>";
+		};
+		461DAF1024C5EC74002852F2 /* DownloadImage */ = {
+			isa = PBXGroup;
+			children = (
+				4610577024B89EAC008AF0FD /* FigmaDownloadImages.swift */,
+			);
+			path = DownloadImage;
+			sourceTree = "<group>";
+		};
+		4624E56524C51EF700BEC63E /* ConvertView */ = {
+			isa = PBXGroup;
+			children = (
+				46A9776324A27D5E0088EFED /* FigmaConvertToViews.swift */,
+			);
+			path = ConvertView;
+			sourceTree = "<group>";
+		};
+		467262F324C4DEDA00FD5F70 /* Properties */ = {
+			isa = PBXGroup;
+			children = (
+				460947FF24B73D0300A63D75 /* XibFrame.swift */,
+				467262F424C4DF6F00FD5F70 /* XibSizePoint.swift */,
+				467262FA24C4FF5A00FD5F70 /* XibNumber.swift */,
+				4609480024B73D0300A63D75 /* XibColor.swift */,
+				4609480124B73D0300A63D75 /* XibBool.swift */,
+				467262FE24C508AC00FD5F70 /* XibCornerRadius.swift */,
+				4672630024C508F200FD5F70 /* XibAutoresizingMask.swift */,
+				4609480324B73D0300A63D75 /* XibGenerateID.swift */,
+				467262F624C4F29E00FD5F70 /* XibAttribute.swift */,
+			);
+			path = Properties;
+			sourceTree = "<group>";
+		};
 		46A9772B24A27D2B0088EFED = {
 			isa = PBXGroup;
 			children = (
@@ -121,8 +332,10 @@
 			isa = PBXGroup;
 			children = (
 				46A9774B24A27D5D0088EFED /* Figma */,
+				460947D324B73CA100A63D75 /* Utils */,
 				46A9773724A27D2B0088EFED /* AppDelegate.swift */,
 				46A9773924A27D2B0088EFED /* SceneDelegate.swift */,
+				460947CB24B73C9700A63D75 /* ViewController.swift */,
 				46A9773D24A27D2B0088EFED /* Main.storyboard */,
 				46A9774024A27D2D0088EFED /* Assets.xcassets */,
 				46A9774224A27D2D0088EFED /* LaunchScreen.storyboard */,
@@ -134,14 +347,18 @@
 		46A9774B24A27D5D0088EFED /* Figma */ = {
 			isa = PBXGroup;
 			children = (
+				460947E024B73CCA00A63D75 /* LoadNib */,
+				460947D424B73CB900A63D75 /* TableAdapter */,
+				4609480A24B73D2400A63D75 /* UI */,
 				46A9778124A2CAA60088EFED /* Xib */,
 				46A9778424A2CF4F0088EFED /* Designable */,
 				46E56D5F24A66F7C00E11DD5 /* Fonts */,
-				46E56D4D24A649F200E11DD5 /* Model */,
+				460947E524B73CEB00A63D75 /* FimgaModel */,
+				460947FD24B73D0300A63D75 /* ConvertXib */,
+				4624E56524C51EF700BEC63E /* ConvertView */,
 				46A9779524A383EC0088EFED /* FigmaData.swift */,
-				46A9776324A27D5E0088EFED /* FigmaConvertToViews.swift */,
-				46A9776524A27D5E0088EFED /* FigmaConvertToXib.swift */,
 				46A9774C24A27D5D0088EFED /* FigmaViewController.swift */,
+				4610576824B7A4A1008AF0FD /* FigmaViewController.storyboard */,
 			);
 			path = Figma;
 			sourceTree = "<group>";
@@ -149,7 +366,11 @@
 		46A9778124A2CAA60088EFED /* Xib */ = {
 			isa = PBXGroup;
 			children = (
-				46A9778224A2CE7E0088EFED /* result.xib */,
+				46B3220E24C349AE0088EB2A /* test.xib */,
+				46BAF21824C7039D00A02A1C /* test2.xib */,
+				46BAF21624C7035900A02A1C /* new_result 2.xib */,
+				4624E56724C5203300BEC63E /* new_result.xib */,
+				460947C924B73C8500A63D75 /* images.xcassets */,
 			);
 			path = Xib;
 			sourceTree = "<group>";
@@ -157,35 +378,27 @@
 		46A9778424A2CF4F0088EFED /* Designable */ = {
 			isa = PBXGroup;
 			children = (
+				4624E55F24C51B8B00BEC63E /* DesignExtentions.swift */,
 				46A9778824A2CF4F0088EFED /* DesignView.swift */,
-				46A9778524A2CF4F0088EFED /* DesignButton.swift */,
-				46A9778624A2CF4F0088EFED /* DesignImage.swift */,
+				46BAF21224C6722100A02A1C /* DesignImageView.swift */,
+				4624E56124C51C8B00BEC63E /* DesignEllipse.swift */,
 			);
 			path = Designable;
 			sourceTree = "<group>";
 		};
-		46E56D4D24A649F200E11DD5 /* Model */ = {
+		46C73DF224BAF29C00530305 /* Layers */ = {
 			isa = PBXGroup;
 			children = (
-				46E56D5824A64E4C00E11DD5 /* Properties */,
-				46E56D4E24A64A1500E11DD5 /* Response.swift */,
-				46E56D5024A64A6700E11DD5 /* Document.swift */,
-				46E56D5224A64AC900E11DD5 /* Page.swift */,
-				46E56D5624A64C9500E11DD5 /* View.swift */,
-				46E56D5924A6548A00E11DD5 /* Fill.swift */,
-				46E56E6F24A91DBA00E11DD5 /* Font.swift */,
-				46A9779B24A648240088EFED /* FigmaJson.swift */,
+				460947E624B73CEB00A63D75 /* FigmaFill.swift */,
+				460947E724B73CEB00A63D75 /* FigmaNode.swift */,
+				469D465524BF9C7500F8547E /* FigmaEffect.swift */,
+				469D465724BF9CAA00F8547E /* FigmaEffectType.swift */,
+				469D465124BF40E100F8547E /* FigmaBlendMode.swift */,
+				460947EE24B73CEB00A63D75 /* FigmaDocument.swift */,
+				469D465324BF416D00F8547E /* FigmaDocumentType.swift */,
+				460947F124B73CEB00A63D75 /* FigmaPage.swift */,
 			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		46E56D5824A64E4C00E11DD5 /* Properties */ = {
-			isa = PBXGroup;
-			children = (
-				46E56D5424A64C0D00E11DD5 /* Color.swift */,
-				46E56E7124A91EDB00E11DD5 /* Frame.swift */,
-			);
-			path = Properties;
+			path = Layers;
 			sourceTree = "<group>";
 		};
 		46E56D5F24A66F7C00E11DD5 /* Fonts */ = {
@@ -301,17 +514,23 @@
 				46E56D7424A66F7C00E11DD5 /* GTWalsheimPro-Regular.ttf in Resources */,
 				46E56D7524A66F7C00E11DD5 /* GTWalsheimPro-Bold.ttf in Resources */,
 				46E56D7A24A66F7C00E11DD5 /* SFProText-Regular.otf in Resources */,
+				4610576924B7A4A2008AF0FD /* FigmaViewController.storyboard in Resources */,
 				46E56D7B24A66F7C00E11DD5 /* SanFranciscoText-Regular.otf in Resources */,
 				46A9774424A27D2D0088EFED /* LaunchScreen.storyboard in Resources */,
 				46E56D8024A66F7C00E11DD5 /* SanFranciscoText-Bold.otf in Resources */,
+				4609480E24B73D2400A63D75 /* TitleTextCell.xib in Resources */,
+				46BAF21924C7039D00A02A1C /* test2.xib in Resources */,
 				46E56D7C24A66F7C00E11DD5 /* SFProText-Semibold.otf in Resources */,
-				46A9778324A2CE7E0088EFED /* result.xib in Resources */,
+				46B3220F24C349AE0088EB2A /* test.xib in Resources */,
+				4624E56824C5203400BEC63E /* new_result.xib in Resources */,
 				46E56D7624A66F7C00E11DD5 /* ProximaNova-Semibold.otf in Resources */,
 				46E56D7724A66F7C00E11DD5 /* ProximaNova-Bold.otf in Resources */,
+				460947CA24B73C8500A63D75 /* images.xcassets in Resources */,
 				46A9774124A27D2D0088EFED /* Assets.xcassets in Resources */,
 				46E56D7824A66F7C00E11DD5 /* ProximaNova-Extrabold.otf in Resources */,
 				46E56D7924A66F7C00E11DD5 /* ProximaNova-Regular.otf in Resources */,
 				46E56D7D24A66F7C00E11DD5 /* SF-Pro-Display-Regular.otf in Resources */,
+				46BAF21724C7035900A02A1C /* new_result 2.xib in Resources */,
 				46A9773F24A27D2B0088EFED /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -323,24 +542,57 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				46A9777A24A27D5E0088EFED /* FigmaConvertToXib.swift in Sources */,
-				46A9778B24A2CF4F0088EFED /* DesignImage.swift in Sources */,
+				4609480824B73D0300A63D75 /* FigmaConvertToXib.swift in Sources */,
+				460947CC24B73C9700A63D75 /* ViewController.swift in Sources */,
+				460947FB24B73CEC00A63D75 /* FigmaFont.swift in Sources */,
+				467262FD24C502FD00FD5F70 /* XibFigmaFillGradient.swift in Sources */,
+				467262F924C4FCD500FD5F70 /* XibFigmaEffect.swift in Sources */,
+				469D465824BF9CAA00F8547E /* FigmaEffectType.swift in Sources */,
+				4640619124C735EA00E4070B /* XibFigmaViews.swift in Sources */,
+				460947E424B73CCA00A63D75 /* XibView.swift in Sources */,
 				46A9778D24A2CF4F0088EFED /* DesignView.swift in Sources */,
+				4610577124B89EAC008AF0FD /* FigmaDownloadImages.swift in Sources */,
 				46A9773824A27D2B0088EFED /* AppDelegate.swift in Sources */,
-				46A9779C24A648240088EFED /* FigmaJson.swift in Sources */,
+				467262F724C4F29E00FD5F70 /* XibAttribute.swift in Sources */,
+				4624E56024C51B8B00BEC63E /* DesignExtentions.swift in Sources */,
+				460947E324B73CCA00A63D75 /* StoryboardController.swift in Sources */,
+				460947DF24B73CB900A63D75 /* TableAdapterCell.swift in Sources */,
+				4609480524B73D0300A63D75 /* XibFrame.swift in Sources */,
 				46A9773A24A27D2B0088EFED /* SceneDelegate.swift in Sources */,
+				460947DE24B73CB900A63D75 /* TableAdapterItem.swift in Sources */,
 				46A9777824A27D5E0088EFED /* FigmaConvertToViews.swift in Sources */,
-				46E56D4F24A64A1500E11DD5 /* Response.swift in Sources */,
-				46E56D5524A64C0D00E11DD5 /* Color.swift in Sources */,
-				46E56D5724A64C9500E11DD5 /* View.swift in Sources */,
-				46E56E7024A91DBA00E11DD5 /* Font.swift in Sources */,
+				469D465424BF416D00F8547E /* FigmaDocumentType.swift in Sources */,
+				460947D224B73C9E00A63D75 /* Alert.swift in Sources */,
+				46BAF21324C6722100A02A1C /* DesignImageView.swift in Sources */,
+				467262FB24C4FF5A00FD5F70 /* XibNumber.swift in Sources */,
+				467262F524C4DF6F00FD5F70 /* XibSizePoint.swift in Sources */,
+				460947F924B73CEB00A63D75 /* FigmaDocument.swift in Sources */,
+				460947D024B73C9E00A63D75 /* LocalData.swift in Sources */,
+				4609480724B73D0300A63D75 /* XibBool.swift in Sources */,
+				4610576B24B7C336008AF0FD /* XibFontName.swift in Sources */,
+				4609480424B73D0300A63D75 /* XibFigmaView.swift in Sources */,
+				460947DD24B73CB900A63D75 /* TableAdapterCellData.swift in Sources */,
+				460947DB24B73CB900A63D75 /* TableAdapterView.swift in Sources */,
+				460947F524B73CEB00A63D75 /* FigmaJson.swift in Sources */,
+				460947F824B73CEB00A63D75 /* FimgaColor.swift in Sources */,
+				469D465624BF9C7500F8547E /* FigmaEffect.swift in Sources */,
 				46A9779624A383EC0088EFED /* FigmaData.swift in Sources */,
-				46E56D5124A64A6700E11DD5 /* Document.swift in Sources */,
-				46E56D5A24A6548A00E11DD5 /* Fill.swift in Sources */,
-				46E56D5324A64AC900E11DD5 /* Page.swift in Sources */,
-				46A9778A24A2CF4F0088EFED /* DesignButton.swift in Sources */,
-				46E56E7224A91EDB00E11DD5 /* Frame.swift in Sources */,
+				460947F224B73CEB00A63D75 /* FigmaFill.swift in Sources */,
+				4672630124C508F200FD5F70 /* XibAutoresizingMask.swift in Sources */,
+				460947DC24B73CB900A63D75 /* TableAdapterTypes.swift in Sources */,
+				4610576D24B891B9008AF0FD /* XibFigmaFill.swift in Sources */,
+				4609480924B73D0300A63D75 /* XibGenerateID.swift in Sources */,
+				460947D124B73C9E00A63D75 /* LoadingSpiner.swift in Sources */,
+				460947F324B73CEB00A63D75 /* FigmaNode.swift in Sources */,
+				4609480624B73D0300A63D75 /* XibColor.swift in Sources */,
 				46A9776624A27D5E0088EFED /* FigmaViewController.swift in Sources */,
+				467262FF24C508AC00FD5F70 /* XibCornerRadius.swift in Sources */,
+				460947F624B73CEB00A63D75 /* FigmaResponse.swift in Sources */,
+				4609480F24B73D2400A63D75 /* TitleTextCell.swift in Sources */,
+				469D465224BF40E100F8547E /* FigmaBlendMode.swift in Sources */,
+				4624E56224C51C8B00BEC63E /* DesignEllipse.swift in Sources */,
+				460947FC24B73CEC00A63D75 /* FigmaPage.swift in Sources */,
+				460947F724B73CEB00A63D75 /* FigmaFrame.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

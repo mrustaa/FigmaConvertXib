@@ -7,24 +7,56 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Figma View Controller-->
+        <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="FigmaViewController" customModule="FigmaConvertXib" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="FigmaConvertXib" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="v3Q-lE-seu" customClass="TableAdapterView" customModule="FigmaConvertXib" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="canEditing" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </tableView>
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9PC-Nx-Beg">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="pfY-DZ-zj4">
+                                <rect key="frame" x="188.5" y="385.5" width="37" height="37"/>
+                            </activityIndicatorView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="v3Q-lE-seu" secondAttribute="bottom" id="FfD-dq-Rar"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9PC-Nx-Beg" secondAttribute="trailing" id="Fo1-YB-09v"/>
+                            <constraint firstItem="pfY-DZ-zj4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Rt1-61-0XH"/>
+                            <constraint firstItem="v3Q-lE-seu" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="YWY-Lc-ROA"/>
+                            <constraint firstItem="pfY-DZ-zj4" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="cVv-cB-ajW"/>
+                            <constraint firstItem="9PC-Nx-Beg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fsl-ix-D7K"/>
+                            <constraint firstItem="9PC-Nx-Beg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="kxD-1Y-bDb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="v3Q-lE-seu" secondAttribute="trailing" id="mJV-7H-4SY"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="9PC-Nx-Beg" secondAttribute="bottom" id="viC-74-vhu"/>
+                            <constraint firstItem="v3Q-lE-seu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="zdf-eE-VYm"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="CdB-hj-PdY">
-                        <barButtonItem key="leftBarButtonItem" title="100%" id="BqA-iH-eeK">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="GrD-TN-Pkd">
                             <connections>
-                                <action selector="resetZoom:" destination="BYZ-38-t0r" id="nXv-EL-3Nc"/>
+                                <action selector="addProject:" destination="BYZ-38-t0r" id="qpI-ug-4sk"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="GrD-TN-Pkd"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="shadowView" destination="9PC-Nx-Beg" id="PGk-Z3-bB9"/>
+                        <outlet property="spiner" destination="pfY-DZ-zj4" id="WNV-PE-PGM"/>
+                        <outlet property="tableView" destination="v3Q-lE-seu" id="CeK-Yf-g4T"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

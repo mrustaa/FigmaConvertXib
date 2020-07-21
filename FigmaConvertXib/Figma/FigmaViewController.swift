@@ -3,9 +3,11 @@
 import UIKit
 
 
-class FigmaViewController: UIViewController {
+class FigmaViewController: StoryboardController {
     
     //MARK: - Properties
+    
+    var projectKey: String = ""
     
     var scrollView: UIScrollView!
     
@@ -14,16 +16,24 @@ class FigmaViewController: UIViewController {
     var convertToViews: FigmaConvertToViews!
     var convertToXib: FigmaConvertToXib!
     
-    var figmaView: UIView?
+    var FigmaNode: UIView?
     
     //MARK: - Life Cycle
+    
+    class func instantiate(projectKey: String) -> FigmaViewController {
+        let vc = super.instantiate() as! FigmaViewController
+//        let vc = FigmaViewController()
+        vc.projectKey = projectKey
+        return vc
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         scrollView = UIScrollView(frame: view.bounds)
-        scrollView.frame.size.height = scrollView.frame.height - 64
+        scrollView.frame.size.height = view.bounds.height //- 64
         scrollView.delegate = self
+        scrollView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(scrollView)
         
         let pathFile: String = #file
@@ -40,16 +50,20 @@ class FigmaViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let doneItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(buttonRefreshAction))
-        navigationItem.rightBarButtonItem = doneItem
+//        let doneItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(buttonRefreshAction))
+//        navigationItem.rightBarButtonItem = doneItem
         
         updateFigmaFiles()
     }
     
     //MARK: - Update Action Request
     
-    @objc func buttonRefreshAction() {
+    @IBAction func buttonRefreshAction() {
         updateFigmaFiles()
+    }
+    
+    @IBAction func resetZoom(_ sender: Any) {
+        scrollView.zoomScale = 1.0
     }
     
     func updateFigmaFiles() {
@@ -58,21 +72,38 @@ class FigmaViewController: UIViewController {
 //        if let t = titleTextField.text, t.count > 0 {
 //            text = t
 //        }
+//        FigmaData.current.pathImageAssets() 
         
-        FigmaData.current.requestFiles(completion: { [weak self] in
+        loadingSpiner(show: true)
+        
+        FigmaData.current.requestFiles(projectKey: projectKey, completion: { [weak self] in
+            
+            loadingSpiner(show: false)
+            
             guard let _self = self,
-                let page = FigmaData.current.resporse?.document.pages[0],
+                let response: FigmaResponse = FigmaData.current.response,
+                !response.document.pages.isEmpty,
                 let imagesURLs = FigmaData.current.imagesURLs else { return }
             
-            let figmaView: (UIView, FigmaView) = _self.convertToViews.add(page: page, imagesURLs: imagesURLs)
-            _self.figmaView = figmaView.0
+            let page: FigmaPage = response.document.pages[0]
             
-            _self.addFigmaView(view: figmaView.0)
-            _self.convertToXib.add(page: figmaView.1, imagesURLs: imagesURLs)
+            let FigmaNode: (UIView, FigmaNode) = _self.convertToViews.add(page: page, projectKey: _self.projectKey, imagesURLs: imagesURLs)
+            _self.FigmaNode = FigmaNode.0
+            
+            let newResult = FigmaNode.1.xib()
+            
+            FigmaData.save(text: newResult,
+                           toDirectory: FigmaData.current.pathXib(),
+                           withFileName: "new_result.xib")
+            
+//            FigmaNode.1.downloadImages(URLs: imagesURLs)
+            
+            _self.addFigmaNode(view: FigmaNode.0)
+//            _self.convertToXib.add(page: FigmaNode.1, imagesURLs: imagesURLs)
         })
     }
     
-    func addFigmaView(view: UIView) {
+    func addFigmaNode(view: UIView) {
 
         var size: CGSize = view.bounds.size
         
@@ -96,9 +127,6 @@ class FigmaViewController: UIViewController {
         scrollView.addSubview(view)
     }
     
-    @IBAction func resetZoom(_ sender: Any) {
-        scrollView.zoomScale = 1.0
-    }
     
 }
 
@@ -108,7 +136,7 @@ extension FigmaViewController: UIScrollViewDelegate {
     }
     
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        return figmaView
+        return FigmaNode
     }
     
     func scrollViewDidZoom(_ scrollView: UIScrollView) {
@@ -122,11 +150,11 @@ extension FigmaViewController: UIScrollViewDelegate {
         let offsetX = max( w * 0.5, 0.0)
         let offsetY = max( h * 0.5, 0.0)
         // adjust the center of image view
-        figmaView?.center = CGPoint(x: scrollView.contentSize.width * 0.5 + CGFloat(offsetX), y: scrollView.contentSize.height * 0.5 + CGFloat(offsetY))
+        FigmaNode?.center = CGPoint(x: scrollView.contentSize.width * 0.5 + CGFloat(offsetX), y: scrollView.contentSize.height * 0.5 + CGFloat(offsetY))
         
 //
-//        figmaView?.bounds = CGRect(x: 0, y: 0, width: 100 * zoomScale, height: 100 * zoomScale)
-//        figmaView?.layer.setAffineTransform( CGAffineTransform(scaleX: 1.0 / zoomScale, y: 1.0 / zoomScale) )
+//        FigmaNode?.bounds = CGRect(x: 0, y: 0, width: 100 * zoomScale, height: 100 * zoomScale)
+//        FigmaNode?.layer.setAffineTransform( CGAffineTransform(scaleX: 1.0 / zoomScale, y: 1.0 / zoomScale) )
 //
     }
 }

@@ -1,0 +1,399 @@
+//
+//  XibView.swift
+//  FigmaConvertXib
+//
+//  Created by Рустам Мотыгуллин on 02.07.2020.
+//  Copyright © 2020 mrusta. All rights reserved.
+//
+
+import UIKit
+
+extension FigmaFill {
+    
+    func contentModeXib() -> String {
+        var mode = "scaleAspectFit"
+        switch scaleMode {
+        case .fill: mode = "scaleAspectFill"
+        case .fit: mode = "scaleAspectFit"
+        default: break
+        }
+        return mode
+    }
+}
+
+extension FigmaFont {
+    
+    func alignmentXib() -> String {
+        var alignment = "left"
+        switch textAlignHorizontal {
+        case .left: alignment = "left"
+        case .center: alignment = "center"
+        case .right: alignment = "right"
+        case .justified: alignment = "justified"
+        }
+        return alignment
+    }
+}
+
+extension FigmaNode {
+    
+    func imageFill() -> FigmaFill? {
+        for fill in fills {
+            if fill.type == .image {
+                return fill
+            }
+        }
+        return nil
+    }
+    
+    func fontStyleXib() -> String {
+        if let fontStyle = fontStyle {
+            return fontStyle.alignmentXib()
+        }
+        return "left"
+    }
+    
+    func contentModeXib() -> String {
+        if let imageFill = imageFill() {
+            return imageFill.contentModeXib()
+        }
+        return "scaleAspectFit"
+    }
+    
+    
+    func xib(_ main: Bool = true) -> String {
+        
+        // MARK: - 🦄 Start (Header End)
+        
+        var headerEnd  = ("", "")
+        
+        var imageRadius: Bool = false
+        
+        if type == .component {
+            
+            headerEnd = imageXib(comp: true)
+            
+//        } else if imageFill() != nil {
+//
+//            if realRadius != 0 || fills.count > 1 || !effects.isEmpty || strokeWeight != 0 {
+//                imageRadius = true
+//                headerEnd = designImageViewXib()
+//            } else {
+//                headerEnd = imageXib()
+//            }
+            
+        } else if type == .text {
+            
+            headerEnd = labelXib()
+            
+        } else if (realRadius != 0) || (strokes.count == 1) {
+            
+            headerEnd = designViewXib()
+            
+        } else {
+            
+            headerEnd = viewXib()
+            
+        }
+        // MARK: - Frame
+        
+        let xmlFrame = realFrame.xib()
+        
+        // MARK: - Fill Text Background Color
+        
+        var xmlTextColor = ""
+        var xmlBackgroundColor = ""
+        var xmlFillColor = ""
+        var xmlFillSubviews = ""
+        
+        /// Цвет текста, 1 слой
+        /// (он может иметь множество слоев цвета. но это уже не бред - когда речь идет о тексте. да и вьюшке тоже)
+        /// (либо слои с градиентом - что тоже бред)
+        if type == .text {
+            
+            for fill: FigmaFill in fills {
+                if fill.type == .solid, fill.visible {
+                    xmlTextColor = "\(fill.color.withAlphaComponent(fill.opacity).xib("textColor"))<nil key=\"highlightedColor\"/>"
+                }
+            }
+            
+        } else if type != .component {
+            
+            /// 1 слой цвета фона  (и все - можно наложить ее на текущую вьюху)
+            if fills.count == 1 {
+                
+                let fill: FigmaFill = fills[0]
+                
+                if fill.visible {
+                    
+                    /// Background Color
+                    if fill.type == .solid {
+                        
+                        let color = fill.color.withAlphaComponent(fill.opacity)
+                        
+                        /// DesigView
+                        if (realRadius != 0) || (strokes.count == 1) {
+                            
+                            xmlFillColor = xibAttr(color: color, key: "fillColor")
+                        
+                        /// View
+                        } else {
+                            xmlBackgroundColor = color.xib("backgroundColor")
+                        }
+                        
+                        /// Gradient
+                    } else if fill.type == .gradientLinear || fill.type == .image {
+                        
+                        let blur = xibSearchEffect(type: .layerBlur)
+                        let shadow = xibSearchEffect(type: .dropShadow)
+                        let innerShadow = xibSearchEffect(type: .innerShadow)
+                        
+                        xmlFillSubviews = fill.xib(view: self, effect: shadow, effect2: innerShadow, blur: blur)
+                        
+                    }
+//                    else if fill.type == .image {
+                        
+//                        let shadow = xibSearchEffect(type: .dropShadow)
+//                        let innerShadow = xibSearchEffect(type: .innerShadow)
+//                        let blur = xibSearchEffect(type: .layerBlur)
+                        
+
+                        
+//                        xmlFillAttributes =
+//                            xibAttr(imageName: name, key: "image") +
+//                            xibAttr(boolean: fill.scaleMode == .fill, key: "contModeFill")
+//                            fill.xibFill() +
+//                            xibCornerRadius() +
+//                            fill.xibGradientLinear() +
+//                            fill.xib(effect: shadow) +
+//                            fill.xib(effect: innerShadow) +
+//                            fill.xib(effect: blur)
+                        
+                        
+                        // xmlFillSubviews = imageXibReady()
+                        
+//                    }
+                    
+                }
+                
+                
+            } else { /// если их много. это уже все слои сабвьюхи
+                
+                var i = 0
+                
+                var visibleCount = 0
+                for fill: FigmaFill in fills {
+                    if fill.visible {
+                        visibleCount += 1
+                    }
+                }
+                
+                if visibleCount > 1 {
+                    
+                    for fill: FigmaFill in fills {
+                        
+                        if fill.visible {
+                            
+//                            if fill.type == .image, imageRadius {
+//
+//                                // xmlFillSubviews = xmlFillSubviews + imageXibReady()
+//
+//                                xmlFillAttributes = fill.xibFill() + xibCornerRadius()
+//
+//                                if i == 0 { /// 1 слой
+//
+//                                    let effect = xibSearchEffect(type: .dropShadow)
+//                                    xmlFillAttributes += fill.xib(effect: effect)
+//
+//                                } else if i == (visibleCount - 1) { /// конечный слой
+//
+//                                    let effect = xibSearchEffect(type: .innerShadow)
+//                                    xmlFillAttributes += fill.xib(effect: effect)
+//
+//                                }
+//
+//                            } else {
+                                
+                                var result = ""
+                                
+                                let blur = xibSearchEffect(type: .layerBlur)
+                                
+                                if i == 0 { /// 1 слой
+                                    
+                                    if let effect = xibSearchEffect(type: .dropShadow) {
+                                        result = fill.xib(view: self, effect: effect, blur: blur)
+                                    } else {
+                                        result = fill.xib(view: self, blur: blur)
+                                    }
+                                    
+                                } else if i == (visibleCount - 1) { /// конечный слой
+                                    
+                                    if let effect = xibSearchEffect(type: .innerShadow) {
+                                        result = fill.xib(view: self, effect: effect, blur: blur)
+                                    } else {
+                                        result = fill.xib(view: self, blur: blur)
+                                    }
+                                    
+                                } else {
+                                    
+                                    result = fill.xib(view: self, blur: blur)
+                                }
+                                
+                                xmlFillSubviews += result
+                            }
+                            i += 1
+                        }
+                    
+                    
+                } else {
+                    
+                    for fill: FigmaFill in fills {
+                    
+                        if fill.visible {
+                            
+//                            if fill.type == .image, imageRadius {
+//
+//                                let shadow = xibSearchEffect(type: .dropShadow)
+//                                let innerShadow = xibSearchEffect(type: .innerShadow)
+//                                let blur = xibSearchEffect(type: .layerBlur)
+//
+//                                xmlFillAttributes =
+//                                    xibAttr(imageName: name, key: "image") +
+//                                    xibAttr(boolean: fill.scaleMode == .fill, key: "contModeFill") +
+//                                    fill.xibFill() +
+//                                    xibCornerRadius() +
+//                                    fill.xibGradientLinear() +
+//                                    fill.xib(effect: shadow) +
+//                                    fill.xib(effect: innerShadow) +
+//                                    fill.xib(effect: blur)
+                                
+                                
+                                // xmlFillSubviews = xmlFillSubviews + imageXibReady()
+                                
+//                            } else {
+                                
+                                let blur = xibSearchEffect(type: .layerBlur)
+                                let shadow = xibSearchEffect(type: .dropShadow)
+                                let innerShadow = xibSearchEffect(type: .innerShadow)
+                                
+                                xmlFillSubviews = fill.xib(view: self, effect: shadow, effect2: innerShadow, blur: blur)
+                                
+//                            }
+                            
+                        }
+                    }
+                }
+                
+                
+            }
+        }
+        
+        // MARK: - Radius
+        
+        /// Радиус
+        let xmlCornerRadius = xibCornerRadius()
+        
+        // MARK: - Border
+        
+        /// Имется слои - толшины и цвета границ
+        var xmlBorder = ""
+        if !strokes.isEmpty, strokes.count == 1 {
+            
+            /// такая же логика - зачем толщине границ - несколько цветов
+            /// или градиент я просто не представляю как здесь сделать
+            let stroke: FigmaFill = strokes[0]
+            if stroke.type == .solid, stroke.visible {
+                
+                
+                xmlBorder =
+                  xibAttr(number: strokeWeight, key: "borderWidth")
+                + xibAttr(color: stroke.color.withAlphaComponent(stroke.opacity), key: "borderColor")
+                
+            }
+        }
+        
+        // MARK: - Subviews
+        
+        /// слои сабвьюшки
+        var xmlViewSubviews = ""
+        if !subviews.isEmpty, type != .component {
+            for oneFigmaNode: FigmaNode in subviews {
+                if oneFigmaNode.visible,
+                    oneFigmaNode.type != .vector,
+                    oneFigmaNode.type != .booleanOperation {
+                    
+                    xmlViewSubviews = xmlViewSubviews + oneFigmaNode.xib(false)
+                }
+            }
+        }
+        
+        
+        
+        var xmlSubviews = ""
+        if !xmlFillSubviews.isEmpty || !xmlViewSubviews.isEmpty {
+            
+            xmlSubviews = xibSubviewsClose(subviews: xmlFillSubviews + xmlViewSubviews)
+        }
+        
+        
+        
+        // MARK: - FontName
+        
+        let xmlFontName = fontNameXib()
+        
+        // MARK: - DesignView Attributes
+        
+        var xmlDefinedRuntimeAttributes = ""
+        
+        if !xmlFillColor.isEmpty || !xmlCornerRadius.isEmpty || !xmlBorder.isEmpty {
+            xmlDefinedRuntimeAttributes = xibAttrsClose(attributes: xmlFillColor + xmlCornerRadius + xmlBorder )
+        }
+        
+        
+//        <resources>
+//            <image name="🎈" width="1130" height="1436"/>
+//            <image name="👹👹👹" width="16" height="16"/>
+//        </resources>
+        
+        // MARK: - MainView Attributes
+        
+        var xmlMainHeader = ""
+        var xmlMainEnd = ""
+        
+        if main {
+            xmlMainHeader = """
+            <?xml version="1.0" encoding="UTF-8"?>
+            <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+                <device id="retina4_7" orientation="portrait" appearance="light"/>
+                <dependencies>
+                    <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+                    <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+                </dependencies>
+                <objects>
+                    <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+                    <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+            """
+            
+            xmlMainEnd = """
+            </objects>
+            </document>
+            """
+        }
+        
+        let mainViewMetrics = (main ? "<freeformSimulatedSizeMetrics key=\"simulatedDestinationMetrics\"/>" : "")
+        
+        // MARK: - 💖 Result
+        
+        let result = """
+        \(xmlMainHeader)\(headerEnd.0)
+        \(xmlFrame)\(xmlFontName)\(xmlBackgroundColor)\(xmlDefinedRuntimeAttributes)
+        \(addAutoresizingMask())\(mainViewMetrics)\(xmlSubviews)\(xmlTextColor)
+        \(headerEnd.1)\(xmlMainEnd)
+        """
+        
+        return result
+    }
+    
+    
+
+}
