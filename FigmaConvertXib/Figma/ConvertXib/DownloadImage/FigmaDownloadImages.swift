@@ -19,7 +19,7 @@ extension FigmaNode {
                 
                 FigmaData.downloadImage(url: url, completion: { [weak self] (image: UIImage) in
                     guard let _self = self else { return }
-                    FigmaData.saveImage(image: image, imageRef: _self.name)
+                    FigmaData.save(image: image, name: _self.name)
                 })
             }
         }

@@ -17,20 +17,33 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="6qi-GV-N23"/>
                     </view>
-                    <navigationItem key="navigationItem" id="IWP-pv-mYG">
+                    <navigationItem key="navigationItem" id="JGD-xA-CYx">
+                        <nil key="title"/>
+                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="yME-i4-OuN">
+                            <rect key="frame" x="184" y="7" width="200" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                            <state key="normal" title="Button"/>
+                            <connections>
+                                <action selector="buttonChangePageAction" destination="f2s-jC-2Ov" eventType="touchUpInside" id="Bwh-MR-Nra"/>
+                            </connections>
+                        </button>
                         <rightBarButtonItems>
-                            <barButtonItem title="100%" id="4Bi-Lo-3hU">
+                            <barButtonItem title="100%" id="T6C-7R-ceO">
                                 <connections>
-                                    <action selector="resetZoom:" destination="f2s-jC-2Ov" id="6Jk-qM-Mv7"/>
+                                    <action selector="resetZoom" destination="f2s-jC-2Ov" id="jgf-px-zC9"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem systemItem="refresh" id="Qme-i9-vWG">
+                            <barButtonItem systemItem="refresh" id="qR0-of-WNF">
                                 <connections>
-                                    <action selector="buttonRefreshAction" destination="f2s-jC-2Ov" id="yQC-hJ-HXV"/>
+                                    <action selector="buttonRefreshAction" destination="f2s-jC-2Ov" id="lAf-tD-gqy"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="navBarTitleButton" destination="yME-i4-OuN" id="bx8-wL-GNd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dhy-Gp-pip" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

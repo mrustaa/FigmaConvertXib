@@ -10,11 +10,26 @@ import UIKit
 
 extension UIView {
     
+    
+    func add(shadow radius: CGFloat, offset: CGSize, color: UIColor) {
+        layer.shadowOpacity = 1.0
+        layer.shadowColor   = color.cgColor
+        layer.shadowOffset  = offset
+        layer.shadowRadius  = radius
+    }
+    
+    func add(border width: CGFloat, color: UIColor) {
+        layer.borderColor   = color.cgColor
+        layer.borderWidth   = width
+    }
+    
     //MARK: - Blur
     
     func add(blur: CGFloat, rect: CGRect? = nil, clearCallback: (() -> Void)? = nil) {
         
         guard blur > 0 else { return }
+        
+        layer.shadowOpacity = 0.0
         
         var fr = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
         if let rect = rect {
@@ -23,41 +38,64 @@ extension UIView {
         
         UIGraphicsBeginImageContext(fr.size)
         layer.render(in: UIGraphicsGetCurrentContext()!)
-        guard let screenshot = UIGraphicsGetImageFromCurrentImageContext() else { return }
+        guard let imgC = UIGraphicsGetImageFromCurrentImageContext() else { return }
         UIGraphicsEndImageContext()
         
-        guard let ciImageScreen: CIImage = CIImage(image: screenshot) else { return }
         
-        guard let filter: CIFilter = CIFilter(name:"CIGaussianBlur") else { return }
-        filter.setDefaults()
-        filter.setValue(ciImageScreen, forKey: kCIInputImageKey)
-        filter.setValue(blur, forKey: kCIInputRadiusKey)
+//        let imgV = UIImageView(frame: CGRect(x: 0, y: -100, width: 30, height: 30))
+//        imgV.image = UIImage(ciImage: screen)
+//        addSubview(imgV)
         
-        let bl2 = ((blur * 2) * -1)
-        let bl4 = (blur * 4)
+        self.blur(screen: imgC, blur: blur, clearCallback: clearCallback)
+    }
+    
+    func blur(screen: UIImage, blur: CGFloat, clearCallback: (() -> Void)? = nil) {
         
-        let contextFrame = CGRect(x: bl2, y: bl2, width: fr.width + bl4, height: fr.height + bl4)
+        guard let ciscreen: CIImage  = CIImage(image: screen) else { return }
+        
+        guard let filter: CIFilter = CIFilter(name: "CIGaussianBlur") else { return }
+                  filter.setDefaults()
+                  filter.setValue(ciscreen, forKey: kCIInputImageKey)
+                  filter.setValue(blur,     forKey: kCIInputRadiusKey)
+        
+        let bl2  = ((blur * 2) * -1)
+        let bl4  =  (blur * 4)
+        
+        let ofW  = (layer.shadowOffset.width  * 1) * -1
+        let ofH  = (layer.shadowOffset.height * 1) * -1
+        
+        let ofW2 = (layer.shadowOffset.width  * 2)
+        let ofH2 = (layer.shadowOffset.height * 2)
+        
+        let contextFrame = CGRect(x: bl2 + ofW,
+                                  y: bl2 + ofH,
+                                  width:  frame.width  + bl4 + ofW2,
+                                  height: frame.height + bl4 + ofH2)
         
         let ciContext = CIContext(options: nil)
-        guard let result = filter.value(forKey: kCIOutputImageKey) as? CIImage else { return }
-        guard let cgImage = ciContext.createCGImage(result, from: contextFrame) else { return }
+        guard let r = filter.value(forKey: kCIOutputImageKey) as? CIImage else { return }
+        guard let cImg = ciContext.createCGImage(r, from: contextFrame) else { return }
         
-        let finalImage = UIImage.init(cgImage: cgImage)
+        let finalImage = UIImage(cgImage: cImg)
         
-        let imageFrame = CGRect(x: bl2,
-                                y: bl2,//rect.height + 30 + bl2,
-                                width: fr.width + bl4,
-                                height: fr.height + bl4)
+        let imageFrame = CGRect(x: bl2 + ofW,
+                                y: bl2 + ofH, //rect.height + 30 + bl2,
+                                width:  frame.width  + bl4 + ofW2,
+                                height: frame.height + bl4 + ofH2)
         
         let blurImageView = UIImageView(frame: imageFrame)
         blurImageView.image = finalImage
         blurImageView.contentMode = .scaleAspectFit
+        
+        // blurImageView.layer.borderColor = UIColor.systemRed.cgColor
+        // blurImageView.layer.borderWidth = 1
         
         clearAllFills()
         
         clearCallback?()
         
         addSubview(blurImageView)
+        
     }
     
     //MARK: - Blur Clear All

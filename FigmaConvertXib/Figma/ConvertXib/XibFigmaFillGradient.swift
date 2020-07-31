@@ -10,41 +10,64 @@ import UIKit
 
 extension FigmaFill {
     
+    func xibGradientText() -> String {
+        
+        var xib = ""
+
+        var i: Int = 0
+        for color in gradientStops {
+            
+            switch i {
+            case 0: xib += xibAttr(color: color, key: "grColor1")
+            case 1: xib += xibAttr(color: color, key: "grColor2")
+            case 2: xib += xibAttr(color: color, key: "grColor3")
+            case 3: xib += xibAttr(color: color, key: "grColor4")
+            case 4: xib += xibAttr(color: color, key: "grColor5")
+            case 5: xib += xibAttr(color: color, key: "grColor6")
+            default: break
+            }
+            
+            i += 1
+        }
+        
+        xib += xibAttr(boolean: (type == .gradientRadial), key: "grRadial")
+        
+        xib += xibAttr(boolean: true, key: "grPointPercent")
+        
+        xib += xibAttr(point: startPoint(), key: "grStartPoint")
+        xib += xibAttr(point: endPoint(),   key: "grEndPoint")
+        
+        return xib
+    }
+    
+    
+    
     func xibGradientLinear() -> String {
         
         if type != .gradientLinear { return "" }
         
-        var xibColors = ""
-        var xibPoints = ""
-        
-        var index: Int = 0
+        var xib = ""
+
+        var i: Int = 0
         for color in gradientStops {
             
-            var keyPath = "gradientColor3"
-            if index == 0 {
-                keyPath = "fillColor"
-            } else if index == 1 {
-                keyPath = "gradientColor"
-            } else if index == 2 {
-                keyPath = "gradientColor2"
-            } else if index == 3 {
-                keyPath = "gradientColor3"
+            switch i {
+            case 0: xib += xibAttr(color: color, key: "fillColor")
+            case 1: xib += xibAttr(color: color, key: "grColor2")
+            case 2: xib += xibAttr(color: color, key: "grColor3")
+            case 3: xib += xibAttr(color: color, key: "grColor4")
+            case 4: xib += xibAttr(color: color, key: "grColor5")
+            case 5: xib += xibAttr(color: color, key: "grColor6")
+            default: break
             }
             
-            xibColors = xibColors
-                + xibAttr(color: color, key: keyPath)
-            
-            index += 1
+            i += 1
         }
         
-        let pointFirst: CGPoint = gradientHandlePositions[0]
-        let pointLast: CGPoint = gradientHandlePositions[gradientHandlePositions.count - 2]
+        xib += xibAttr(point: startPoint(), key: "grStartPoint")
+        xib += xibAttr(point: endPoint(),   key: "grEndPoint")
         
-        xibPoints =
-            xibAttr(point: pointFirst, key: "gradientStartPoint")
-            + xibAttr(point: pointLast, key: "gradientOffset")
-        
-        return "\(xibColors)\(xibPoints)"
+        return xib
     }
     
 }

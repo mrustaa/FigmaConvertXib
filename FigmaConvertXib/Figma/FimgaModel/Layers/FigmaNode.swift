@@ -10,7 +10,7 @@ import UIKit
 
 class FigmaNode {
     
-    let id, name: String
+    var id, name: String
     let type: FigmaDocument.Type_
     var subviews: [FigmaNode] = []
     
@@ -51,7 +51,9 @@ class FigmaNode {
     init(_ dict: [String:Any]) {
         
         id = dString(dict, "id")
-        name = dString(dict, "name")
+        
+        let name = dString(dict, "name")
+        self.name = name.findReplace(find: "/", replace: ":")
         
         let t = dString(dict, "type")
         type = FigmaDocument.Type_.install(t)

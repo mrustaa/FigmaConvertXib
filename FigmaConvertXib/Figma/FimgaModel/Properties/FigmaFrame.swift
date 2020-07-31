@@ -11,11 +11,11 @@ import UIKit
 class FigmaFrame {
     
     class func rect(_ rect: [String: Any]) -> CGRect {
-        let x = rect["x"] as! CGFloat
-        let y = rect["y"] as! CGFloat
-        let w = rect["width"] as! CGFloat
-        let h = rect["height"] as! CGFloat
-        return CGRect(x: x, y: y, width: w, height: h)
+        let x = rect["x"] as? CGFloat
+        let y = rect["y"] as? CGFloat
+        let w = rect["width"] as? CGFloat
+        let h = rect["height"] as? CGFloat
+        return CGRect(x: x ?? 0, y: y ?? 0, width: w ?? 0, height: h ?? 0)
     }
 }
 

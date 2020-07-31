@@ -16,14 +16,18 @@ extension FigmaFill {
         var name = "Color_Radius"
         if type == .gradientLinear {
             name = "Gradient"
-        }
+        } 
 //        else if type == .image {
 //            name = view.name
 //        }
         
         var viewHEADER = "<view alpha=\"\(opacity)\" clipsSubviews=\"\(view.clipsContent.xib())\" contentMode=\"scaleToFill\" fixedFrame=\"YES\" translatesAutoresizingMaskIntoConstraints=\"NO\" userLabel=\"\(name)\" id=\"\(xibID())\" customClass=\"DesignView\" customModule=\"FigmaConvertXib\" customModuleProvider=\"target\">"
         
-        var viewEND = "</view>"
+        var viewEND = """
+        </view>
+
+
+        """
         
         
         if type == .image {
@@ -37,7 +41,7 @@ extension FigmaFill {
         let xibAttributes =
             xibAttrsClose(attributes:
                 
-                xibAttrImage(name: view.name) +
+                xibAttrImage(name: view.name.xibFilter() ) +
                 xibFill() +
                 view.xibCornerRadius() +
                 xibGradientLinear() +

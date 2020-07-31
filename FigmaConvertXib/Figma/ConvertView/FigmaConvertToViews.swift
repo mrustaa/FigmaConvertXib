@@ -22,7 +22,6 @@ class FigmaConvertToViews: NSObject {
         return view
     }
     
-    
     func pageConvert(page: FigmaPage) -> (UIView, FigmaNode) {
         
         let view = UIView(frame: CGRect.zero)
@@ -125,9 +124,7 @@ class FigmaConvertToViews: NSObject {
                 view.addSubview(resultView)
             }
             
-            
-//            print(" \(x) \(y) \(width) \(height) ")
-            
+            // print(" \(x) \(y) \(width) \(height) ")
         }
         
         return (view, FigmaNode(page))
@@ -148,8 +145,8 @@ class FigmaConvertToViews: NSObject {
     func add(figma_view: FigmaNode, imagesURLs: [String: String]) -> UIView {
         
         self.figmaImagesURLs = imagesURLs
-//        self.mainView = mainView
-//        self.FigmaNode?.removeFromSuperview()
+        // self.mainView = mainView
+        // self.FigmaNode?.removeFromSuperview()
         
         let view: UIView = pageConvert(figma_view: figma_view)
         view.frame.origin.x = 0
@@ -158,7 +155,7 @@ class FigmaConvertToViews: NSObject {
         figma_view.realFrame = view.frame
         figma_view.realRadius = radiusMax(radius: figma_view.cornerRadius, frame: view.bounds)
         
-//        FigmaNode = view
+        // FigmaNode = view
         
         return view
     }
@@ -225,6 +222,8 @@ class FigmaConvertToViews: NSObject {
         let view = UIView(frame: figma_view.absoluteBoundingBox)
         view.alpha = figma_view.opacity
         
+        //MARK: Ellipse
+        
         if figma_view.type == .ellipse {
             
             view.backgroundColor = .clear
@@ -245,8 +244,8 @@ class FigmaConvertToViews: NSObject {
                         shapeLayer.strokeColor = figma_view.strokeColor.cgColor
                         shapeLayer.lineWidth = figma_view.strokeWeight
                         
-//                        shapeLayer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-//                        shapeLayer.transform = CATransform3DRotate(shapeLayer.transform, 40 * CGFloat.pi/180, 0.0, 0.0, 1.0)
+                        // shapeLayer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+                        // shapeLayer.transform = CATransform3DRotate(shapeLayer.transform, 40 * CGFloat.pi/180, 0.0, 0.0, 1.0)
                         
                         view.layer.addSublayer(shapeLayer)
                     }
@@ -279,8 +278,8 @@ class FigmaConvertToViews: NSObject {
                         shapeLayer.fillColor = UIColor.black.cgColor
                         shapeLayer.opacity = Float(fill.opacity)
                         
-//                        shapeLayer.strokeColor = figma_view.strokeColor.cgColor
-//                        shapeLayer.lineWidth = figma_view.strokeWeight
+                        // shapeLayer.strokeColor = figma_view.strokeColor.cgColor
+                        // shapeLayer.lineWidth = figma_view.strokeWeight
                         
                         layer.mask = shapeLayer
                         
@@ -302,17 +301,14 @@ class FigmaConvertToViews: NSObject {
                 }
             }
             
-
-//            view.layer.borderColor = figma_view.strokeColor.cgColor
-//            view.layer.borderWidth = figma_view.strokeWeight
+            // view.layer.borderColor = figma_view.strokeColor.cgColor
+            // view.layer.borderWidth = figma_view.strokeWeight
             
-        } else {
+        }
+        //MARK: Rectangle
+        else {
             
-            if figma_view.name == " 💖 💖 💖" {
-                
-            }
-            
-//            view.backgroundColor = page.backgroundColor
+            // view.backgroundColor = page.backgroundColor
             view.clipsToBounds = figma_view.clipsContent
             
             let cornerRadius = radiusMax(radius: figma_view.cornerRadius, frame: view.bounds)
@@ -328,7 +324,7 @@ class FigmaConvertToViews: NSObject {
                         layer.frame = view.bounds
                         layer.cornerRadius = radiusMax(radius: figma_view.cornerRadius, frame: view.bounds)
                         layer.backgroundColor = fill.color.withAlphaComponent(fill.opacity).cgColor
-//                        layer.opacity = Float(fill.opacity)
+                        // layer.opacity = Float(fill.opacity)
                         view.layer.addSublayer(layer)
                     }
                     
@@ -363,7 +359,7 @@ class FigmaConvertToViews: NSObject {
                 if effect.visible {
                     
                     let shadowRadius = effect.radius / 2
-                    let shadowColor = effect.color.cgColor
+                    let shadowColor  = effect.color.cgColor
                     let shadowOffset = effect.offset
                     
                     if effect.type == .dropShadow {
@@ -371,7 +367,7 @@ class FigmaConvertToViews: NSObject {
                         view.layer.shadowOpacity = 1.0
                         view.layer.shadowOffset = shadowOffset
                         view.layer.shadowRadius = shadowRadius
-                        view.layer.shadowColor = shadowColor
+                        view.layer.shadowColor  = shadowColor
                         
                     } else if effect.type == .innerShadow {
                         
@@ -380,15 +376,12 @@ class FigmaConvertToViews: NSObject {
                                             offset: shadowOffset,
                                             cornerRadius: cornerRadius)
                         
-                        
                     } else if effect.type == .layerBlur {
                         
                         view.add(blur: shadowRadius, rect: view.bounds)
-                        
                     }
                 }
             }
-            
             
             for stroke: FigmaFill in figma_view.strokes {
                 if stroke.type == .solid {
@@ -409,68 +402,143 @@ class FigmaConvertToViews: NSObject {
         return view
     }
     
-    //MARK: - Image
+    //MARK: - 🏞Image Component
     
-    func pageConvertToImageComponent(page: FigmaNode) -> UIImageView {
+    func pageConvertToImageComponent(page: FigmaNode) -> UIView {
         
         let imageView = UIImageView(frame: page.absoluteBoundingBox)
-        
         imageView.contentMode = .scaleAspectFill
-//        imageView.clipsToBounds = true
+        imageView.clipsToBounds = true
         
-        FigmaData.current.requestComponent(key: projectKey,
-                                           nodeId: page.id,
-                                           compJson: { (data, json: [String:Any]?) in // [weak self]
+        
+        if !FigmaData.checkImageExists(imageName: page.name) {
             
-            guard let json = json else { return }
-//            guard let _self = self else { return }
-            
-            guard let nodeID = json["images"] as? [String: String] else { return }
-            guard let imageURL = nodeID[page.id] else { return }
-            
-            let url = URL(string: imageURL)!
-            
-            FigmaData.downloadImage(url: url, completion: { (image: UIImage) in
-                imageView.image = image
-                
-                FigmaData.saveImage(image: image, imageRef: page.name)
+            FigmaData.current.requestComponent(key: projectKey,
+                                               nodeId: page.id,
+                                               format: .PNG,
+                                               compJson:
+                { (data, json: [String:Any]?) in
+                    
+                    guard let json = json,
+                        let nodeID = json["images"] as? [String: String],
+                        let imageURL = nodeID[page.id] else { return }
+                    
+                    let url = URL(string: imageURL)!
+                    
+                    FigmaData.downloadImage(url: url, completion: { (image: UIImage) in
+                        
+                        main {
+                            imageView.image = image
+                        }
+                           
+                        FigmaData.saveImageXcassets(image: image, name: page.name)
+                    })
             })
-
-        })
-
+            
+        } else {
+            if let image = FigmaData.load(imageName: page.name) {
+                imageView.image = image
+            }
+        }
         
         return imageView
     }
     
-    //MARK: - Image
+    //MARK: - 🏞Image
     
-    func pageConvertToImage(page: FigmaNode) -> UIImageView {
+    func pageConvertToImage(page: FigmaNode) -> UIView {
         
-        let imageView = UIImageView(frame: page.absoluteBoundingBox)
-//        imageView.backgroundColor = page.backgroundColor
-        imageView.clipsToBounds = page.clipsContent
-        imageView.layer.cornerRadius = radiusMax(radius: page.cornerRadius, frame: imageView.bounds)
         
-        var imageFill: FigmaFill!
+        let cornerRadius = radiusMax(radius: page.cornerRadius, frame: page.absoluteBoundingBox)
         
-        for fill in page.fills {
-            if fill.type == .image {
-                imageFill = fill
+        let view = UIView(frame: page.absoluteBoundingBox)
+            view.clipsToBounds = page.clipsContent
+            view.layer.cornerRadius = cornerRadius
+        
+        let imageView = UIImageView(frame: view.bounds)
+            imageView.clipsToBounds = true
+            imageView.layer.cornerRadius = cornerRadius
+            view.addSubview(imageView)
+        
+        guard let imageFill = page.imageFill(), imageFill.visible else { return view }
+        
+        for fill: FigmaFill in page.fills {
+            
+            switch fill.type {
+            case .solid:
+                
+                if fill.visible {
+                    let layer = CALayer()
+                    layer.frame = view.bounds
+                    layer.cornerRadius = radiusMax(radius: page.cornerRadius, frame: view.bounds)
+                    layer.backgroundColor = fill.color.withAlphaComponent(fill.opacity).cgColor
+                    // layer.opacity = Float(fill.opacity)
+                    imageView.layer.addSublayer(layer)
+                }
+                
+            case .gradientLinear:
+                
+                if fill.visible {
+                    
+                    var gradietCGColors: [CGColor] = [ ]
+                    
+                    for color in fill.gradientStops {
+                        gradietCGColors.append( color.cgColor )
+                    }
+                    
+                    let pointFirst: CGPoint = fill.gradientHandlePositions[0]
+                    let pointLast: CGPoint = fill.gradientHandlePositions[fill.gradientHandlePositions.count - 2]
+                    
+                    let layer = CAGradientLayer()
+                    layer.frame = view.bounds
+                    layer.colors = gradietCGColors
+                    layer.startPoint = pointFirst
+                    layer.endPoint = pointLast
+                    layer.cornerRadius = radiusMax(radius: page.cornerRadius, frame: view.bounds)
+                    // view.layer.insertSublayer(layer, at: 0)
+                    imageView.layer.addSublayer(layer)
+                }
+                
+            default: break
             }
         }
         
-        if !imageFill.visible {
-            return imageView
+        for effect: FigmaEffect in page.effects {
+            if effect.visible {
+                
+                let shadowRadius = effect.radius / 2
+                let shadowColor = effect.color.cgColor
+                let shadowOffset = effect.offset
+                
+                if effect.type == .dropShadow {
+                    
+                    view.layer.shadowOpacity = 1.0
+                    view.layer.shadowOffset = shadowOffset
+                    view.layer.shadowRadius = shadowRadius
+                    view.layer.shadowColor = shadowColor
+                    
+                } else if effect.type == .innerShadow {
+                    
+                    imageView.addInnerShadow(color: shadowColor,
+                                             radius: shadowRadius,
+                                             offset: shadowOffset,
+                                             cornerRadius: cornerRadius)
+                    
+                } else if effect.type == .layerBlur {
+                    
+                    imageView.add(blur: shadowRadius, rect: imageView.bounds)
+                }
+            }
         }
         
         for stroke: FigmaFill in page.strokes {
             if stroke.type == .solid {
                 if stroke.visible {
-                    imageView.layer.borderColor = stroke.color.withAlphaComponent(stroke.opacity).cgColor
-                    imageView.layer.borderWidth = page.strokeWeight
+                    view.layer.borderColor = stroke.color.withAlphaComponent(stroke.opacity).cgColor
+                    view.layer.borderWidth = page.strokeWeight
                 } else {
-                    imageView.layer.borderColor = UIColor.clear.cgColor
-                    imageView.layer.borderWidth = 0.0
+                    view.layer.borderColor = UIColor.clear.cgColor
+                    view.layer.borderWidth = 0.0
                 }
             }
         }
@@ -481,9 +549,11 @@ class FigmaConvertToViews: NSObject {
             
             FigmaData.downloadImage(url: url, completion: { (image: UIImage) in
                 // guard let _self = self else { return }
-                
-                imageView.image = image
-                FigmaData.saveImage(image: image, imageRef: page.name)
+                main {
+                    imageView.image = image
+                }
+                FigmaData.saveImageXcassets(image: image, name: page.name)
+                // FigmaData.save(image: image, name: page.name)
             })
             
             switch imageFill.scaleMode {
@@ -492,22 +562,25 @@ class FigmaConvertToViews: NSObject {
             default: break
             }
             
-            imageView.clipsToBounds = true
+//            imageView.clipsToBounds = true
         }
         
-        separatorChildrenViewsType(figma_view: page, mailView: imageView)
+        separatorChildrenViewsType(figma_view: page, mailView: view)
         
-        return imageView
+        return view
     }
     
     //MARK: - Label
     
     func pageConvertToLabel(page: FigmaNode) -> UILabel {
         
-        let label = UILabel(frame: page.absoluteBoundingBox)
-        label.text = page.text
+        let label = DesignLabel(frame: page.absoluteBoundingBox)
         
+        label.text = page.text
+        label.textColor = .clear
         label.numberOfLines = 100
+        label.clipsToBounds = page.clipsContent
+        label.layer.cornerRadius = radiusMax(radius: page.cornerRadius, frame: label.bounds)
         
         
         
@@ -561,38 +634,74 @@ class FigmaConvertToViews: NSObject {
             // case .bottom: label.textAlignment = .left
             // case .top:  label.textAlignment = .right
             // default: break
-            
         }
         
         for fill: FigmaFill in page.fills {
-            
-            switch fill.type {
-            case .solid:
+            if fill.visible {
                 
-                label.textColor = fill.color
+                switch fill.type {
+                case .solid:
+                    
+                    label.textColor = fill.color
+                    
+                case .gradientRadial, .gradientLinear:
+                    
+                    var i: Int = 0
+                    for color in fill.gradientStops {
+                        switch i {
+                        case 0: label.grColor1 = color
+                        case 1: label.grColor2 = color
+                        case 2: label.grColor3 = color
+                        case 3: label.grColor4 = color
+                        case 4: label.grColor5 = color
+                        case 5: label.grColor6 = color
+                        default: break
+                        }
+                        i += 1
+                    }
+                    
+                    label.grPointPercent = true
+                    label.grRadial = fill.type == .gradientRadial
+                    // label.grDebug = true
+                    
+                    label.grStartPoint = fill.startPoint()
+                    label.grEndPoint   = fill.endPoint()
+                    
+                default: break
+                }
                 
-            default: break
             }
         }
         
-        label.clipsToBounds = page.clipsContent
-        label.layer.cornerRadius = radiusMax(radius: page.cornerRadius, frame: label.bounds)
-        // label.layer.borderColor = page.strokeColor.cgColor
-        // label.layer.borderWidth = page.strokeWeight
+        if label.textColor == .clear {
+            label.textColor = .black
+            label.grBlendMode = 18
+        }
         
         for stroke: FigmaFill in page.strokes {
-            if stroke.type == .solid {
-                if stroke.visible {
-                    label.layer.borderColor = stroke.color.withAlphaComponent(stroke.opacity).cgColor
-                    label.layer.borderWidth = page.strokeWeight
-                } else {
-                    label.layer.borderColor = UIColor.clear.cgColor
-                    label.layer.borderWidth = 0.0
+            if stroke.visible {
+                
+                if stroke.type == .solid {
+                    label.brColor = stroke.color.withAlphaComponent(stroke.opacity)
+                    label.brWidth = page.strokeWeight
+                }
+            }
+        }
+        
+        for effect: FigmaEffect in page.effects {
+            if effect.visible {
+                
+                if effect.type == .dropShadow {
+                    label.shRadius = effect.radius / 2
+                    label.shColor  = effect.color
+                    label.shOffset = effect.offset
                 }
             }
         }
         
         separatorChildrenViewsType(figma_view: page, mailView: label)
+        
+//        label.applyGradientWith(startColor: .red, endColor: .black)
         
         return label
     }

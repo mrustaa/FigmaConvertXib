@@ -82,8 +82,18 @@ class FigmaFill {
         }
         
     }
+}
+
+extension FigmaFill {
     
-     
+    func startPoint() -> CGPoint {
+        return gradientHandlePositions[0]
+    }
+    
+    func endPoint() -> CGPoint {
+        return gradientHandlePositions[gradientHandlePositions.count - 2]
+    }
+    
 }
 
 extension FigmaFill {

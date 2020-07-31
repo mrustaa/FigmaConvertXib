@@ -10,7 +10,9 @@ import UIKit
 
 private var customModule = "FigmaConvertXib"
 private var customClassImage = "DesignImageView"
+private var customClassLabel = "DesignLabel"
 private var customClassView = "DesignView"
+private var customClassFigure = "DesignFigure"
 
 extension FigmaNode {
     
@@ -50,6 +52,8 @@ extension FigmaNode {
         """
     }
     
+    // MARK: - ImageView
+    
     func imageXib(comp: Bool = false) -> (String, String) {
         
         // let fileNameType = "\(imageFill.imageRef).png"
@@ -57,9 +61,13 @@ extension FigmaNode {
         
         let contentMode = comp ? "scaleAspectFill" : contentModeXib()
         
-        let header = "<imageView clipsSubviews=\"YES\" userInteractionEnabled=\"NO\" alpha=\"\(opacity)\" contentMode=\"\(contentMode)\" horizontalHuggingPriority=\"251\" verticalHuggingPriority=\"251\" fixedFrame=\"YES\" image=\"\(name)\" translatesAutoresizingMaskIntoConstraints=\"NO\" userLabel=\"\(name)\" id=\"\(xibID())\">"
+        let header = "<imageView clipsSubviews=\"YES\" userInteractionEnabled=\"NO\" alpha=\"\(opacity)\" contentMode=\"\(contentMode)\" horizontalHuggingPriority=\"251\" verticalHuggingPriority=\"251\" fixedFrame=\"YES\" image=\"\( name.xibFilter() )\" translatesAutoresizingMaskIntoConstraints=\"NO\" userLabel=\"\(name)\" id=\"\(xibID())\">"
         
-        let end = "</imageView>"
+        let end = """
+        </imageView>
+
+
+        """
         
         return (header, end)
     }
@@ -67,46 +75,81 @@ extension FigmaNode {
     func designImageViewXib() -> (String, String) {
         
         let header = """
-        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="\(xibID())" userLabel="\(name)" customClass="\(customClassImage)" customModule="\(customModule)" customModuleProvider="target">
+        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="\(xibID())" userLabel="\( name.xibFilter() )" customClass="\(customClassImage)" customModule="\(customModule)" customModuleProvider="target">
         """
         
-        let end = "</view>"
+        let end = """
+        </view>
+
+
+        """
         
         return (header, end)
     }
     
+    // MARK: - Label
+    
     func labelXib() -> (String, String) {
         
-        let header = "<label opaque=\"NO\" userInteractionEnabled=\"NO\" alpha=\"\(opacity)\" contentMode=\"left\" horizontalHuggingPriority=\"251\" verticalHuggingPriority=\"251\" fixedFrame=\"YES\" text=\"\(text)\" textAlignment=\"\(fontStyleXib())\" lineBreakMode=\"tailTruncation\" numberOfLines=\"100\" baselineAdjustment=\"alignBaselines\" adjustsFontSizeToFit=\"NO\" translatesAutoresizingMaskIntoConstraints=\"NO\" userLabel=\"\(name)\" id=\"\(xibID())\">"
+        // let header = "<label opaque=\"NO\" userInteractionEnabled=\"NO\" alpha=\"\(opacity)\" contentMode=\"left\" horizontalHuggingPriority=\"251\" verticalHuggingPriority=\"251\" fixedFrame=\"YES\" text=\"\( text.xibFilter() )\" textAlignment=\"\(fontStyleXib())\" lineBreakMode=\"tailTruncation\" numberOfLines=\"100\" baselineAdjustment=\"alignBaselines\" adjustsFontSizeToFit=\"NO\" translatesAutoresizingMaskIntoConstraints=\"NO\" userLabel=\"\( name.xibFilter() )\" id=\"\(xibID())\">"
         
-        let end = "</label>"
+        let header = """
+        <label opaque="NO" userInteractionEnabled="NO" alpha="\(opacity)" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="\(text.xibFilter())" textAlignment="\(fontStyleXib())" lineBreakMode="tailTruncation" numberOfLines="\(100)" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="\(xibID())" userLabel="\(name.xibFilter())" customClass="\(customClassLabel)" customModule="\(customModule)" customModuleProvider="target">
+        """
+        
+        let end = """
+        </label>
+
+
+        """
         
         return (header, end)
     }
+    
+    // MARK: - View
     
     func designViewXib(comp: Bool = false) -> (String, String) {
         
         let clipsSubviews = comp ? "YES" : clipsContent.xib()
         
-        let header = "<view clipsSubviews=\"\(clipsSubviews)\" alpha=\"\(opacity)\" contentMode=\"scaleToFill\" fixedFrame=\"YES\" translatesAutoresizingMaskIntoConstraints=\"NO\" userLabel=\"\(name)\" id=\"\(xibID())\" customClass=\"\(customClassView)\" customModule=\"\(customModule)\" customModuleProvider=\"target\">"
+        let header = "<view clipsSubviews=\"\(clipsSubviews)\" alpha=\"\(opacity)\" contentMode=\"scaleToFill\" fixedFrame=\"YES\" translatesAutoresizingMaskIntoConstraints=\"NO\" userLabel=\"\( name.xibFilter() )\" id=\"\(xibID())\" customClass=\"\(customClassView)\" customModule=\"\(customModule)\" customModuleProvider=\"target\">"
         
-        let end = "</view>"
+        let end = """
+        </view>
+
+
+        """
         
         return (header, end)
     }
     
     func viewXib() -> (String, String) {
         
-        let header = "<view clipsSubviews=\"\(clipsContent.xib())\" alpha=\"\(opacity)\" contentMode=\"scaleToFill\" fixedFrame=\"YES\" translatesAutoresizingMaskIntoConstraints=\"NO\" userLabel=\"\(name)\" id=\"\(xibID())\">"
+        let header = """
+        <view clipsSubviews=\"\(clipsContent.xib())\" alpha=\"\(opacity)\" contentMode=\"scaleToFill\" fixedFrame=\"YES\" translatesAutoresizingMaskIntoConstraints=\"NO\" userLabel=\"\( name.xibFilter() )\" id=\"\(xibID())\">
+        """
         
-        let end = "</view>"
+        let end = """
+        </view>
+
+
+        """
         
         return (header, end)
     }
     
-    // let viewHEADER = "<view alpha=\"\(fill.opacity)\" clipsSubviews=\"\(page.clipsContent.string())\" contentMode=\"scaleToFill\" fixedFrame=\"YES\" translatesAutoresizingMaskIntoConstraints=\"NO\" id=\"\(randId)\" customClass=\"DesignView\" customModule=\"FigmaConvertXib\" customModuleProvider=\"target\">"
-    // let viewEND = "</view>"
-    
+    // MARK: - Design Figure
+      
+    func designFigureXib() -> (String, String) {
         
+        let header = """
+        <view clipsSubviews="\(clipsContent.xib())" alpha="\(opacity)" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" userLabel="\(name.xibFilter())" id="\(xibID())" customClass="\(customClassFigure)" customModule="\(customModule)" customModuleProvider="target">
+        """
+
+        let end = "</view>"
+          
+        return (header, end)
+    }
+    
     
 }

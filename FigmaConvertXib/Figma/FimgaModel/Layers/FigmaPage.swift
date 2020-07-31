@@ -10,7 +10,6 @@ import UIKit
 
 class FigmaPage {
     
-    
     let id: String
     let name: String
     let type: FigmaDocument.Type_

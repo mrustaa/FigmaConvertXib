@@ -24,7 +24,7 @@ class FigmaConvertToXib: NSObject {
         let fileName = "result.xib"
         
         
-        let docDirectory = FigmaData.current.pathXib()
+        let docDirectory = FigmaData.pathXib()
 //        print("\n\(docDirectory)")
         
         self.save(text: result,
@@ -65,10 +65,9 @@ class FigmaConvertToXib: NSObject {
     
     func saveImage(image: UIImage, imageRef: String) {
         
-        
         let data = image.pngData()!
         
-        let p = FigmaData.current.pathXibImages()
+        let p = FigmaData.pathXibImages()
         let a = "file://\(p)/"
         
         guard let urlPathA = URL(string: a) else { return }

@@ -10,6 +10,27 @@ import UIKit
 
 extension UIViewController {
     
+    func alertSelect(pages: [FigmaPage], callback: ((Int) -> Void)? = nil) {
+        
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
+        
+        var i = 0
+        for page in pages {
+            
+            let action = UIAlertAction(title: page.name, style: .default) { (action) -> Void in
+                guard let index = alert.actions.firstIndex(of: action) else { return }
+                callback?(index)
+            }
+            
+            alert.addAction(action)
+            i += 1
+        }
+        
+        alert.addAction( UIAlertAction(title: "Cancel", style: .cancel))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     func alertField(title: String? = nil, message: String? = nil, callback: ((String) -> Void)? = nil) {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
@@ -31,7 +52,7 @@ extension UIViewController {
         let cancelAction = UIAlertAction(title: "Cancel", style: .default) { (alertAction) in }
         alert.addAction(cancelAction)
 
-        self.present(alert, animated:true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
     }
     
     func alertMessage(title: String? = nil, message: String? = nil, callback: (() -> Void)? = nil) {

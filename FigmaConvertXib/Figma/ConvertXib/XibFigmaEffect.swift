@@ -12,27 +12,25 @@ extension FigmaEffect {
     
     func xib() -> String {
         
+        let c = color
+        let r = radius / 2
+        let o = offset
+        
         if type == .dropShadow {
             
-            return """
-            \(xibAttr(color: color, key: "shadowColor"))
-            \(xibAttr(number: radius / 2, key: "shadowRadius"))
-            \(xibAttr(size: offset, key: "shadowOffset"))
-            """
+            return xibAttr(color:  c, key: "shColor" ) +
+                   xibAttr(number: r, key: "shRadius") +
+                   xibAttr(size:   o, key: "shOffset")
             
         } else if type == .innerShadow {
             
-            return """
-            \(xibAttr(color: color, key: "innerShColor"))
-            \(xibAttr(number: radius / 2, key: "innerShRadius"))
-            \(xibAttr(size: offset, key: "innerShOffset"))
-            """
+            return xibAttr(color:  c, key: "inShColor" ) +
+                   xibAttr(number: r, key: "inShRadius") +
+                   xibAttr(size:   o, key: "inShOffset")
             
         } else if type == .layerBlur {
             
-            return """
-            \(xibAttr(number: radius / 2, key: "blur"))
-            """
+            return xibAttr(number: r, key: "blur")
             
         }
         

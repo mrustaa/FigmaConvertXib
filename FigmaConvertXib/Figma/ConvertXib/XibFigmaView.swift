@@ -46,6 +46,15 @@ extension FigmaNode {
         return nil
     }
     
+    func strokeSolid() -> FigmaFill? {
+        for stroke in strokes {
+            if stroke.type == .solid {
+                return stroke
+            }
+        }
+        return nil
+    }
+    
     func fontStyleXib() -> String {
         if let fontStyle = fontStyle {
             return fontStyle.alignmentXib()
@@ -67,20 +76,9 @@ extension FigmaNode {
         
         var headerEnd  = ("", "")
         
-        var imageRadius: Bool = false
-        
         if type == .component {
             
             headerEnd = imageXib(comp: true)
-            
-//        } else if imageFill() != nil {
-//
-//            if realRadius != 0 || fills.count > 1 || !effects.isEmpty || strokeWeight != 0 {
-//                imageRadius = true
-//                headerEnd = designImageViewXib()
-//            } else {
-//                headerEnd = imageXib()
-//            }
             
         } else if type == .text {
             
@@ -88,12 +86,12 @@ extension FigmaNode {
             
         } else if (realRadius != 0) || (strokes.count == 1) {
             
+//            headerEnd = designFigureXib()
             headerEnd = designViewXib()
             
         } else {
             
             headerEnd = viewXib()
-            
         }
         // MARK: - Frame
         
@@ -112,9 +110,25 @@ extension FigmaNode {
         if type == .text {
             
             for fill: FigmaFill in fills {
-                if fill.type == .solid, fill.visible {
-                    xmlTextColor = "\(fill.color.withAlphaComponent(fill.opacity).xib("textColor"))<nil key=\"highlightedColor\"/>"
+                if fill.visible {
+                    
+                    if fill.type == .solid {
+                        
+                        xmlTextColor = "\(fill.color.withAlphaComponent(fill.opacity).xib("textColor"))<nil key=\"highlightedColor\"/>"
+                        
+                    } else if fill.type == .gradientLinear ||
+                              fill.type == .gradientRadial {
+                        
+                        xmlFillColor = fill.xibGradientText()
+                    }
                 }
+            }
+            
+            var textSolid = false; for fill: FigmaFill in fills { if fill.visible, fill.type == .solid { textSolid = true }}
+            
+            if !textSolid {
+                xmlFillColor += xibAttr(number: 18, key: "grBlendMode")
+                xmlTextColor = xibAttr(color: .clear, key: "textColor")
             }
             
         } else if type != .component {
@@ -123,7 +137,6 @@ extension FigmaNode {
             if fills.count == 1 {
                 
                 let fill: FigmaFill = fills[0]
-                
                 if fill.visible {
                     
                     /// Background Color
@@ -131,17 +144,25 @@ extension FigmaNode {
                         
                         let color = fill.color.withAlphaComponent(fill.opacity)
                         
-                        /// DesigView
-                        if (realRadius != 0) || (strokes.count == 1) {
-                            
-                            xmlFillColor = xibAttr(color: color, key: "fillColor")
-                        
                         /// View
-                        } else {
+                        if realRadius == 0, strokes.count == 0, effects.count == 0  {
+                            
                             xmlBackgroundColor = color.xib("backgroundColor")
+                            
+                        /// DesigView
+                        } else if !effects.isEmpty {
+                            
+                            let blur = xibSearchEffect(type: .layerBlur)
+                            let shadow = xibSearchEffect(type: .dropShadow)
+                            let innerShadow = xibSearchEffect(type: .innerShadow)
+                                
+                            xmlFillSubviews = fill.xib(view: self, effect: shadow, effect2: innerShadow, blur: blur)
+                                
+                        } else {
+                            xmlFillColor = xibAttr(color: color, key: "fillColor")
                         }
                         
-                        /// Gradient
+                    /// Gradient
                     } else if fill.type == .gradientLinear || fill.type == .image {
                         
                         let blur = xibSearchEffect(type: .layerBlur)
@@ -151,31 +172,7 @@ extension FigmaNode {
                         xmlFillSubviews = fill.xib(view: self, effect: shadow, effect2: innerShadow, blur: blur)
                         
                     }
-//                    else if fill.type == .image {
-                        
-//                        let shadow = xibSearchEffect(type: .dropShadow)
-//                        let innerShadow = xibSearchEffect(type: .innerShadow)
-//                        let blur = xibSearchEffect(type: .layerBlur)
-                        
-
-                        
-//                        xmlFillAttributes =
-//                            xibAttr(imageName: name, key: "image") +
-//                            xibAttr(boolean: fill.scaleMode == .fill, key: "contModeFill")
-//                            fill.xibFill() +
-//                            xibCornerRadius() +
-//                            fill.xibGradientLinear() +
-//                            fill.xib(effect: shadow) +
-//                            fill.xib(effect: innerShadow) +
-//                            fill.xib(effect: blur)
-                        
-                        
-                        // xmlFillSubviews = imageXibReady()
-                        
-//                    }
-                    
                 }
-                
                 
             } else { /// если их много. это уже все слои сабвьюхи
                 
@@ -194,26 +191,6 @@ extension FigmaNode {
                         
                         if fill.visible {
                             
-//                            if fill.type == .image, imageRadius {
-//
-//                                // xmlFillSubviews = xmlFillSubviews + imageXibReady()
-//
-//                                xmlFillAttributes = fill.xibFill() + xibCornerRadius()
-//
-//                                if i == 0 { /// 1 слой
-//
-//                                    let effect = xibSearchEffect(type: .dropShadow)
-//                                    xmlFillAttributes += fill.xib(effect: effect)
-//
-//                                } else if i == (visibleCount - 1) { /// конечный слой
-//
-//                                    let effect = xibSearchEffect(type: .innerShadow)
-//                                    xmlFillAttributes += fill.xib(effect: effect)
-//
-//                                }
-//
-//                            } else {
-                                
                                 var result = ""
                                 
                                 let blur = xibSearchEffect(type: .layerBlur)
@@ -250,41 +227,15 @@ extension FigmaNode {
                     for fill: FigmaFill in fills {
                     
                         if fill.visible {
+
+                            let blur = xibSearchEffect(type: .layerBlur)
+                            let shadow = xibSearchEffect(type: .dropShadow)
+                            let innerShadow = xibSearchEffect(type: .innerShadow)
                             
-//                            if fill.type == .image, imageRadius {
-//
-//                                let shadow = xibSearchEffect(type: .dropShadow)
-//                                let innerShadow = xibSearchEffect(type: .innerShadow)
-//                                let blur = xibSearchEffect(type: .layerBlur)
-//
-//                                xmlFillAttributes =
-//                                    xibAttr(imageName: name, key: "image") +
-//                                    xibAttr(boolean: fill.scaleMode == .fill, key: "contModeFill") +
-//                                    fill.xibFill() +
-//                                    xibCornerRadius() +
-//                                    fill.xibGradientLinear() +
-//                                    fill.xib(effect: shadow) +
-//                                    fill.xib(effect: innerShadow) +
-//                                    fill.xib(effect: blur)
-                                
-                                
-                                // xmlFillSubviews = xmlFillSubviews + imageXibReady()
-                                
-//                            } else {
-                                
-                                let blur = xibSearchEffect(type: .layerBlur)
-                                let shadow = xibSearchEffect(type: .dropShadow)
-                                let innerShadow = xibSearchEffect(type: .innerShadow)
-                                
-                                xmlFillSubviews = fill.xib(view: self, effect: shadow, effect2: innerShadow, blur: blur)
-                                
-//                            }
-                            
+                            xmlFillSubviews = fill.xib(view: self, effect: shadow, effect2: innerShadow, blur: blur)
                         }
                     }
                 }
-                
-                
             }
         }
         
@@ -297,18 +248,31 @@ extension FigmaNode {
         
         /// Имется слои - толшины и цвета границ
         var xmlBorder = ""
-        if !strokes.isEmpty, strokes.count == 1 {
+        //if !strokes.isEmpty, strokes.count == 1 {
+        if let stroke = strokeSolid() {
+            if stroke.visible {
             
             /// такая же логика - зачем толщине границ - несколько цветов
             /// или градиент я просто не представляю как здесь сделать
-            let stroke: FigmaFill = strokes[0]
-            if stroke.type == .solid, stroke.visible {
-                
-                
-                xmlBorder =
-                  xibAttr(number: strokeWeight, key: "borderWidth")
-                + xibAttr(color: stroke.color.withAlphaComponent(stroke.opacity), key: "borderColor")
-                
+            // let stroke: FigmaFill = strokes[0]
+                if stroke.type == .solid {
+
+                    xmlBorder += xibAttr(number: strokeWeight, key: "brWidth")
+                    xmlBorder += xibAttr(color: stroke.color.withAlphaComponent(stroke.opacity), key: "brColor")
+                }
+            }
+        }
+        
+        
+        if type == .text {
+            for effect: FigmaEffect in effects {
+                if effect.visible {
+                    if effect.type == .dropShadow {
+                        xmlBorder += xibAttr(color:  effect.color,      key: "shColor")
+                        xmlBorder += xibAttr(number: effect.radius / 2, key: "shRadius")
+                        xmlBorder += xibAttr(size:   effect.offset,     key: "shOffset")
+                    }
+                }
             }
         }
         
@@ -327,15 +291,10 @@ extension FigmaNode {
             }
         }
         
-        
-        
         var xmlSubviews = ""
         if !xmlFillSubviews.isEmpty || !xmlViewSubviews.isEmpty {
-            
             xmlSubviews = xibSubviewsClose(subviews: xmlFillSubviews + xmlViewSubviews)
         }
-        
-        
         
         // MARK: - FontName
         
@@ -344,11 +303,9 @@ extension FigmaNode {
         // MARK: - DesignView Attributes
         
         var xmlDefinedRuntimeAttributes = ""
-        
         if !xmlFillColor.isEmpty || !xmlCornerRadius.isEmpty || !xmlBorder.isEmpty {
             xmlDefinedRuntimeAttributes = xibAttrsClose(attributes: xmlFillColor + xmlCornerRadius + xmlBorder )
         }
-        
         
 //        <resources>
 //            <image name="🎈" width="1130" height="1436"/>

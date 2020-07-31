@@ -36,6 +36,13 @@ class FigmaData {
         case Images
     }
     
+    public enum RequestComponentFormat: String {
+        case JPG = "jpg"
+        case PNG = "png"
+        case SVG = "svg"
+        case PDF = "pdf"
+    }
+    
     //MARK: - Result
     
     var response: FigmaResponse?
@@ -45,39 +52,64 @@ class FigmaData {
     //MARK: - 📁 Paths
     
     /// path: /FigmaConvertXib/FigmaConvertXib/Figma/Xib
-    func pathXib() -> String {
+    
+    class func pathXib() -> String {
         
         let pathFile: String = #file
         let arrayFilesName: [String] = #file.split(separator: "/").map({String($0)})
-        let resultPathFinal: String = pathFile.replacingOccurrences(of: arrayFilesName.last!, with: "Xib")
-        
-//        print(pathFile)
-//        print(arrayFilesName)
-//        print(resultPathFinal)
-        
+        let resultPathFinal: String = pathFile.findReplace(find: arrayFilesName.last!, replace: "Xib")
         return resultPathFinal
     }
     
     /// path: /FigmaConvertXib/FigmaConvertXib/Figma/Xib/images.xcassets
-    func pathXibImages() -> String {
+    
+    class func pathXibImages() -> String {
         
         let pathFile: String = #file
         let arrayFilesName: [String] = #file.split(separator: "/").map({String($0)})
-        let resultPathFinal: String = pathFile.replacingOccurrences(of: arrayFilesName.last!, with: "Xib/images.xcassets")
-        
+        let resultPathFinal: String = pathFile.findReplace(find: arrayFilesName.last!, replace: "Xib/images.xcassets")
         return resultPathFinal
     }
     
-    func pathDocument() -> String {
+    /// path: TEMP
+    /// /Users/mrusta/Library/Developer/CoreSimulator/Devices/FC70BFBD-0AA2-4BBF-AB10-A450BE6EED79/data/Containers/Data/Application/963AFA02-49CE-475D-AE9E-44D407355067/Documents
+    
+    class func pathTemporaryDocument() -> String {
         let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         return documentDirectory[0]
+    }
+    
+
+    //MARK: - 📁 🆕 Create Folder
+    
+    class func createFolder(path: String, name: String) -> String? {
+        
+        // let localStrURL = FigmaData.pathTemporaryDocument()
+        // let localStrURL = FigmaData.pathXibImages()
+        
+        let name_ = name.findReplace(find: "/", replace: ":")
+        
+        guard let localURL = URL(string: path) else { return nil }
+        let dataPath = localURL.appendingPathComponent(name_)
+        
+        if !FileManager.default.fileExists(atPath: dataPath.absoluteString) {
+            do {
+                let dataPathStr = path + "/" + name_ // dataPath.absoluteString
+                try FileManager.default.createDirectory(atPath: dataPathStr, withIntermediateDirectories: true, attributes: nil)
+                return dataPath.absoluteString
+            } catch {
+                print("Error", error.localizedDescription);
+            }
+        }
+        return nil
     }
     
     //MARK: - 📁 Paths 🗑 Clear Temp
     
     func clearTempFolder() {
+        
         let fileManager = FileManager.default
-        let tempFolderPath = pathDocument()//NSTemporaryDirectory()
+        let tempFolderPath = FigmaData.pathTemporaryDocument()
         do {
             let filePaths = try fileManager.contentsOfDirectory(atPath: tempFolderPath)
             for filePath in filePaths {
@@ -89,9 +121,9 @@ class FigmaData {
         }
     }
     
-    //MARK: - 📄 Save Local File.xib
+    //MARK: - 💾📄 Save Local File.xib
     
-    class func save(text: String, toDirectory directory: String, withFileName fileName: String) {
+    class func save(text: String, toDirectory directory: String, path_: String? = nil, withFileName fileName: String) {
         
         func append(toPath path: String, withPathComponent pathComponent: String) -> String? {
             if var pathURL = URL(string: path) {
@@ -101,51 +133,173 @@ class FigmaData {
             return nil
         }
         
-        guard let filePath = append(toPath: directory, withPathComponent: fileName) else { return }
+        guard var filePath: String = append(toPath: directory, withPathComponent: fileName) else {
+            print("🚨 Error")
+            return
+        }
+        
+        if let path_ = path_ {
+            filePath = path_
+        }
         
         do {
+            
             try text.write(toFile: filePath, atomically: true, encoding: .utf8)
-        } catch { print("Error", error); return }
+        } catch {
+            print("🚨 Error", error)
+            return
+        }
     }
     
-    //MARK: - 🏞 Image Download
+    //MARK: - 💾📄 Save Local .json
+    
+    class func createImageJsonFile(path: String, path_: String, name: String) {
+        
+        let text = """
+        {
+          "images" : [
+            {
+              "filename" : "\(name).png",
+              "idiom" : "universal",
+              "scale" : "1x"
+            },
+            {
+              "idiom" : "universal",
+              "scale" : "2x"
+            },
+            {
+              "idiom" : "universal",
+              "scale" : "3x"
+            }
+          ],
+          "info" : {
+            "author" : "xcode",
+            "version" : 1
+          }
+        }
+        """
+        
+        FigmaData.save(text: text,
+                       toDirectory: path,
+                       path_: path_ + "/Contents.json",
+                       withFileName: "Contents.json")
+        
+    }
+    
+    //MARK: - 🏞⬇️ Image Download
+    
+    class func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
+    }
     
     class func downloadImage(url: URL, completion: ((_ image: UIImage) -> Void)? = nil) {
-           
-           func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
-               URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
-           }
-           
-           getData(from: url) { data, response, error in
-               guard let data = data, error == nil else { return }
-               if let image = UIImage(data: data) {
-                   DispatchQueue.main.async() {
-                       completion?(image)
-                   }
-               }
-           }
-       }
+
+        getData(from: url) { data, response, error in
+            guard let data = data, error == nil else { return }
+            if let image = UIImage(data: data) {
+//                DispatchQueue.main.async() {
+                    completion?(image)
+//                }
+            }
+        }
+    }
     
-    
-    //MARK: - 🏞 Image Save Local Xib/
-    
-    class func saveImage(image: UIImage, imageRef: String) {
+    class func saveImageXcassets(image: UIImage, name: String) {
         
-        let data = image.pngData()!
+        let path = pathXibImages()
+        let name_ = name + ".imageset"
         
-        let p = FigmaData.current.pathXibImages()
-        let a = "file://\(p)/"
+        guard let localURL = URL(string: path) else { return }
+        let dataPath = localURL.appendingPathComponent(name_)
+        let filterPath = dataPath.absoluteString
+        
+        let path_ = path + "/" + name_
+        
+        if FileManager.default.fileExists(atPath: filterPath) {
+            
+            FigmaData.createImageJsonFile(path: filterPath, path_: path_, name: name)
+            FigmaData.save(image: image, path: filterPath, name: name)
+            
+        } else {
+            if let createdFolderPath = createFolder(path: path, name: name_) {
+                
+                FigmaData.createImageJsonFile(path: createdFolderPath, path_: path_, name: name)
+                FigmaData.save(image: image, path: createdFolderPath, name: name)
+            }
+        }
+    }
+    
+    //MARK: 🏞💾 Image Save Local
+    
+    class func save(image: UIImage, path: String? = nil, name: String) {
+        
+        guard let data = image.pngData() else { return }
+        
+        let p = FigmaData.pathXibImages()
+        var a = "file://\(p)/"
+        
+        if let path = path {
+            a = "file://\(path)/"
+        }
         
         guard let urlPathA = URL(string: a) else { return }
-        let urlPath = urlPathA.appendingPathComponent("\(imageRef).png")
+        let urlPath = urlPathA.appendingPathComponent("\(name).png")
         
         do {
             try data.write(to: urlPath)
             print(" 🏞 \(urlPath.absoluteString)")
+            
         } catch {
             print(error.localizedDescription)
         }
     }
+    
+    //MARK: 🏞📤 Image Load Local
+    
+    class func load(imageName: String, path: String? = nil) -> UIImage? {
+        
+        let pat = pathXibImages()
+        let name_ = imageName + ".imageset"
+        guard let localURL = URL(string: pat) else { return nil }
+        let dataPath = localURL.appendingPathComponent(name_)
+        let filterPath = dataPath.absoluteString
+        
+        
+        let p = filterPath // FigmaData.pathXibImages()
+        var a = "file://\(p)/"
+        
+        if let path = path {
+            a = "file://\(path)/"
+        }
+        
+        guard let url = URL(string: a) else { return nil }
+        let urlPath = url.appendingPathComponent("\(imageName).png")
+        
+        do {
+            let imageData = try Data(contentsOf: urlPath)
+            // print(" 📤 \(urlPath.absoluteString)")
+            return UIImage(data: imageData)
+            
+        } catch {
+            
+        }
+        return nil
+    }
+    
+    //MARK: 🏞⁉️ Check File Exists Path
+    
+    class func checkImageExists(imageName: String) -> Bool {
+        
+        let path = FigmaData.pathXibImages() + "/" + imageName + ".imageset" + "/" + imageName + ".png"
+        
+        if FileManager.default.fileExists(atPath: path) {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    
     
     //MARK: - Request Figma
     
@@ -179,9 +333,9 @@ class FigmaData {
         
     }
     
-    func requestComponent(key: String, nodeId: String, compJson: FigmaData.CompletionJSON? = nil) {
+    func requestComponent(key: String, nodeId: String, format: RequestComponentFormat, compJson: FigmaData.CompletionJSON? = nil) {
         
-        let srtURL = "\(apiURLComponent)\(key)/?ids=\(nodeId)&format=png"
+        let srtURL = "\(apiURLComponent)\(key)/?ids=\(nodeId)&scale=\(3.0)&format=\(format.rawValue)"
         
         guard let url = URL(string: srtURL) else { return }
         
