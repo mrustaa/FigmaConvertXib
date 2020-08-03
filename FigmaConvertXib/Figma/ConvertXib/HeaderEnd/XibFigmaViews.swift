@@ -140,7 +140,7 @@ extension FigmaNode {
     
     func cellXib(rect: CGRect) -> (header: String, end: String) {
         
-        let name_ = name.xibFilterName(type: .cell)
+        let name_ = name.xibFilterName(type: .cell) + "Cell"
         
         let cellID = xibID()
         

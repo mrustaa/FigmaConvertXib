@@ -42,6 +42,8 @@
 		4610577124B89EAC008AF0FD /* FigmaDownloadImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4610577024B89EAC008AF0FD /* FigmaDownloadImages.swift */; };
 		4624E56024C51B8B00BEC63E /* DesignExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4624E55F24C51B8B00BEC63E /* DesignExtentions.swift */; };
 		4624E56224C51C8B00BEC63E /* DesignEllipse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4624E56124C51C8B00BEC63E /* DesignEllipse.swift */; };
+		4627C09224D8991400E49D9D /* TestRustamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4627C09024D8991400E49D9D /* TestRustamCell.swift */; };
+		4627C09324D8991400E49D9D /* TestRustamCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4627C09124D8991400E49D9D /* TestRustamCell.xib */; };
 		463AED4C24CC45C2001857E3 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463AED4B24CC45C2001857E3 /* String.swift */; };
 		463AED4E24CC9DDC001857E3 /* DesignLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463AED4D24CC9DDC001857E3 /* DesignLabel.swift */; };
 		4640619124C735EA00E4070B /* XibFigmaViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4640619024C735EA00E4070B /* XibFigmaViews.swift */; };
@@ -73,8 +75,6 @@
 		46A9779624A383EC0088EFED /* FigmaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A9779524A383EC0088EFED /* FigmaData.swift */; };
 		46BAF21324C6722100A02A1C /* DesignImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BAF21224C6722100A02A1C /* DesignImageView.swift */; };
 		46D02D2424D057D500A93F35 /* DesignFigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D02D2324D057D500A93F35 /* DesignFigure.swift */; };
-		46D570CF24D84B2D002EB24B /* TestCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46D570CD24D84B2C002EB24B /* TestCell.xib */; };
-		46D570D024D84B2D002EB24B /* TestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D570CE24D84B2C002EB24B /* TestCell.swift */; };
 		46E2BCC924D30750004D67FC /* XibFigmaViewNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E2BCC824D30750004D67FC /* XibFigmaViewNew.swift */; };
 		46E56D7324A66F7C00E11DD5 /* GTWalsheimPro-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46E56D6124A66F7C00E11DD5 /* GTWalsheimPro-Medium.ttf */; };
 		46E56D7424A66F7C00E11DD5 /* GTWalsheimPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46E56D6224A66F7C00E11DD5 /* GTWalsheimPro-Regular.ttf */; };
@@ -130,6 +130,8 @@
 		4610577024B89EAC008AF0FD /* FigmaDownloadImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaDownloadImages.swift; sourceTree = "<group>"; };
 		4624E55F24C51B8B00BEC63E /* DesignExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignExtentions.swift; sourceTree = "<group>"; };
 		4624E56124C51C8B00BEC63E /* DesignEllipse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignEllipse.swift; sourceTree = "<group>"; };
+		4627C09024D8991400E49D9D /* TestRustamCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestRustamCell.swift; sourceTree = "<group>"; };
+		4627C09124D8991400E49D9D /* TestRustamCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestRustamCell.xib; sourceTree = "<group>"; };
 		463AED4B24CC45C2001857E3 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		463AED4D24CC9DDC001857E3 /* DesignLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignLabel.swift; sourceTree = "<group>"; };
 		4640619024C735EA00E4070B /* XibFigmaViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibFigmaViews.swift; sourceTree = "<group>"; };
@@ -163,8 +165,6 @@
 		46A9779524A383EC0088EFED /* FigmaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaData.swift; sourceTree = "<group>"; };
 		46BAF21224C6722100A02A1C /* DesignImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignImageView.swift; sourceTree = "<group>"; };
 		46D02D2324D057D500A93F35 /* DesignFigure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignFigure.swift; sourceTree = "<group>"; };
-		46D570CD24D84B2C002EB24B /* TestCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestCell.xib; sourceTree = "<group>"; };
-		46D570CE24D84B2C002EB24B /* TestCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCell.swift; sourceTree = "<group>"; };
 		46E2BCC824D30750004D67FC /* XibFigmaViewNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibFigmaViewNew.swift; sourceTree = "<group>"; };
 		46E56D6124A66F7C00E11DD5 /* GTWalsheimPro-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GTWalsheimPro-Medium.ttf"; sourceTree = "<group>"; };
 		46E56D6224A66F7C00E11DD5 /* GTWalsheimPro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GTWalsheimPro-Regular.ttf"; sourceTree = "<group>"; };
@@ -313,6 +313,15 @@
 			path = ConvertView;
 			sourceTree = "<group>";
 		};
+		4627C08F24D8991400E49D9D /* TestRustamCell */ = {
+			isa = PBXGroup;
+			children = (
+				4627C09124D8991400E49D9D /* TestRustamCell.xib */,
+				4627C09024D8991400E49D9D /* TestRustamCell.swift */,
+			);
+			path = TestRustamCell;
+			sourceTree = "<group>";
+		};
 		4643E8FF24D472C8003C8413 /* Old */ = {
 			isa = PBXGroup;
 			children = (
@@ -433,7 +442,7 @@
 		46A9778124A2CAA60088EFED /* Xib */ = {
 			isa = PBXGroup;
 			children = (
-				46D570CC24D84B2C002EB24B /* TestCell */,
+				4627C08F24D8991400E49D9D /* TestRustamCell */,
 				467993B724D657B200467806 /* resultNew.xib */,
 				467993BA24D6589100467806 /* result.xib */,
 				460947C924B73C8500A63D75 /* images.xcassets */,
@@ -478,15 +487,6 @@
 				460947F124B73CEB00A63D75 /* FigmaPage.swift */,
 			);
 			path = Nodes;
-			sourceTree = "<group>";
-		};
-		46D570CC24D84B2C002EB24B /* TestCell */ = {
-			isa = PBXGroup;
-			children = (
-				46D570CD24D84B2C002EB24B /* TestCell.xib */,
-				46D570CE24D84B2C002EB24B /* TestCell.swift */,
-			);
-			path = TestCell;
 			sourceTree = "<group>";
 		};
 		46E56D5F24A66F7C00E11DD5 /* Fonts */ = {
@@ -597,6 +597,7 @@
 				46E56D8124A66F7C00E11DD5 /* SFProDisplay-Heavy.otf in Resources */,
 				46E56D7324A66F7C00E11DD5 /* GTWalsheimPro-Medium.ttf in Resources */,
 				46E56D7E24A66F7C00E11DD5 /* SF-Pro-Display-Bold.otf in Resources */,
+				4627C09324D8991400E49D9D /* TestRustamCell.xib in Resources */,
 				46E56D7F24A66F7C00E11DD5 /* SF-Pro-Display-Heavy.otf in Resources */,
 				46E56D8224A66F7C00E11DD5 /* SanFranciscoDisplay-Regular.otf in Resources */,
 				46E56D7424A66F7C00E11DD5 /* GTWalsheimPro-Regular.ttf in Resources */,
@@ -617,7 +618,6 @@
 				46E56D7824A66F7C00E11DD5 /* ProximaNova-Extrabold.otf in Resources */,
 				46E56D7924A66F7C00E11DD5 /* ProximaNova-Regular.otf in Resources */,
 				46E56D7D24A66F7C00E11DD5 /* SF-Pro-Display-Regular.otf in Resources */,
-				46D570CF24D84B2D002EB24B /* TestCell.xib in Resources */,
 				46A9773F24A27D2B0088EFED /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -656,6 +656,7 @@
 				460947F924B73CEB00A63D75 /* FigmaDocument.swift in Sources */,
 				460947D024B73C9E00A63D75 /* LocalData.swift in Sources */,
 				46D02D2424D057D500A93F35 /* DesignFigure.swift in Sources */,
+				4627C09224D8991400E49D9D /* TestRustamCell.swift in Sources */,
 				4609480724B73D0300A63D75 /* XibBool.swift in Sources */,
 				4610576B24B7C336008AF0FD /* XibFontName.swift in Sources */,
 				4609480424B73D0300A63D75 /* XibFigmaView.swift in Sources */,
@@ -666,7 +667,6 @@
 				460947F524B73CEB00A63D75 /* FigmaJson.swift in Sources */,
 				460947F824B73CEB00A63D75 /* FimgaColor.swift in Sources */,
 				469D465624BF9C7500F8547E /* FigmaEffect.swift in Sources */,
-				46D570D024D84B2D002EB24B /* TestCell.swift in Sources */,
 				46A9779624A383EC0088EFED /* FigmaData.swift in Sources */,
 				460947F224B73CEB00A63D75 /* FigmaFill.swift in Sources */,
 				4672630124C508F200FD5F70 /* XibAutoresizingMask.swift in Sources */,

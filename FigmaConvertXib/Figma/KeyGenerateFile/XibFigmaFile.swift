@@ -37,7 +37,7 @@ extension FigmaNode {
         if name.find(find: FigmaFileType.cell.rawValue) {
             
             let path = FigmaData.pathXib()
-            let name_ = name.xibFilterName(type: .cell)
+            let name_ = name.xibFilterName(type: .cell) + "Cell"
             
             guard let folder = FigmaData.createFolder(path: path, name: name_) else { return }
             // ---------------------------------------------------------------

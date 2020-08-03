@@ -2,7 +2,7 @@ import UIKit
 
 // MARK: - Item
 
-class TestCellItem: TableAdapterItem {
+class TestRustamItem: TableAdapterItem {
     
     init(title: String? = nil,
          subtitle: String? = nil,
@@ -11,15 +11,15 @@ class TestCellItem: TableAdapterItem {
          editing: Bool = false,
          clickCallback: (() -> ())? = nil) {
         
-        let cellData = TestCellCellData(title, subtitle, separator, touchAnimationHide, editing, clickCallback)
+        let cellData = TestRustamCellData(title, subtitle, separator, touchAnimationHide, editing, clickCallback)
         
-        super.init(cellClass: TestCellCell.self, cellData: cellData)
+        super.init(cellClass: TestRustamCell.self, cellData: cellData)
     }
 }
 
 // MARK: - Data
 
-class TestCellCellData: TableAdapterCellData {
+class TestRustamCellData: TableAdapterCellData {
     
     // MARK: Properties
     
@@ -60,11 +60,11 @@ class TestCellCellData: TableAdapterCellData {
 
 // MARK: - Cell
 
-class TestCellCell: TableAdapterCell {
+class TestRustamCell: TableAdapterCell {
     
     // MARK: Properties
     
-    public var data: TestCellCellData?
+    public var data: TestRustamCellData?
     
     // MARK: Outlets
     
@@ -83,7 +83,7 @@ class TestCellCell: TableAdapterCell {
     }
     
     override func fill(data: TableAdapterCellData?) {
-        guard let data = data as? TestCellCellData else { return }
+        guard let data = data as? TestRustamCellData else { return }
         self.data = data
         
         self.hideAnimation = data.touchAnimationHide
