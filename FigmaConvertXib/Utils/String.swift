@@ -10,18 +10,23 @@ import Foundation
 
 extension String {
     
-    // поиск в тексте  слова
+    /// Найти
     func find(find: String) -> Bool{
         return range(of: find) != nil
     }
     
-    // поиск в тексте  слова и замена
+    /// Найти Заменить
     func findReplace(find: String, replace: String) -> String {
         return replacingOccurrences(of: find, with: replace)
     }
     
+    /// 1 Заглавная
+    func firstUppercase() -> String {
+        return prefix(1).capitalized + dropFirst()
+    }
+    
     // поиск слова в тексте    ингнорирование заглавных сточных
-    func containsIgnoringCase(_ find: String) -> Bool{
+    func containsIgnoringCase(_ find: String) -> Bool {
         return range(of: find, options: .caseInsensitive) != nil
     }
     
@@ -30,6 +35,9 @@ extension String {
         return distance(from: startIndex, to: index)
     }
     
-    
+    /// Удаление пробелов
+    func removeSpaces() -> String  {
+        return trimmingCharacters(in: .whitespaces)
+    }
 }
 

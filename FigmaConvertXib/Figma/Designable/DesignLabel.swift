@@ -26,7 +26,7 @@ class DesignLabel: UILabel {
     @IBInspectable var grRadial:       Bool = false /// default: linear
     @IBInspectable var grDrawsOptions: Bool = true
     @IBInspectable var grDebug:        Bool = false
-    @IBInspectable var grPointPercent: Bool = false
+    @IBInspectable var grPointPercent: Bool = true
     @IBInspectable var grBlendMode:    Int  = 20    /// заполнители
     
     //MARK: - Shadow

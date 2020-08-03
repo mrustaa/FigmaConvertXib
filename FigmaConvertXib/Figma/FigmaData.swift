@@ -89,19 +89,19 @@ class FigmaData {
         
         let name_ = name.findReplace(find: "/", replace: ":")
         
-        guard let localURL = URL(string: path) else { return nil }
-        let dataPath = localURL.appendingPathComponent(name_)
+        guard let url = URL(string: path) else { return nil }
+        let pathName = url.appendingPathComponent(name_)
+        let pathName_ = pathName.absoluteString
         
-        if !FileManager.default.fileExists(atPath: dataPath.absoluteString) {
+        if !FileManager.default.fileExists(atPath: pathName_) {
             do {
                 let dataPathStr = path + "/" + name_ // dataPath.absoluteString
                 try FileManager.default.createDirectory(atPath: dataPathStr, withIntermediateDirectories: true, attributes: nil)
-                return dataPath.absoluteString
             } catch {
-                print("Error", error.localizedDescription);
+                print("Error", error.localizedDescription)
             }
         }
-        return nil
+        return pathName_
     }
     
     //MARK: - 📁 Paths 🗑 Clear Temp
@@ -229,6 +229,27 @@ class FigmaData {
         }
     }
     
+//    class func createFolder(path: String, name: String) -> Bool {
+//
+//        guard let pathURL = URL(string: path) else { return false }
+//        let pathNameURL = pathURL.appendingPathComponent(name)
+//        let filterPath = pathNameURL.absoluteString
+//
+//        let pathName = path + "/" + name
+//
+//        if !FileManager.default.fileExists(atPath: filterPath) {
+//
+//            FigmaData.createImageJsonFile(path: filterPath,
+//                                          path_: pathName,
+//                                          name: name)
+//
+//            return true
+//        } else {
+//            return false
+//        }
+//
+//    }
+    
     //MARK: 🏞💾 Image Save Local
     
     class func save(image: UIImage, path: String? = nil, name: String) {
@@ -277,7 +298,7 @@ class FigmaData {
         
         do {
             let imageData = try Data(contentsOf: urlPath)
-            // print(" 📤 \(urlPath.absoluteString)")
+             print(" 📤 \(urlPath.absoluteString)")
             return UIImage(data: imageData)
             
         } catch {

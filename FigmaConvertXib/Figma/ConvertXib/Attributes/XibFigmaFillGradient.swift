@@ -10,7 +10,7 @@ import UIKit
 
 extension FigmaFill {
     
-    func xibGradientText() -> String {
+    func xibGradient() -> String {
         
         var xib = ""
 
@@ -32,7 +32,7 @@ extension FigmaFill {
         
         xib += xibAttr(boolean: (type == .gradientRadial), key: "grRadial")
         
-        xib += xibAttr(boolean: true, key: "grPointPercent")
+        // xib += xibAttr(boolean: true, key: "grPointPercent")
         
         xib += xibAttr(point: startPoint(), key: "grStartPoint")
         xib += xibAttr(point: endPoint(),   key: "grEndPoint")

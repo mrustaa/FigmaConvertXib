@@ -38,15 +38,4 @@ extension FigmaEffect {
     }
 }
 
-extension FigmaNode {
-    
-    func xibSearchEffect(type: FigmaEffect.Type_) -> FigmaEffect? {
-        for effect: FigmaEffect in effects {
-            if effect.type == type {
-                return effect
-            }
-        }
-        return nil
-    }
-    
-}
+

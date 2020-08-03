@@ -24,8 +24,8 @@ extension FigmaNode {
             }
         }
         
-        if !subviews.isEmpty {
-            for oneFigmaNode: FigmaNode in subviews {
+        if !children.isEmpty {
+            for oneFigmaNode: FigmaNode in children {
                 if oneFigmaNode.visible,
                     oneFigmaNode.type != .vector,
                     oneFigmaNode.type != .booleanOperation {

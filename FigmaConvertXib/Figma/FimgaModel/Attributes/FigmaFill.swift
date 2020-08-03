@@ -24,6 +24,7 @@ class FigmaFill {
     var opacity: CGFloat = 1.0 /// color
     var color: UIColor = .clear /// color
     
+    
     init(_ dict: [String:Any]) {
         
         let type = dict["type"] as! String
@@ -94,6 +95,13 @@ extension FigmaFill {
         return gradientHandlePositions[gradientHandlePositions.count - 2]
     }
     
+}
+
+extension FigmaFill {
+    
+    func colorA() -> UIColor {
+        return color.withAlphaComponent(opacity)
+    }
 }
 
 extension FigmaFill {

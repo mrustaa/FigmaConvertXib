@@ -12,13 +12,13 @@ import UIKit
 @IBDesignable
 class DesignFigure: UIView {
     
-    @IBInspectable var figureType:       Int = 0
+    @IBInspectable var figureType:       Int = 0  /// Rectange | Ellipse | Polygon | Star
     @IBInspectable var starRadius:   CGFloat = 0
     @IBInspectable var starCount:        Int = 5
     @IBInspectable var cornerRadius: CGFloat = 0.0
     @IBInspectable var blur:         CGFloat = 0.0
     @IBInspectable var image:       UIImage?
-    @IBInspectable var imageMode:       Int = 1
+    @IBInspectable var imageMode:        Int = 1   /// ScaleToFill | Fit | Fill
     @IBInspectable var fillColor:   UIColor?
     @IBInspectable var grColor1:    UIColor?
     @IBInspectable var grColor2:    UIColor?
@@ -28,7 +28,7 @@ class DesignFigure: UIView {
     @IBInspectable var grColor6:    UIColor?
     @IBInspectable var grStartPoint: CGPoint = CGPoint.zero
     @IBInspectable var grEndPoint:   CGPoint = CGPoint.zero
-    @IBInspectable var grRadial:        Bool = false
+    @IBInspectable var grRadial:        Bool = false /// Default: Linear
     @IBInspectable var grDrawsOptions:  Bool = true
     @IBInspectable var grDebug:         Bool = false
     @IBInspectable var grPointPercent:  Bool = true
@@ -127,13 +127,18 @@ class DesignFigureDebug: UIView {
         var start = grStartPoint
         var end   = grStartPoint
         
+//        if grPointPercent {
+//            
+//            start = CGPoint(x: (grStartPoint.x * frame.width ) / 10,
+//                            y: (grStartPoint.y * frame.height) / 10)
+//            
+//            end   = CGPoint(x: (grEndPoint.x   * frame.width ) / 10,
+//                            y: (grEndPoint.y   * frame.height) / 10)
+//        }
+        
         if grPointPercent {
-            
-            start = CGPoint(x: (grStartPoint.x * frame.width ) / 10,
-                            y: (grStartPoint.y * frame.height) / 10)
-            
-            end   = CGPoint(x: (grEndPoint.x   * frame.width ) / 10,
-                            y: (grEndPoint.y   * frame.height) / 10)
+              end = CGPoint(x:   grEndPoint.x * frame.width, y:   grEndPoint.y * frame.height)
+            start = CGPoint(x: grStartPoint.x * frame.width, y: grStartPoint.y * frame.height)
         }
         
         guard let context = UIGraphicsGetCurrentContext() else { return }
@@ -185,7 +190,6 @@ class DesignFigure_: UIView {
     
     @IBInspectable var starRadius: CGFloat = 0
     @IBInspectable var starCount: Int = 5
-    
     //MARK: Radius
     
     @IBInspectable var cornerRadius: CGFloat = 0.0
@@ -269,8 +273,8 @@ class DesignFigure_: UIView {
         
         switch figureType {
         case 1: return UIBezierPath(ovalIn: rect)
-        case 2: return star(polygon: true, rect: rect, radius: starR, count: starCount)
-        case 3: return star(rect: rect, radius: starR, count: starCount)
+        case 2: return star(polygon: true, rect: rect, radius: starR, pointsOnStar: starCount)
+        case 3: return star(rect: rect, radius: starR, pointsOnStar: starCount)
         default: return rectangle(rect: rect, radius: cornerRadius)
         // default: return UIBezierPath(roundedRect: rect, cornerRadius: cornerRadius)
         }
@@ -395,14 +399,18 @@ class DesignFigure_: UIView {
         let options: CGGradientDrawingOptions =
             grDrawsOptions ? [ .drawsBeforeStartLocation, .drawsAfterEndLocation ] : [ ]
         
+//        if grPointPercent {
+//            grEndPoint   = CGPoint(x:   (grEndPoint.x * frame.width) / 10,
+//                                   y:   (grEndPoint.y * frame.height) / 10)
+//
+//            grStartPoint = CGPoint(x: (grStartPoint.x * frame.width) / 10,
+//                                   y: (grStartPoint.y * frame.height) / 10)
+//
+//        }
+        
         if grPointPercent {
-            
-            grEndPoint   = CGPoint(x:   (grEndPoint.x * frame.width) / 10,
-                                   y:   (grEndPoint.y * frame.height) / 10)
-            
-            grStartPoint = CGPoint(x: (grStartPoint.x * frame.width) / 10,
-                                   y: (grStartPoint.y * frame.height) / 10)
-            
+              grEndPoint = CGPoint(x:   grEndPoint.x * frame.width, y:   grEndPoint.y * frame.height)
+            grStartPoint = CGPoint(x: grStartPoint.x * frame.width, y: grStartPoint.y * frame.height)
         }
         
         bezier.close()
@@ -647,23 +655,26 @@ class DesignFigure_: UIView {
     
     //MARK: - Star Bezier
     
-    func star(polygon: Bool = false, rect: CGRect, radius: CGFloat, count: Int) -> UIBezierPath {
+    func star(polygon: Bool = false, rect: CGRect, radius: CGFloat, pointsOnStar: Int) -> UIBezierPath {
         
         let path = UIBezierPath()
         
-        let minSize = min(rect.width, rect.height)
+        let minSize = max(rect.width, rect.height)
         var starExtrusion: CGFloat = minSize * 0.18695652173
         if radius != 0 {
             starExtrusion = minSize * radius
         }
 
-        let center = CGPoint(x: rect.width  / 2.0,
-                             y: rect.height / 2.0)
-
-        let pointsOnStar = count // 5 + arc4random() % 10
+//        let center = CGPoint(x: rect.width  / 2.0,
+//                             y: rect.height / 2.0)
+        
+        let center = CGPoint.zero
+        
+        // 5 + arc4random() % 10
         
         var angle: CGFloat = -CGFloat(.pi / 2.0)
         let angleIncrement =  CGFloat(.pi * 2.0 / Double(pointsOnStar))
+//        let radius: CGFloat = 250 / 2.0
         let radius = minSize / 2.0
 
         var firstPoint = true
@@ -675,23 +686,44 @@ class DesignFigure_: UIView {
         
         for _ in 1...pointsOnStar {
 
-            let     point = pointFrom(angle: angle                       , radius: radius       , offset: center)
-            let nextPoint = pointFrom(angle: angle + angleIncrement      , radius: radius       , offset: center)
-            let  midPoint = pointFrom(angle: angle + angleIncrement / 2.0, radius: starExtrusion, offset: center)
+            let     point: CGPoint = pointFrom(angle: angle                       , radius: radius       , offset: center)
+            let nextPoint: CGPoint = pointFrom(angle: angle + angleIncrement      , radius: radius       , offset: center)
+            let  midPoint: CGPoint = pointFrom(angle: angle + angleIncrement / 2.0, radius: starExtrusion, offset: center)
 
+            
+            
+            
+            var perY: CGFloat = 1.0
+            var perX: CGFloat = 1.0
+            
+            if rect.height < rect.width {
+                perY = (rect.height / minSize)
+            } else {
+                perX = (rect.width / minSize)
+            }
+            
+            let p = CGPoint(x: (point.x     * perX) + (rect.width  / 2.0),
+                            y: (point.y     * perY) + (rect.height / 2.0))
+            
+            let n = CGPoint(x: (nextPoint.x * perX) + (rect.width  / 2.0),
+                            y: (nextPoint.y * perY) + (rect.height / 2.0))
+            
+            let m = CGPoint(x: (midPoint.x  * perX) + (rect.width  / 2.0),
+                            y: (midPoint.y  * perY) + (rect.height / 2.0))
+            
             if firstPoint {
                 firstPoint = false
-                path.move(to: point)
+                path.move(to: p)
             }
             
             if !polygon {
-                path.addLine(to: midPoint)
+                path.addLine(to: m)
             }
-            path.addLine(to: nextPoint)
+            path.addLine(to: n)
 
             angle += angleIncrement
         }
-
+        
         path.close()
 
         return path

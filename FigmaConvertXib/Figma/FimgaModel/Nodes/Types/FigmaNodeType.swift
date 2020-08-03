@@ -6,7 +6,7 @@
 //  Copyright © 2020 mrusta. All rights reserved.
 //
 
-extension FigmaDocument {
+extension FigmaNode {
 
     enum Type_: String {
         
@@ -17,9 +17,9 @@ extension FigmaDocument {
         case rectangle = "RECTANGLE"            /// Прямоугольник                   View
         
         case vector = "VECTOR"                  /// Вектор Стрелка                          Vector
+        case line = "LINE"                      /// Линия                                   Vector
         case ellipse = "ELLIPSE"                /// Овал                                    Vector
         case star = "STAR"                      /// Звезда                                  Vector
-        case line = "LINE"                      /// Линия                                   Vector
         case regularPolygon = "REGULAR_POLYGON" /// Треугольник                             Vector
         
         case text = "TEXT"                      /// Лейбл

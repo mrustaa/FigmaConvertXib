@@ -61,7 +61,7 @@ class FigmaViewController: StoryboardController {
     }
     
     @IBAction func buttonChangePageAction() {
-        alertSelect(pages: figmaResponse.document.pages) { [weak self] (index) in
+        alertSelect(pages: figmaResponse.document.children) { [weak self] (index) in
             guard let _self = self else { return }
             _self.updatePage(index: index)
         }
@@ -89,7 +89,7 @@ class FigmaViewController: StoryboardController {
             
             guard let _self = self,
                 let response: FigmaResponse = FigmaData.current.response,
-                !response.document.pages.isEmpty else { return }
+                !response.document.children.isEmpty else { return }
             
             _self.figmaResponse = response
             
@@ -99,22 +99,30 @@ class FigmaViewController: StoryboardController {
     
     func updatePage(index: Int) {
         
-        if figmaResponse.document.pages.count < index { return }
+        if figmaResponse.document.children.count < index { return }
         
-        let page: FigmaPage = figmaResponse.document.pages[index]
+        let page: FigmaPage = figmaResponse.document.children[index]
         guard let imagesURLs = FigmaData.current.imagesURLs else { return }
         
         navBarTitleButton.setTitle(page.name, for: .normal)
         
-        let viewNode: (UIView, FigmaNode) = convertToViews.add(page: page,
-                                                               projectKey: projectKey,
-                                                               imagesURLs: imagesURLs)
+        let result: (view: UIView, node: FigmaNode) =
+            convertToViews.add(page: page,
+                               projectKey: projectKey,
+                               imagesURLs: imagesURLs)
         
-        addScrollView(figmaView: viewNode.0)
+        addScrollView(figmaView: result.view)
         
-        FigmaData.save(text: viewNode.1.xib(),
+        result.node.searchKeys()
+        
+        FigmaData.save(text: result.node.xib(),
                        toDirectory: FigmaData.pathXib(),
                        withFileName: "result.xib")
+        
+        FigmaData.save(text: result.node.xibNew(),
+                       toDirectory: FigmaData.pathXib(),
+                       withFileName: "resultNew.xib")
+        
     }
     
     func addScrollView(figmaView: UIView) {

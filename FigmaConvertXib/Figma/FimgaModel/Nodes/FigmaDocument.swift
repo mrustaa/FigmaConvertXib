@@ -9,8 +9,9 @@
 class FigmaDocument {
     
     let id, name: String
-    let type: Type_
-    var pages: [FigmaPage] = []
+    let type: FigmaNode.Type_
+    
+    var children: [FigmaPage] = []
     
     init(_ d: [String:Any]) {
         
@@ -18,11 +19,11 @@ class FigmaDocument {
         name = dString(d, "name")
         
         let type = dString(d, "type")
-        self.type = FigmaDocument.Type_.install(type)
+        self.type = FigmaNode.Type_.install(type)
         
         if let arrayPages = dArr(d, "children") {
             for page in arrayPages {
-                pages.append( FigmaPage(page) )
+                children.append( FigmaPage(page) )
             }
         }
     }

@@ -11,13 +11,16 @@ import UIKit
 class FigmaNode {
     
     var id, name: String
-    let type: FigmaDocument.Type_
-    var subviews: [FigmaNode] = []
+    let type: FigmaNode.Type_
+    var children: [FigmaNode] = []
     
     var blendMode: BlendMode = .modeDefault
     
     var absoluteBoundingBox: CGRect = CGRect.zero
     var realFrame: CGRect = CGRect.zero
+    
+    var imageSize: CGSize?
+    
     var realRadius: CGFloat = 0.0
     
     var visible: Bool = true
@@ -44,8 +47,9 @@ class FigmaNode {
         type = page.type
         backgroundColor = page.backgroundColor
         realFrame = page.realFrame
-        subviews = page.subviews
+        children = page.children
     }
+    
     
     
     init(_ dict: [String:Any]) {
@@ -56,7 +60,7 @@ class FigmaNode {
         self.name = name.findReplace(find: "/", replace: ":")
         
         let t = dString(dict, "type")
-        type = FigmaDocument.Type_.install(t)
+        type = FigmaNode.Type_.install(t)
         
         
         if let backgroundColor_ = dDict(dict, "backgroundColor") {
@@ -126,9 +130,9 @@ class FigmaNode {
         }
         
         if let arrayPages = dict["children"] as? [ [String: Any] ] {
-            subviews = []
+            children = []
             for page in arrayPages {
-                subviews.append( FigmaNode(page) )
+                children.append( FigmaNode(page) )
             }
         }
         

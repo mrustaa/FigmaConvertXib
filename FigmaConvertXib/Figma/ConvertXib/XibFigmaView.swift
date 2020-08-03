@@ -96,7 +96,6 @@ extension FigmaNode {
         // MARK: - Frame
         
         let xmlFrame = realFrame.xib()
-        
         // MARK: - Fill Text Background Color
         
         var xmlTextColor = ""
@@ -119,7 +118,7 @@ extension FigmaNode {
                     } else if fill.type == .gradientLinear ||
                               fill.type == .gradientRadial {
                         
-                        xmlFillColor = fill.xibGradientText()
+                        xmlFillColor = fill.xibGradient()
                     }
                 }
             }
@@ -152,9 +151,9 @@ extension FigmaNode {
                         /// DesigView
                         } else if !effects.isEmpty {
                             
-                            let blur = xibSearchEffect(type: .layerBlur)
-                            let shadow = xibSearchEffect(type: .dropShadow)
-                            let innerShadow = xibSearchEffect(type: .innerShadow)
+                            let blur = xibSearch(effect: .layerBlur)
+                            let shadow = xibSearch(effect: .dropShadow)
+                            let innerShadow = xibSearch(effect: .innerShadow)
                                 
                             xmlFillSubviews = fill.xib(view: self, effect: shadow, effect2: innerShadow, blur: blur)
                                 
@@ -165,9 +164,9 @@ extension FigmaNode {
                     /// Gradient
                     } else if fill.type == .gradientLinear || fill.type == .image {
                         
-                        let blur = xibSearchEffect(type: .layerBlur)
-                        let shadow = xibSearchEffect(type: .dropShadow)
-                        let innerShadow = xibSearchEffect(type: .innerShadow)
+                        let blur = xibSearch(effect: .layerBlur)
+                        let shadow = xibSearch(effect: .dropShadow)
+                        let innerShadow = xibSearch(effect: .innerShadow)
                         
                         xmlFillSubviews = fill.xib(view: self, effect: shadow, effect2: innerShadow, blur: blur)
                         
@@ -193,11 +192,11 @@ extension FigmaNode {
                             
                                 var result = ""
                                 
-                                let blur = xibSearchEffect(type: .layerBlur)
+                                let blur = xibSearch(effect: .layerBlur)
                                 
                                 if i == 0 { /// 1 слой
                                     
-                                    if let effect = xibSearchEffect(type: .dropShadow) {
+                                    if let effect = xibSearch(effect: .dropShadow) {
                                         result = fill.xib(view: self, effect: effect, blur: blur)
                                     } else {
                                         result = fill.xib(view: self, blur: blur)
@@ -205,7 +204,7 @@ extension FigmaNode {
                                     
                                 } else if i == (visibleCount - 1) { /// конечный слой
                                     
-                                    if let effect = xibSearchEffect(type: .innerShadow) {
+                                    if let effect = xibSearch(effect: .innerShadow) {
                                         result = fill.xib(view: self, effect: effect, blur: blur)
                                     } else {
                                         result = fill.xib(view: self, blur: blur)
@@ -228,9 +227,9 @@ extension FigmaNode {
                     
                         if fill.visible {
 
-                            let blur = xibSearchEffect(type: .layerBlur)
-                            let shadow = xibSearchEffect(type: .dropShadow)
-                            let innerShadow = xibSearchEffect(type: .innerShadow)
+                            let blur = xibSearch(effect: .layerBlur)
+                            let shadow = xibSearch(effect: .dropShadow)
+                            let innerShadow = xibSearch(effect: .innerShadow)
                             
                             xmlFillSubviews = fill.xib(view: self, effect: shadow, effect2: innerShadow, blur: blur)
                         }
@@ -280,8 +279,8 @@ extension FigmaNode {
         
         /// слои сабвьюшки
         var xmlViewSubviews = ""
-        if !subviews.isEmpty, type != .component {
-            for oneFigmaNode: FigmaNode in subviews {
+        if !children.isEmpty, type != .component {
+            for oneFigmaNode: FigmaNode in children {
                 if oneFigmaNode.visible,
                     oneFigmaNode.type != .vector,
                     oneFigmaNode.type != .booleanOperation {
@@ -318,23 +317,10 @@ extension FigmaNode {
         var xmlMainEnd = ""
         
         if main {
-            xmlMainHeader = """
-            <?xml version="1.0" encoding="UTF-8"?>
-            <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-                <device id="retina4_7" orientation="portrait" appearance="light"/>
-                <dependencies>
-                    <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
-                    <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
-                </dependencies>
-                <objects>
-                    <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
-                    <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-            """
+            let m = xibMain()
+            xmlMainHeader = m.header
             
-            xmlMainEnd = """
-            </objects>
-            </document>
-            """
+            xmlMainEnd += m.resources + xibSearchImagesSize() + m.end
         }
         
         let mainViewMetrics = (main ? "<freeformSimulatedSizeMetrics key=\"simulatedDestinationMetrics\"/>" : "")

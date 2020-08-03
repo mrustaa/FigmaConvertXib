@@ -14,9 +14,9 @@ extension CGRect {
         return "<rect key=\"frame\" x=\"\(self.origin.x)\" y=\"\(self.origin.y)\" width=\"\(self.size.width)\" height=\"\(self.size.height)\"/>"
     }
     
-    mutating func xibBound() -> String {
-        origin = CGPoint.zero
-        return self.xib()
+    func xibBound() -> String {
+        let r = CGRect(x: 0, y: 0, width: width, height: height)
+        return r.xib()
     }
 }
 

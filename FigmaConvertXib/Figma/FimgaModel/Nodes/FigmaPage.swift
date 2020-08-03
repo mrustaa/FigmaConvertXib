@@ -12,8 +12,8 @@ class FigmaPage {
     
     let id: String
     let name: String
-    let type: FigmaDocument.Type_
-    var subviews: [FigmaNode] = []
+    let type: FigmaNode.Type_
+    var children: [FigmaNode] = []
     var backgroundColor: UIColor
     var realFrame: CGRect = CGRect.zero
     
@@ -24,12 +24,12 @@ class FigmaPage {
         name = dString(d, "name")
         
         let t = dString(d, "type")
-        type = FigmaDocument.Type_.install(t)
+        type = FigmaNode.Type_.install(t)
         
-        subviews = []
+        children = []
         if let arrayPages = dArr(d, "children") {
             for page in arrayPages {
-                subviews.append( FigmaNode(page) )
+                children.append( FigmaNode(page) )
             }
         }
         
