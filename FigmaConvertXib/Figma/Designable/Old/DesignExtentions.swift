@@ -161,25 +161,27 @@ extension UIView {
         layer.addSublayer(innerShadow)
     }
     
-    func add(gradient fillColor: UIColor,
+    func add(gradient
              color1: UIColor? = nil,
              color2: UIColor? = nil,
              color3: UIColor? = nil,
              color4: UIColor? = nil,
              color5: UIColor? = nil,
+             color6: UIColor? = nil,
              pointStart: CGPoint,
              pointEnd: CGPoint,
              cornerRadius: CGFloat) -> CAGradientLayer? {
         
-        if color1 != nil || color2 != nil || color3 != nil || color4 != nil || color5 != nil {
+        if color1 != nil || color2 != nil || color3 != nil || color4 != nil || color5 != nil || color6 != nil {
             
             var colors: [CGColor] = []
-            colors.append(fillColor.cgColor)
+            // colors.append(fillColor.cgColor)
             if let color1 = color1 { colors.append(color1.cgColor) }
             if let color2 = color2 { colors.append(color2.cgColor) }
             if let color3 = color3 { colors.append(color3.cgColor) }
             if let color4 = color4 { colors.append(color4.cgColor) }
             if let color5 = color5 { colors.append(color5.cgColor) }
+            if let color6 = color6 { colors.append(color6.cgColor) }
             
             let glayer = CAGradientLayer()
             glayer.name = "Gradient"

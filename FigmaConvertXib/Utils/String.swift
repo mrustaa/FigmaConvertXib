@@ -25,6 +25,11 @@ extension String {
         return prefix(1).capitalized + dropFirst()
     }
     
+    /// 1 Строчная
+    func firstLowercase() -> String {
+        return prefix(1).uppercased() + dropFirst()
+    }
+    
     // поиск слова в тексте    ингнорирование заглавных сточных
     func containsIgnoringCase(_ find: String) -> Bool {
         return range(of: find, options: .caseInsensitive) != nil

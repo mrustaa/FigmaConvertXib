@@ -14,6 +14,8 @@ class FigmaNode {
     let type: FigmaNode.Type_
     var children: [FigmaNode] = []
     
+    var xibId: String = xibID()
+    
     var blendMode: BlendMode = .modeDefault
     
     var absoluteBoundingBox: CGRect = CGRect.zero

@@ -11,12 +11,28 @@ import Foundation
 extension DateFormatter {
   static let formatter: DateFormatter = {
     let formatter = DateFormatter()
-    formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"
+    formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'";// "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ" // 2010-11-19T
     formatter.calendar = Calendar(identifier: .iso8601)
     formatter.timeZone = TimeZone(secondsFromGMT: 0)
     formatter.locale = Locale(identifier: "en_US_POSIX")
     return formatter
   }()
+}
+
+
+struct Stack<Element> {
+    var items = [Element]()
+    mutating func push(_ item: Element) {
+        items.append(item)
+    }
+    mutating func pop() -> Element {
+        return items.removeLast()
+    }
+}
+extension Stack {
+    var topItem: Element? {
+        return items.isEmpty ? nil : items[items.count - 1]
+    }
 }
 
 func dDouble(_ json: [String:Any], _ key: String) -> Double {

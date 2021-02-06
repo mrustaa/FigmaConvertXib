@@ -31,7 +31,7 @@ extension UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    func alertField(title: String? = nil, message: String? = nil, callback: ((String) -> Void)? = nil) {
+    func alertField(title: String? = nil, message: String? = nil, placeholder: String? = nil, addCancel: Bool = false, callback: ((String) -> Void)? = nil) {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         
@@ -45,12 +45,19 @@ extension UIViewController {
         alert.addAction(save)
         
         alert.addTextField { (textField) in
-            textField.placeholder = "Key"
+            
+            if let placeholder = placeholder {
+                textField.placeholder = placeholder
+            }
             textField.textColor = .red
         }
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .default) { (alertAction) in }
-        alert.addAction(cancelAction)
+        if addCancel {
+            let cancelAction = UIAlertAction(title: "Cancel", style: .default) { (alertAction) in
+                
+            }
+            alert.addAction(cancelAction)
+        }
 
         self.present(alert, animated: true, completion: nil)
     }

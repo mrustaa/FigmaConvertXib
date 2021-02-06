@@ -20,24 +20,74 @@ class ViewController: UIViewController {
         
         updateTable()
         
-        tableView.selectIndexCallback = { (index: Int) in
+        tableView.selectIndexCallback = { [weak self] (index: Int) in
             
-            guard let key = LocalData.current.items[index]["key"] else { return }
-            let vc = FigmaViewController.instantiate(projectKey: key)
-            self.navigationController?.pushViewController(vc, animated: true)
+            guard let _self = self else { return }
+            guard let item = _self.tableView.items[index] as? TitleTextItem else { return }
+            guard let data = item.cellData as? TitleTextCellData else { return }
+            
+            if let clss = data.clss {
+                
+                guard let storyboardClass = clss as? StoryboardController.Type else { return }
+                let vc = storyboardClass.instantiate()
+                _self.navigationController?.pushViewController(vc, animated: true)
+                
+            } else {
+                guard let key = LocalData.current.projects[index]["key"] else { return }
+                
+                let vc = FigmaViewController.instantiate(projectKey: key)
+                _self.navigationController?.pushViewController(vc, animated: true)
+            }
+            
         }
         tableView.deleteIndexCallback = { (index: Int) in
-            LocalData.current.items.remove(at: index)
-            LocalData.current.save()
+            LocalData.current.projects.remove(at: index)
+            LocalData.current.projectsSave()
         }
+        
+        if LocalData.current.token == nil {
+            showAlertAddToken()
+        }
+        
     }
     
-    @IBAction func addProject(_ sender: Any) {
-        alertField(title: "Add figma project Key") { [weak self] (text: String) in
+    func showAlertAddToken() {
+        
+        alertField(title: "Add Figma Token 🔑", placeholder: "Token") { [weak self] (text: String) in
             
             loadingSpiner(show: true)
             
-            FigmaData.current.checkProjectRequest(key: text) { [weak self]  (projectName: String?) in
+            LocalData.current.token = text
+            
+            FigmaData.current.checkTokenRequest(complectionExists: { [weak self] (json: [String:Any]?) in
+                
+                loadingSpiner(show: false)
+                
+                guard let _self = self else { return }
+                
+                if json != nil {
+                    LocalData.current.tokenSave()
+                    _self.alertMessage(title: "Success", message: "added token")
+                    
+                } else {
+                    _self.alertMessage(title: "Error", message: "invalid token") {
+                        _self.showAlertAddToken()
+                    }
+                }
+            })
+        }
+    }
+    
+    @IBAction func changeToken(_ sender: Any) {
+        alertMessage(title: "Token 🔑", message: LocalData.current.token)
+    }
+    
+    @IBAction func addProject(_ sender: Any) {
+        alertField(title: "Add Figma project id", placeholder: "Project id", addCancel: true) { [weak self] (text: String) in
+            
+            loadingSpiner(show: true)
+            
+            FigmaData.current.checkProjectRequest(key: text) { [weak self] (projectName: String?) in
                 
                 loadingSpiner(show: false)
                 
@@ -49,11 +99,11 @@ class ViewController: UIViewController {
                 
                 _self.alertMessage(title: "Success", message: "added project")
                 
-                LocalData.current.items.append([
+                LocalData.current.projects.append([
                     "name" : name,
                     "key" : text
                 ])
-                LocalData.current.save()
+                LocalData.current.projectsSave()
                 
                 _self.updateTable()
             }
@@ -64,13 +114,14 @@ class ViewController: UIViewController {
     
     func updateTable() {
         var items: [TableAdapterItem] = []
-        for item in LocalData.current.items {
+        for item in LocalData.current.projects {
             
             guard let name: String = item["name"] else { return }
-            guard let key: String = item["key"] else { return }
+            guard let key:  String = item["key"]  else { return }
             
             items.append( TitleTextItem(title: key, subtitle: name, editing: true) )
         }
+        
         tableView.set(items: items, animated: true)
     }
     

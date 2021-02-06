@@ -10,6 +10,8 @@ import UIKit
 
 class FigmaFill {
     
+    var xibId: String = xibID()
+    
     var blendMode: FigmaNode.BlendMode = .modeDefault
     var type: FigmaFill.Type_ = .solid
     
@@ -102,7 +104,11 @@ extension FigmaFill {
     func colorA() -> UIColor {
         return color.withAlphaComponent(opacity)
     }
+    
+    
 }
+
+
 
 extension FigmaFill {
     

@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="53f-uQ-nMN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="53f-uQ-nMN">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Figma Convert Xib-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="FigmaConvertXib" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,10 +19,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="v3Q-lE-seu" customClass="TableAdapterView" customModule="FigmaConvertXib" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="canEditing" value="YES"/>
-                                </userDefinedRuntimeAttributes>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9PC-Nx-Beg">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
@@ -30,7 +29,8 @@
                                 <rect key="frame" x="188.5" y="385.5" width="37" height="37"/>
                             </activityIndicatorView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="v3Q-lE-seu" secondAttribute="bottom" id="FfD-dq-Rar"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9PC-Nx-Beg" secondAttribute="trailing" id="Fo1-YB-09v"/>
@@ -43,9 +43,14 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="9PC-Nx-Beg" secondAttribute="bottom" id="viC-74-vhu"/>
                             <constraint firstItem="v3Q-lE-seu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="zdf-eE-VYm"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="CdB-hj-PdY">
+                    <navigationItem key="navigationItem" title="Figma Convert Xib" id="CdB-hj-PdY">
+                        <barButtonItem key="backBarButtonItem" title=" " id="zun-qp-Qi1"/>
+                        <barButtonItem key="leftBarButtonItem" title="Token" id="FsM-hX-a0p">
+                            <connections>
+                                <action selector="changeToken:" destination="BYZ-38-t0r" id="Qt7-TL-fYy"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="GrD-TN-Pkd">
                             <connections>
                                 <action selector="addProject:" destination="BYZ-38-t0r" id="qpI-ug-4sk"/>
@@ -76,7 +81,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8w8-2l-B9Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-552" y="100"/>
+            <point key="canvasLocation" x="-635" y="100"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

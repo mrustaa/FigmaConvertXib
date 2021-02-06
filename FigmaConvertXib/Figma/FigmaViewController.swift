@@ -113,15 +113,27 @@ class FigmaViewController: StoryboardController {
         
         addScrollView(figmaView: result.view)
         
+        // Download Multiple IMGs
+        // result.node.donwloadImages(URLs: imagesURLs, projectKey: projectKey)
+        
+        /// KEYs
         result.node.searchKeys()
         
-        FigmaData.save(text: result.node.xib(),
-                       toDirectory: FigmaData.pathXib(),
-                       withFileName: "result.xib")
+//        /// result.xib
+//        FigmaData.save(text: result.node.xib(),
+//                       toDirectory: FigmaData.pathXib(),
+//                       withFileName: "result.xib")
         
+        /// NEW resultNew.xib
         FigmaData.save(text: result.node.xibNew(),
                        toDirectory: FigmaData.pathXib(),
-                       withFileName: "resultNew.xib")
+                       withFileName: "result_ios.xib")
+        
+        
+        /// Android NEW resultNew.xib
+        FigmaData.save(text: result.node.xmlAndroid(),
+                       toDirectory: FigmaData.pathXmlAndroidLayout(),
+                       withFileName: "result_android.xml")
         
     }
     

@@ -109,11 +109,11 @@ class DesignView: UIView {
     private func addGradient() {
         
         _ = add(gradient: fillColor,
-            color1: grColor2,
-            color2: grColor3,
-            color3: grColor4,
-            color4: grColor5,
-            color5: grColor6,
+                color2: grColor2,
+                color3: grColor3,
+                color4: grColor4,
+                color5: grColor5,
+                color6: grColor6,
             pointStart: grStartPoint,
             pointEnd:   grEndPoint,
             cornerRadius: cornerRadius)

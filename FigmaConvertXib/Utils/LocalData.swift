@@ -10,32 +10,48 @@ import UIKit
 
 public class LocalData {
     
-    static let key = "kdata"
+    static let kToken   = "kToken"
+    static let kProject = "kProject"
     
     static let current = LocalData()
     
-    var items: [ [String: String] ] = []
+    var token: String?
+    var projects: [ [String: String] ] = []
     
     init() {
         load()
     }
     
     func load() {
-        let myarray = UserDefaults.standard.array(forKey: LocalData.key) as? [Data] ?? [Data]()
-        var result: [ [String: String] ] = []
-        for json: Data in myarray {
-            let decodeItem = try! JSONDecoder().decode([String: String].self, from: json)
-            result.append(decodeItem)
+        
+        if let token = UserDefaults.standard.string(forKey: LocalData.kToken) {
+            self.token = token
         }
-        items = result
+        
+        if let myarray = UserDefaults.standard.array(forKey: LocalData.kProject) as? [Data] {
+            
+            var result: [ [String: String] ] = []
+            for data: Data in myarray {
+                if let decodeItem = try? JSONDecoder().decode([String: String].self, from: data) {
+                    result.append(decodeItem)
+                }
+            }
+            projects = result
+        }
     }
     
-    func save() {
+    func tokenSave() {
+        if token != nil {
+            UserDefaults.standard.set(token, forKey: LocalData.kToken)
+        }
+    }
+    
+    func projectsSave() {
         var arrayData: [Data] = []
-        for item in items {
+        for item in projects {
             let jsonData: Data = try! JSONEncoder().encode(item)
             arrayData.append(jsonData)
         }
-        UserDefaults.standard.set(arrayData, forKey: LocalData.key)
+        UserDefaults.standard.set(arrayData, forKey: LocalData.kProject)
     }
 }
