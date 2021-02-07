@@ -4,6 +4,9 @@
 
 FigmaConvertXib is a tool for exporting design elements from [Figma](http://figma.com/) and generating `Xib` / `Xml` file to a `iOS` and `Android` projects.
 
+## Preview
+![image(Landscape)](https://github.com/mrustaa/gif_presentation/blob/master/FigmaConvert/gitPreview.gif)
+
 Currently, FigmaConvertXib supports the following entities:
 
 #### Nodes
