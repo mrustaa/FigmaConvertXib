@@ -1,6 +1,6 @@
 ![image(Landscape)](https://github.com/mrustaa/gif_presentation/blob/master/FigmaConvert/figmaConvertLogo2.png)
 
-# FigmaConvertXib
+# FigmaConvertXib/Xml
 
 FigmaConvertXibis a tool for exporting design elements from [Figma](http://figma.com/) and generating `Xib` / `Xml` file to a `iOS` and `Android` projects.
 
