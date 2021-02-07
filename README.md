@@ -1,4 +1,4 @@
-![image(Landscape)](https://github.com/mrustaa/gif_presentation/blob/master/FigmaConvert/figmaConvertLogo3.png)
+![image(Landscape)](https://github.com/mrustaa/gif_presentation/blob/master/FigmaConvert/figmaConvertLogo2.png)
 
 # FigmaConvertXib/Xml
 
