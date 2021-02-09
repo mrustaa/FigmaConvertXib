@@ -16,7 +16,6 @@ FigmaConvertXib is a tool for exporting design elements from [Figma](http://figm
 
 ## Preview
 ![image(Landscape)](https://github.com/mrustaa/gif_presentation/blob/master/FigmaConvert/gifPS2.gif)
-![image(Landscape)](https://github.com/mrustaa/gif_presentation/blob/master/FigmaConvert/gifPS3.gif)
 
 ## Watch video with examples
 [▶️ Add Figma Projects](https://youtu.be/2Cue6R7TfjA) 
