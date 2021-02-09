@@ -40,6 +40,9 @@ This token could be created in a few simple steps:
 
 ![](https://github.com/mrustaa/gif_presentation/blob/master/FigmaConvert/AccessToken.png)
 
+Then `Compile / Run` the project `FigmaConvertXib.xcodeproj` and paste the received access Token in the accessToken field. It is enough to define it only in the base section if this token allows access to all Figma files, which appear in the configuration.
+
+
 ### Add Figma project id
 Open the URL figma project, and copy its project-id 
 Then open the application, click button-plus, and paste the received project-id 
@@ -93,5 +96,4 @@ Then open the application, click button-plus, and paste the received project-id
   - Shadow Inner 
   - Shadow Drop  
   - Blur Layer 
-- ❌ 
-  - Blur Background 
+- ❌ Blur Background 
