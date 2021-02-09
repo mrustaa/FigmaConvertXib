@@ -74,6 +74,7 @@
 		467262FD24C502FD00FD5F70 /* XibFigmaFillGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467262FC24C502FD00FD5F70 /* XibFigmaFillGradient.swift */; };
 		467262FF24C508AC00FD5F70 /* XibCornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467262FE24C508AC00FD5F70 /* XibCornerRadius.swift */; };
 		4672630124C508F200FD5F70 /* XibAutoresizingMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4672630024C508F200FD5F70 /* XibAutoresizingMask.swift */; };
+		4675641825D01B44001A6D46 /* XmlFigmaAndroidDrawable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4675641725D01B44001A6D46 /* XmlFigmaAndroidDrawable.swift */; };
 		4678131624DF419F00476792 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4678131524DF419F00476792 /* Cell.swift */; };
 		467A525B24E1B3D9008A7A98 /* DownloadMultiple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467A525A24E1B3D9008A7A98 /* DownloadMultiple.swift */; };
 		469D465224BF40E100F8547E /* FigmaBlendMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469D465124BF40E100F8547E /* FigmaBlendMode.swift */; };
@@ -209,6 +210,7 @@
 		467262FC24C502FD00FD5F70 /* XibFigmaFillGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibFigmaFillGradient.swift; sourceTree = "<group>"; };
 		467262FE24C508AC00FD5F70 /* XibCornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibCornerRadius.swift; sourceTree = "<group>"; };
 		4672630024C508F200FD5F70 /* XibAutoresizingMask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibAutoresizingMask.swift; sourceTree = "<group>"; };
+		4675641725D01B44001A6D46 /* XmlFigmaAndroidDrawable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XmlFigmaAndroidDrawable.swift; sourceTree = "<group>"; };
 		4678131524DF419F00476792 /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
 		467A525A24E1B3D9008A7A98 /* DownloadMultiple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadMultiple.swift; sourceTree = "<group>"; };
 		469D465124BF40E100F8547E /* FigmaBlendMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaBlendMode.swift; sourceTree = "<group>"; };
@@ -410,6 +412,7 @@
 			isa = PBXGroup;
 			children = (
 				46FFEE2324EC65A3009A7DFA /* Attributes */,
+				4675641625D01AE0001A6D46 /* DrawableShape */,
 				4606769724EB513E00722685 /* XmlFigmaAndroidHeaders.swift */,
 				4606769924EB577A00722685 /* XmlFigmaAndroidView.swift */,
 				46E3822224F5B181009A49E1 /* XmlFigmaAndroidRecyclerActivity.swift */,
@@ -614,6 +617,14 @@
 				467262F624C4F29E00FD5F70 /* XibAttribute.swift */,
 			);
 			path = Properties;
+			sourceTree = "<group>";
+		};
+		4675641625D01AE0001A6D46 /* DrawableShape */ = {
+			isa = PBXGroup;
+			children = (
+				4675641725D01B44001A6D46 /* XmlFigmaAndroidDrawable.swift */,
+			);
+			path = DrawableShape;
 			sourceTree = "<group>";
 		};
 		46A9772B24A27D2B0088EFED = {
@@ -953,6 +964,7 @@
 				467262F924C4FCD500FD5F70 /* XibFigmaEffect.swift in Sources */,
 				469D465824BF9CAA00F8547E /* FigmaEffectType.swift in Sources */,
 				4647848224D4FA0E00E0B66E /* XibFigmaMainHeader.swift in Sources */,
+				4675641825D01B44001A6D46 /* XmlFigmaAndroidDrawable.swift in Sources */,
 				46E3822124F5515A009A49E1 /* XibFigmaKeyGenerateFileAndroid.swift in Sources */,
 				46E3821524F5421F009A49E1 /* FigmaDataImageLoad.swift in Sources */,
 				4638068024E33E2B00DC0123 /* CollectionAdapterItem.swift in Sources */,

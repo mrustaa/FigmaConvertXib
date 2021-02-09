@@ -83,7 +83,7 @@ extension FigmaNode {
             
         } else if type == .text {
             
-            headerEnd = labelXib()
+            headerEnd = labelXib(design: true)
             
         } else if (realRadius != 0) || (strokes.count == 1) {
             

@@ -28,6 +28,7 @@ extension FigmaNode {
         case viewDesign
         case viewDesignComp
         case label
+        case labelDesign
     }
     
     
@@ -40,7 +41,8 @@ extension FigmaNode {
         case .view:           return viewXib()
         case .viewDesign:     return designViewXib()
         case .viewDesignComp: return designViewXib(comp: true)
-        case .label:          return labelXib()
+        case .label:          return labelXib(design: false)
+        case .labelDesign:    return labelXib(design: true)
         }
     }
     
@@ -88,10 +90,12 @@ extension FigmaNode {
     
     // MARK: - Label
     
-    func labelXib() -> (header: String, end: String) {
+    func labelXib(design: Bool) -> (header: String, end: String) {
+        
+        let designable = (design ? " customClass=\"\(customClassLabel)\" customModule=\"\(customModule)\"" : "")
         
         let header = """
-        <label opaque="NO" userInteractionEnabled="NO" alpha="\(opacity)" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="\(text.xibFilter())" textAlignment="\(fontStyleXib())" lineBreakMode="tailTruncation" numberOfLines="\(100)" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="\(xibId)" userLabel="\(name.xibFilter())" customClass="\(customClassLabel)" customModule="\(customModule)" customModuleProvider="target">
+        <label opaque="NO" userInteractionEnabled="NO" alpha="\(opacity)" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="\(text.xibFilter())" textAlignment="\(fontStyleXib())" lineBreakMode="tailTruncation" numberOfLines="\(100)" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="\(xibId)" userLabel="\(name.xibFilter())"\(designable) customModuleProvider="target">
         """
         
         let end = "</label>"

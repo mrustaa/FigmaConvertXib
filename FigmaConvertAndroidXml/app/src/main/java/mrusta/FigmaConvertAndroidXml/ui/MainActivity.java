@@ -15,9 +15,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.result_android);
 
         ConstraintLayout main = findViewById(R.id.main);
-        main.setBackgroundColor(Color.WHITE);
+        main.setBackgroundColor(Color.GRAY);
     }
 }

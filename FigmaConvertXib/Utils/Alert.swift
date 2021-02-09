@@ -37,8 +37,14 @@ extension UIViewController {
         
         let save = UIAlertAction(title: "Ok", style: .default) { _ in
             
-            guard let text = alert.textFields?[0].text else { return }
-            if text.count <= 0 { return }
+            guard let text = alert.textFields?[0].text else {
+                callback?("")
+                return
+            }
+            if text.count <= 0 {
+                callback?("")
+                return
+            }
             
             callback?(text)
         }

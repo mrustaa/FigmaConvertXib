@@ -7,9 +7,45 @@
 //
 
 import Foundation
+import UIKit
 
 
 extension FigmaNode {
+    
+    
+    // MARK: - CardView
+    
+    func cardViewXmlAndroid(radius: CGFloat, index: Int) -> (header: String, end_settings: String, end: String) {
+        
+        let nameId = "card\(index)" // xibId
+        
+        let header = """
+        
+        
+        <androidx.cardview.widget.CardView
+            android:id="@+id/\(nameId)"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            
+            app:cardElevation="0dp"
+            app:cardCornerRadius="\(radius)dp"
+        """
+        // --------------------------------------------------
+        let end_settings = """
+            >
+        """
+        
+        // -------------------------------------------------
+        let end = """
+
+        </androidx.cardview.widget.CardView>
+        """
+        
+        return (header, end_settings, end)
+    }
+    
+    
+    
     
     // MARK: - View
     
@@ -43,7 +79,8 @@ extension FigmaNode {
         if main {
             end_settings = """
             
-                tools:context=".ui.screen.MainActivity"
+                tools:context=".ui.MainActivity"
+                android:id="@+id/main"
                 >
             """
         }
@@ -72,6 +109,8 @@ extension FigmaNode {
             tools:ignore="HardcodedText"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            
+            android:fontFamily="sans-serif"
         """
         
         // -------------------------------------------------

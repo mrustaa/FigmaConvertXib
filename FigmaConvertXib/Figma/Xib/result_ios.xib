@@ -9,10 +9,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="spq-ev-54y" userLabel="Page 1">
-            <rect key="frame" x="0.0" y="0.0" width="332" height="193"/>
+        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z7i-DZ-wRg" userLabel="Page 1">
+            <rect key="frame" x="0.0" y="0.0" width="251" height="218"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-1828.8" y="-335.08245877061472"/>
+            <point key="canvasLocation" x="-1386.4000000000001" y="-524.43778110944527"/>
         </view>
     </objects>
 </document>

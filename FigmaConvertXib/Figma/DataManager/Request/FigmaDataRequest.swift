@@ -115,7 +115,10 @@ extension FigmaData {
         URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
             guard let currentData: Data = data, error == nil else { return }
             
-            compJson?(currentData, nil)
+            if type != .Me {
+                compJson?(currentData, nil)
+            }
+            
             do {
                 if let json = try JSONSerialization.jsonObject(with: currentData, options: .allowFragments) as? [String : Any] {
                     DispatchQueue.main.async {
@@ -134,12 +137,10 @@ extension FigmaData {
         
     }
     
-    func checkTokenRequest(complectionExists: FigmaData.CompletionJSON? = nil) {
+    func checkTokenRequest(complectionExists: FigmaData.CompletionJSON? = nil, errorCallback: Completion? = nil) {
         
         request(type: .Me, compJson: { (data, json: [String:Any]?) in
-            guard let json = json else { return }
-            
-            if ((json["err"] as? String) != nil) {
+            guard let json = json else {
                 complectionExists?(nil)
                 return
             }

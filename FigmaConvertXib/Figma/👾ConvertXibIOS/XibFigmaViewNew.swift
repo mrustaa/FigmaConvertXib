@@ -86,8 +86,6 @@ extension FigmaNode {
     
     private func xibLabel() -> String {
         
-        let view = labelXib()
-        
         let rect = realFrame.xib()
         let arMask = addAutoresizingMask()
         
@@ -105,6 +103,8 @@ extension FigmaNode {
             attr += xibAttr(number: 18, key: "grBlendMode")
             textColor = xibAttr(color: .clear, key: "textColor")
         }
+        
+        /// _Gradient _________________________________________________
         
         if let linear = xibSearch(fill: .gradientLinear) {
             attr += linear.xibGradient()
@@ -125,6 +125,8 @@ extension FigmaNode {
         }
         
         let attrs = xibAttrsClose(attributes: attr)
+        
+        let view = labelXib(design: !attr.isEmpty)
         
         //// _________________________________________________
         
@@ -195,23 +197,24 @@ extension FigmaNode {
         
         /// _Attributes ________________________________________
         
-        var attr = ""
+        var attrArr: [String] = []
+        
         
         switch type {
         case .document, .page, .frame, .group, .rectangle:  /// view
             if realRadius != 0 {
-                attr += xibAttr(number: realRadius, key: "cornerRadius")
+                attrArr.append( xibAttr(number: realRadius, key: "cornerRadius") )
             }
         
         case .ellipse:
-            attr += xibAttr(number: 1, key: "figureType")
+            attrArr.append( xibAttr(number: 1, key: "figureType") )
             
         case .regularPolygon:
-            attr += xibAttr(number: 2, key: "figureType")
-            attr += xibAttr(number: 3, key: "starCount")
+            attrArr.append( xibAttr(number: 2, key: "figureType") )
+            attrArr.append( xibAttr(number: 3, key: "starCount") )
             
         case .star:
-            attr += xibAttr(number: 3, key: "figureType")
+            attrArr.append( xibAttr(number: 3, key: "figureType") )
         
         default: break
         }
@@ -219,47 +222,53 @@ extension FigmaNode {
         /// _Stroke _________________________________________________
         
         if let stroke = xibSearchStroke() {
-            
-            attr += xibAttr(color:  stroke.colorA(), key: "brColor")
-            attr += xibAttr(number: strokeWeight,    key: "brWidth")
+            attrArr.append( xibAttr(color:  stroke.colorA(), key: "brColor") )
+            attrArr.append( xibAttr(number: strokeWeight,    key: "brWidth") )
         }
         
         /// _ Fill _________________________________________________
         
         if let fill = xibSearch(fill: .solid) {
-            attr += xibAttr(color: fill.colorA(), key: "fillColor")
+            attrArr.append( xibAttr(color: fill.colorA(), key: "fillColor") )
         }
         
             /// _ Image _
         if let image = xibSearch(fill: .image) {
             let contentMode: CGFloat = (image.scaleMode == .fill) ? 2 : 1
-            
-            attr += xibAttr(imageName: name.xibFilter(), key: "image")
-            attr += xibAttr(number:    contentMode,      key: "imageMode")
+            attrArr.append( xibAttr(imageName: name.xibFilter(), key: "image") )
+            attrArr.append( xibAttr(number:    contentMode,      key: "imageMode") )
         }
             
             /// _ Gradient _
         if let linear = xibSearch(fill: .gradientLinear) {
-            attr += linear.xibGradient()
+            attrArr.append( linear.xibGradient() )
         } else if let radial = xibSearch(fill: .gradientRadial) {
-            attr += radial.xibGradient()
+            attrArr.append( radial.xibGradient() )
         }
         
         /// _Effects _________________________________________________
         
         if let blur = xibSearch(effect: .layerBlur) {
-            attr += blur.xib()
+            attrArr.append( blur.xib() )
         }
         if let shadow = xibSearch(effect: .dropShadow) {
-            attr += shadow.xib()
+            attrArr.append( shadow.xib() )
         }
         if let innerShadow = xibSearch(effect: .innerShadow) {
-            attr += innerShadow.xib()
+            attrArr.append( innerShadow.xib() )
         }
         
+        
         var attrs = ""
-        if !attr.isEmpty {
-            attrs = xibAttrsClose(attributes: attr)
+        var backgroundColor = ""
+        
+        if attrArr.count != 0 {
+            if attrArr.count == 1, attrArr[0].find(find: "fillColor"), let fill = xibSearch(fill: .solid) {
+                backgroundColor = fill.colorA().xib("backgroundColor")
+                view = viewXib()
+            } else {
+                attrs = xibAttrsClose(attributes: attrArr.joined())
+            }
         } else {
             if findKey == nil {
                 view = viewXib()
@@ -307,6 +316,7 @@ extension FigmaNode {
         
         let result = view.header +
                         rect +
+                        backgroundColor +
                         arMask +
                         mMetrics +
                         subvs +

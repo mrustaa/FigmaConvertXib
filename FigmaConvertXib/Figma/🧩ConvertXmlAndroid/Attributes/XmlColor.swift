@@ -18,15 +18,29 @@ extension FigmaNode {
             
             let hex = fill.colorA().hex()
             
-            var keyValue = "background"
-            if type == .text {
-                keyValue = "textColor"
-            }
+            if realRadius != 0 {
+                
+                attrs += """
             
-            attrs += """
+                app:cardBackgroundColor="\(hex)"
+            """
+                
+            } else {
+                
+                var keyValue = ""
+                if type == .text {
+                    keyValue = "textColor"
+                } else {
+                    keyValue = "background"
+                }
+                
+                attrs += """
             
                 android:\(keyValue)="\(hex)"
             """
+            }
+            
+            
         }
         return attrs
     }

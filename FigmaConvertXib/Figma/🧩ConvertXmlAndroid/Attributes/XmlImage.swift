@@ -20,6 +20,14 @@ extension FigmaFill {
 
 extension FigmaNode {
     
+    func xmlImageCompnent() -> String {
+        
+        return  """
+                
+                android:scaleType="centerCrop"
+                android:src="@drawable/\(name.xmlFilter())"
+            """
+    }
     
     func xmlImage() -> String {
         

@@ -66,8 +66,14 @@ extension UIColor {
 
         getRed(&r, green: &g, blue: &b, alpha: &a)
 
-        let rgb:Int = (Int)(r*255)<<16 | (Int)(g*255)<<8 | (Int)(b*255)<<0
+        
+        let rgba:Int = (Int)(a*255)<<24 | (Int)(r*255)<<16 | (Int)(g*255)<<8 | (Int)(b*255)<<0
+        let rgbaStr = String(format:"#%08x", rgba)
+        
+//        let rgb:Int = (Int)(r*255)<<16 | (Int)(g*255)<<8 | (Int)(b*255)<<0
+//        let str = String(format:"#%06x", rgb)
 
-        return String(format:"#%06x", rgb)
+        return rgbaStr
     }
 }
+
