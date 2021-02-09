@@ -3,6 +3,7 @@
 # FigmaConvertXib/Xml
 
 FigmaConvertXib is a tool for exporting design elements from [Figma](http://figma.com/) and generating file to a projects
+
 `.Xib iOS Xcode` / `.Xml Android-Studio` .
 
 - [Watch video with examples](#watch-video-with-examples)
@@ -50,13 +51,17 @@ Then open the application, click button-plus, and paste the received project-id
 #### Xcode 
 
 Open project FigmaConvertXib.xcodeproj
-And go to folder 
+
+And go to folder
+
 `FigmaConvertXib / Figma / Xib / result_ios.xib`
 
 #### Android-Studio 
 
 Open project FigmaConvertAndroidXml
-And go to folder 
+
+And go to folder
+
 `FigmaConvertAndroidXml / app / res / layout / result_android.xml`
 
 ## Currently supports the following entities:
