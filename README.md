@@ -11,11 +11,12 @@ FigmaConvertXib is a tool for exporting design elements from [Figma](http://figm
   - [Base parameters](#base-parameters)
   - [Figma access token](#figma-access-token)
   - [Add Figma project id](#add-figma-project-id)
-  - [Complection Generation Xib Xml to projects Xcode Android](#complection-generation-xib-xml-to-projects-xcode-android)
+- [Complection Generation Xib Xml to projects Xcode Android](#complection-generation-xib-xml-to-projects-xcode-android)
 - [Currently supports the following entities](#currently-supports-the-following-entities)
 
 ## Preview
 ![image(Landscape)](https://github.com/mrustaa/gif_presentation/blob/master/FigmaConvert/gifPS2.gif)
+![image(Landscape)](https://github.com/mrustaa/gif_presentation/blob/master/FigmaConvert/gifPS1.gif)
 
 ## Watch video with examples
 [▶️ Add Figma Projects](https://youtu.be/2Cue6R7TfjA) 
@@ -49,7 +50,7 @@ Then open the application, click button-plus, and paste the received project-id
 
 ![](https://github.com/mrustaa/gif_presentation/blob/master/FigmaConvert/ProjectId.png)
 
-### Complection Generation Xib Xml to projects Xcode Android
+## Complection Generation Xib Xml to projects Xcode Android
 
 #### Xcode 
 - Open project `FigmaConvertXib.xcodeproj`
