@@ -59,6 +59,8 @@ Then open the application, click button-plus, and paste the received project-id
 - Open project `FigmaConvertAndroidXml`
 - And go to folder `/ app / res / layout / result_android.xml`
 
+![image(Landscape)](https://github.com/mrustaa/gif_presentation/blob/master/FigmaConvert/gifPS3.gif)
+
 ## Currently supports the following entities:
 
 #### Nodes
@@ -95,6 +97,3 @@ Then open the application, click button-plus, and paste the received project-id
   - Shadow Drop  
   - Blur Layer 
 - ❌ Blur Background 
-
-
-![image(Landscape)](https://github.com/mrustaa/gif_presentation/blob/master/FigmaConvert/gifPS3.gif)
