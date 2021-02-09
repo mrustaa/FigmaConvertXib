@@ -49,20 +49,12 @@ Then open the application, click button-plus, and paste the received project-id
 ### Complection Generation Xib Xml to projects Xcode Android
 
 #### Xcode 
-
-Open project FigmaConvertXib.xcodeproj
-
-And go to folder
-
-`FigmaConvertXib / Figma / Xib / result_ios.xib`
+- Open project `FigmaConvertXib.xcodeproj`
+- And go to folder `/ Figma / Xib / result_ios.xib`
 
 #### Android-Studio 
-
-Open project FigmaConvertAndroidXml
-
-And go to folder
-
-`FigmaConvertAndroidXml / app / res / layout / result_android.xml`
+- Open project `FigmaConvertAndroidXml`
+- And go to folder `/ app / res / layout / result_android.xml`
 
 ## Currently supports the following entities:
 
