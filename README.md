@@ -95,3 +95,6 @@ Then open the application, click button-plus, and paste the received project-id
   - Shadow Drop  
   - Blur Layer 
 - ❌ Blur Background 
+
+
+![image(Landscape)](https://github.com/mrustaa/gif_presentation/blob/master/FigmaConvert/gifPS3.gif)
