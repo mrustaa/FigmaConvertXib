@@ -7,6 +7,16 @@ FigmaConvertXib is a tool for exporting design elements from [Figma](http://figm
 ## Preview
 ![image(Landscape)](https://github.com/mrustaa/gif_presentation/blob/master/FigmaConvert/gifPS2.gif)
 
+#### Watch the video 
+[▶️ Add Figma Projects](https://youtu.be/2Cue6R7TfjA) 
+
+[▶️ Page Types](https://youtu.be/2Cue6R7TfjA)
+
+#### Table of context
+- [Installation](#installation)
+    - [Base parameters](#base-parameters)
+    - [Figma access token](#figma-access-token)
+
 Currently, FigmaConvertXib supports the following entities:
 
 #### Nodes
@@ -33,8 +43,8 @@ Currently, FigmaConvertXib supports the following entities:
 - ✅ 
   - Solid
   - Images
-  - Gradient Linear (No in Android)
-  - Gradient Radial (No in Android)
+  - Gradient Linear
+  - Gradient Radial
 - ❌ 
   - Gradient Angular
   - Gradient Diamond
@@ -46,5 +56,20 @@ Currently, FigmaConvertXib supports the following entities:
   - Layer Blur
 
 
-#### Watch the video
-[![Watch the video](Docs/PlayVideo.png)](https://youtu.be/2Cue6R7TfjA)
+## Installation:
+
+### Base parameters
+Each step of generation is using the following base parameters:
+- `accessToken`: an access token string that is needed to execute Figma API requests (see [Figma access token](#figma-access-token)).
+- `project id`: URL of a Figma file, which data will be used to generate code (see [Figma file](#figma-file)).
+
+### Figma access token
+Authorization is required to receive Figma files.
+The authorization is implemented by transferring a personal access token.
+This token could be created in a few simple steps:
+1. Open [account settings]((https://www.figma.com/settings)) in Figma.
+2. Press "Create a new personal access token" button in the "Personal Access Tokens" section.
+3. Enter a description for the token (for instance, "FigmaConvertXib").
+4. Copy the created token to the clipboard.
+
+![](https://github.com/mrustaa/gif_presentation/blob/master/FigmaConvert/AccessToken.png)
