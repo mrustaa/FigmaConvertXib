@@ -81,7 +81,6 @@ Then open the application, click button-plus, and paste the received project-id
   - Line
   - Line Arrow
   - Curves
-
 #### Fills
 - ✅ 
   - Solid
@@ -91,7 +90,6 @@ Then open the application, click button-plus, and paste the received project-id
 - ❌ 
   - Gradient Angular
   - Gradient Diamond
-
 #### Effects
 - ✅ (Only in iOS)
   - Shadow Inner 
