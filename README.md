@@ -12,6 +12,7 @@ FigmaConvertXib is a tool for exporting design elements from [Figma](http://figm
   - [Figma access token](#figma-access-token)
   - [Add Figma project id](#add-figma-project-id)
 - [Complection Generation Xib Xml to projects Xcode Android](#complection-generation-xib-xml-to-projects-xcode-android)
+- [Export vector icons](#to-export-vector-icons)
 - [Currently supports the following entities](#currently-supports-the-following-entities)
 
 ## Preview
@@ -61,6 +62,12 @@ Then open the application, click button-plus, and paste the received project-id
 
 ![image(Landscape)](https://github.com/mrustaa/gif_presentation/blob/master/FigmaConvert/gifPS3.gif)
 
+## Export vector icons
+
+In order to export vector-icons in Figma, уou need to select `vector layers` and click `create component`
+
+![image(Landscape)](https://github.com/mrustaa/gif_presentation/blob/master/FigmaConvert/vectorIconExport.gif)
+
 ## Currently supports the following entities:
 
 #### Nodes
@@ -83,13 +90,11 @@ Then open the application, click button-plus, and paste the received project-id
   - Line Arrow
   - Curves
 #### Fills
-- ✅ 
-  - Solid
+- ✅ Solid
   - Images
   - Gradient Linear
   - Gradient Radial
-- ❌ 
-  - Gradient Angular
+- ❌ Gradient Angular
   - Gradient Diamond
 #### Effects
 - ✅ (Only in iOS)
