@@ -101,7 +101,10 @@ Then open the application, click button-plus, and paste the received project-id
 
 ## Export vector icons
 
-In order to export vector-icons in Figma, уou need to select `vector layers` and click `create component`
+In order to export vector-icons in Figma, уou need to select `vector layers` and click `create component`.
+
+Will begin downloading images.
+
 In .xib .xml it will be generated into an ImageView
 
 ![image(Landscape)](https://github.com/mrustaa/gif_presentation/blob/master/FigmaConvert/vectorIconExport.gif)
