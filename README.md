@@ -12,8 +12,8 @@ FigmaConvertXib is a tool for exporting design elements from [Figma](http://figm
   - [Figma access token](#figma-access-token)
   - [Add Figma project id](#add-figma-project-id)
 - [Complection Generation Xib Xml to projects Xcode Android](#complection-generation-xib-xml-to-projects-xcode-android)
-- [Export vector icons](#to-export-vector-icons)
 - [Currently supports the following entities](#currently-supports-the-following-entities)
+- [Export vector icons](#to-export-vector-icons)
 
 ## Preview
 ![image(Landscape)](https://github.com/mrustaa/gif_presentation/blob/master/FigmaConvert/gifPS2.gif)
@@ -62,12 +62,6 @@ Then open the application, click button-plus, and paste the received project-id
 
 ![image(Landscape)](https://github.com/mrustaa/gif_presentation/blob/master/FigmaConvert/gifPS3.gif)
 
-## Export vector icons
-
-In order to export vector-icons in Figma, уou need to select `vector layers` and click `create component`
-
-![image(Landscape)](https://github.com/mrustaa/gif_presentation/blob/master/FigmaConvert/vectorIconExport.gif)
-
 ## Currently supports the following entities:
 
 #### Nodes
@@ -102,3 +96,9 @@ In order to export vector-icons in Figma, уou need to select `vector layers` an
   - Shadow Drop  
   - Blur Layer 
 - ❌ Blur Background 
+
+## Export vector icons
+
+In order to export vector-icons in Figma, уou need to select `vector layers` and click `create component`
+
+![image(Landscape)](https://github.com/mrustaa/gif_presentation/blob/master/FigmaConvert/vectorIconExport.gif)
