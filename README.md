@@ -23,7 +23,7 @@ FigmaConvertXib is a tool for exporting design elements from [Figma](http://figm
 ## Watch video with examples
 [▶️ Add Figma Projects](https://youtu.be/2Cue6R7TfjA) 
 
-[▶️ Page Types](https://youtu.be/2Cue6R7TfjA)
+[▶️ Page Types](https://youtu.be/UAX1FXRFouw)
 
 ## Installation:
 
