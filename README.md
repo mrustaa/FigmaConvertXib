@@ -113,7 +113,7 @@ In .xib .xml it will be generated into an ImageView
 
 ## Author
 
-<motionrustam@gmail.com> 📩| [mrustaa](https://github.com/mrustaa/)
+<motionrustam@gmail.com> 📩| [mrustaa](https://github.com/mrustaa/) FEBRUARY 2021 
 
 ## License
 
