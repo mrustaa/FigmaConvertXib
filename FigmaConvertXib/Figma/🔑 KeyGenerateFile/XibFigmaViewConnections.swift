@@ -21,6 +21,7 @@ extension FigmaNode {
         case dataSet
         case cellProperty
         case cellSet
+        case cellState
     }
     
     // MARK: - Connections Xib <-> Swift
@@ -76,14 +77,39 @@ extension FigmaNode {
 
     func property(type: XibCellPropertyType, typeLabel: Bool, id: String, count: Int) -> String {
         
+        //let strCount: String = (count == 0) ? "" : "\(count)"
+        let strCount = "\(count)"
+      
         let name_     : String = typeLabel ? "label"   : "imageView"
         let valueName_: String = typeLabel ? "text"    : "image"
         let classType_: String = typeLabel ? "UILabel" : "UIImageView"
         let valueType_: String = typeLabel ? "String"  : "UIImage"
         
-        let  prName: String = (name_      + "\(count)")
-        let valName: String = (valueName_ + "\(count)")
+        var  prName: String = name_      + strCount
+        var valName: String = valueName_ + strCount
         
+      if typeLabel {
+        if count == 0 {
+          let sh = "title"
+          prName  = (sh + name_.firstUppercase())//(name_      + "title")
+          valName = (sh + valueName_.firstUppercase()) //(valueName_ + "title")
+        } else if count == 1 {
+          let sh = "subtitle"
+          prName  = (sh + name_.firstUppercase())
+          valName = (sh + valueName_.firstUppercase())
+        }
+      } else {
+        if count == 0 {
+          let sh = "first"
+          prName  = (sh + name_.firstUppercase())
+          valName = (sh + valueName_.firstUppercase())
+        } else if count == 1 {
+          let sh = "second"
+          prName  = (sh + name_.firstUppercase())
+          valName = (sh + valueName_.firstUppercase())
+        }
+      }
+      
         var outlet: String = ""
         
         switch type {
@@ -119,6 +145,10 @@ extension FigmaNode {
         case .cellSet:
             
             outlet = "\(prName)?.\(valueName_) = data.\(valName) ?? \(prName)?.\(valueName_)"
+          
+        case .cellState:
+          
+            outlet = "\(prName)?.\(valueName_) = data.state.\(valName)"
             
             // titleLabel?.text = data.title
             // subtitleLabel?.image = data.subtitle

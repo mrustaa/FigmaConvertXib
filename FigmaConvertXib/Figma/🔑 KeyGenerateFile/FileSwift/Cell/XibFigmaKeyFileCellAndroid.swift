@@ -34,7 +34,7 @@ extension FigmaNode {
         let cellProperty    = genArr(cellProperty_, 4, true)
         
         let cellInit_       = propertyChildrenAndroid(type: .cellInit).connections
-        let cellInit        = genArr(cellInit_, 4, true)
+        let cellInit        = genArr(cellInit_, 4, true, lastComma: true)
         
         let cellSet_        = propertyChildrenAndroid(type: .cellSet).connections
         let cellSet         = genArr(cellSet_, 4, true)

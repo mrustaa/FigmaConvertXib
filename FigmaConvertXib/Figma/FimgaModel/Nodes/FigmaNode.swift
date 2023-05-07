@@ -14,12 +14,25 @@ class FigmaNode {
     let type: FigmaNode.Type_
     var children: [FigmaNode] = []
     
+  
+    var creatorId: String?
     var xibId: String = xibID()
+    static var mainId: String = ""
+  
+  static var tableCellId: String = ""
+  static var tableCellContentId: String = ""
+  static var tableCellViewId: String = ""
+  
+    lazy var tableId: String = xibID()
+    lazy var tableTop: String = xibID()
+    lazy var tableBottom: String = xibID()
+    lazy var cellButtonId: String = xibID()
     
     var blendMode: BlendMode = .modeDefault
     
     var absoluteBoundingBox: CGRect = CGRect.zero
     var realFrame: CGRect = CGRect.zero
+    static var mainFrame: CGRect = CGRect.zero
     
     var imageSize: CGSize?
     

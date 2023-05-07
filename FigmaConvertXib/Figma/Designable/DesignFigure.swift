@@ -258,6 +258,7 @@ class DesignFigure_: UIView {
         addGradient(bezier: bezier)
         
         addInnerShadow(bezier: bezier)
+        //addInnerShadow(rect)
         addBorder()
         addShadow()
         
@@ -512,6 +513,40 @@ class DesignFigure_: UIView {
         // context.restoreGState()
     }
     
+    
+    func addInnerShadow(_ rect: CGRect) {
+        /// General Declarations
+        
+        guard let context = UIGraphicsGetCurrentContext() else { return }
+        
+        let  path = UIBezierPath(roundedRect: rect, cornerRadius: cornerRadius)
+        
+        //UIColor(white: 1.0, alpha: 0.00001).setFill()
+        
+        path.fill()
+        context.saveGState()
+        context.clip(to: path.bounds)
+        context.setAlpha(CGFloat(1.0))
+        context.beginTransparencyLayer(auxiliaryInfo: nil)
+        
+        
+        
+        context.setShadow(offset: inShOffset,
+                          blur: inShRadius,
+                          color: inShColor.cgColor)
+        
+        let ovalOpaqueShadow = UIColor.init(cgColor: inShColor.cgColor)
+        context.setBlendMode(.sourceOut)
+        context.beginTransparencyLayer(auxiliaryInfo: nil)
+        
+        ovalOpaqueShadow.setFill()
+        
+            path.fill()
+        
+        context.endTransparencyLayer()
+        context.endTransparencyLayer()
+        context.restoreGState()
+    }
     
     // MARK: - Blur
     

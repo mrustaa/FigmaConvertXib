@@ -31,7 +31,7 @@
         <activity
             android:name=".ui.MainActivity"
             android:label="@string/app_figma_convert_xml"
-            android:theme="@style/MyTheme" />
+            android:theme="@style/MyThemeBackColor" />
 
         <activity
             android:name=".framework.recyclerAdapter.Interface.RecyclerAdapterActivity"

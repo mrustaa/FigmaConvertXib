@@ -13,10 +13,23 @@ extension CGRect {
     func xib() -> String {
         return "<rect key=\"frame\" x=\"\(self.origin.x)\" y=\"\(self.origin.y)\" width=\"\(self.size.width)\" height=\"\(self.size.height)\"/>"
     }
-    
+  
     func xibBound() -> String {
-        let r = CGRect(x: 0, y: 0, width: width, height: height)
-        return r.xib()
+      return getBounds().xib()
     }
+  
+//  func boundsEqual(_ rect: CGRect) -> Bool {
+//    return ((self.size.width  == rect.size.width) &&
+//            (self.size.height == rect.size.height))
+//  }
+    
+    func getBounds() -> CGRect {
+      return CGRect(x: 0, y: 0, width: width, height: height)
+    }
+      
+    var description:String {
+      return "\(self.origin.x),\(self.origin.y)_|\(self.width),\(self.height)"
+    }
+  
 }
 

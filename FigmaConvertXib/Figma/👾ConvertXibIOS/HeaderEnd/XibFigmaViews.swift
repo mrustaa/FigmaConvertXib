@@ -15,6 +15,7 @@ private let customClassLabel = "DesignLabel"
 private let customClassView = "DesignView"
 private let customClassFigure = "DesignFigure"
 private let customClassButton = "DesignButton"
+private let customClassTable = "TableAdapterView"
 
 typealias headerEnd = (_ header: String, _ end: String, _ id: String) -> Void
 
@@ -80,7 +81,7 @@ extension FigmaNode {
     func designImageViewXib() -> (header: String, end: String) {
         
         let header = """
-        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="\(xibId)" userLabel="\(name.xibFilter())" customClass="\(customClassImage)" customModule="\(customModule)" customModuleProvider="target">
+        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="\(xibId)" userLabel="\(name.xibFilterRemoveKey())" customClass="\(customClassImage)" customModule="\(customModule)" customModuleProvider="target">
         """
         
         let end = "</view>"
@@ -95,7 +96,7 @@ extension FigmaNode {
         let designable = (design ? " customClass=\"\(customClassLabel)\" customModule=\"\(customModule)\"" : "")
         
         let header = """
-        <label opaque="NO" userInteractionEnabled="NO" alpha="\(opacity)" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="\(text.xibFilter())" textAlignment="\(fontStyleXib())" lineBreakMode="tailTruncation" numberOfLines="\(100)" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="\(xibId)" userLabel="\(name.xibFilter())"\(designable) customModuleProvider="target">
+        <label opaque="NO" userInteractionEnabled="NO" alpha="\(opacity)" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="\(text.xibFilter())" textAlignment="\(fontStyleXib())" lineBreakMode="tailTruncation" numberOfLines="\(100)" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="\(xibId)" userLabel="\(name.xibFilterRemoveKey())"\(designable) customModuleProvider="target">
         """
         
         let end = "</label>"
@@ -110,7 +111,7 @@ extension FigmaNode {
         let clipsSubviews = comp ? "YES" : clipsContent.xib()
         
         let header = """
-        <view clipsSubviews="\(clipsSubviews)" alpha="\(opacity)" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" userLabel="\(name.xibFilter())" id="\(xibId)" customClass="\(customClassView)" customModule="\(customModule)" customModuleProvider="target">
+        <view clipsSubviews="\(clipsSubviews)" alpha="\(opacity)" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" userLabel="\(name.xibFilterRemoveKey())" id="\(xibId)" customClass="\(customClassView)" customModule="\(customModule)" customModuleProvider="target">
         """
         
         let end = "</view>"
@@ -118,10 +119,12 @@ extension FigmaNode {
         return (header, end)
     }
     
-    func viewXib() -> (header: String, end: String) {
+    func viewXib(id: String? = nil) -> (header: String, end: String) {
+        
+        let id = id ?? xibId
         
         let header = """
-        <view clipsSubviews="\(clipsContent.xib())" alpha="\(opacity)" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" userLabel="\( name.xibFilter() )" id="\(xibId)">
+        <view clipsSubviews="\(clipsContent.xib())" alpha="\(opacity)" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" userLabel="\( name.xibFilterRemoveKey() )" id="\(id)">
         """
         
         let end = "</view>"
@@ -131,12 +134,32 @@ extension FigmaNode {
     
     // MARK: - Design Figure
       
+  
+  func tableAdapterViewXib() -> (header: String, end: String, constraints: String) {
+    let header = """
+        <tableView clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="always" keyboardDismissMode="interactive" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="\(tableId)" customClass="\(customClassTable)" customModule="\(customModule)" customModuleProvider="target">
+            \(realFrame.xibBound())
+            \(UIColor.white.xib("backgroundColor"))
+        """
+    
+    let end = "</tableView>"
+    
+    let constraints = """
+            <constraint firstItem="\(tableId)" firstAttribute="leading" secondItem="\(xibId)" secondAttribute="leading" id="\(xibID())"/>
+            <constraint firstItem="\(tableId)" firstAttribute="top" secondItem="\(xibId)" secondAttribute="top" constant="200" id="\(tableTop)"/>
+            <constraint firstAttribute="bottom" secondItem="\(tableId)" secondAttribute="bottom" constant="200" id="\(tableBottom)"/>
+            <constraint firstAttribute="trailing" secondItem="\(tableId)" secondAttribute="trailing" id="\(xibID())"/>
+        """
+    
+    return (header, end, constraints)
+  }
+  
     func designFigureXib(id: String? = nil) -> (header: String, end: String) {
         
         let id = id ?? xibId
         
         let header = """
-        <view clipsSubviews="\(clipsContent.xib())" alpha="\(opacity)" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" userLabel="\(name.xibFilter())" id="\(id)" customClass="\(customClassFigure)" customModule="\(customModule)" customModuleProvider="target">
+        <view clipsSubviews="\(clipsContent.xib())" alpha="\(opacity)" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" userLabel="\(name.xibFilterRemoveKey())" id="\(id)" customClass="\(customClassFigure)" customModule="\(customModule)" customModuleProvider="target">
         """
 
         let end = "</view>"
@@ -149,7 +172,7 @@ extension FigmaNode {
     func designButtonXib() -> (header: String, end: String) {
         
         let header = """
-        <button clipsSubviews="\(clipsContent.xib())" alpha="\(opacity)" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" userLabel="\(name.xibFilter())" id="\(xibId)" customClass="\(customClassButton)" customModule="\(customModule)" customModuleProvider="target">
+        <button clipsSubviews="\(clipsContent.xib())" alpha="\(opacity)" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" userLabel="\(name.xibFilterRemoveKey())" id="\(xibId)" customClass="\(customClassButton)" customModule="\(customModule)" customModuleProvider="target">
         """
         
 //        let button = """
@@ -165,35 +188,70 @@ extension FigmaNode {
         return (header, end)
     }
     
-    /**
-        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qeb-tN-E1l" customClass="DesignButton" customModule="FigmaConvertXib" customModuleProvider="target">
-    */
+  
+    func cellButtonXib() -> (header: String, end: String) {
+      
+//       <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qeb-tN-E1l" customClass="DesignButton" customModule="FigmaConvertXib" customModuleProvider="target">
+      
+      let rect = realFrame.getBounds().xib()
+      
+      let header = """
+      <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="\(cellButtonId)">
+        \(rect)
+      """
+      
+      let end = """
+      </button>
+      """
+      
+      return (header, end)
+    }
+  
     // MARK: - Cell
     
     func cellXib(rect: CGRect) -> (header: String, connections: String, end: String) {
         
         let name_ = name.xibFilterName(type: .cell) + "Cell"
         
-        let cellId = xibID()
+      Self.tableCellId        = xibId
+      Self.tableCellContentId = xibID()
+      Self.tableCellViewId    = xibID()
         
-        let view = designFigureXib(id: xibID())
+        var view: (header: String, end: String)!
+        if let _ = attributesOnlyFill(getAttributes()) {
+            view = viewXib(id: Self.tableCellViewId)
+        } else {
+            view = designFigureXib(id: Self.tableCellViewId)
+        }
+        
         let viewHeader = view.header
         let viewEnd    = view.end
         
         let header = """
-        <tableViewCell clipsSubviews="\(clipsContent.xib())" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="64" id="\(xibId)" customClass="\(name_)" customModule="\(customModule)" customModuleProvider="target">
+        <tableViewCell clipsSubviews="\(clipsContent.xib())" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="64" id="\(Self.tableCellId)" customClass="\(name_)" customModule="\(customModule)" customModuleProvider="target">
             \(rect.xib())
             <autoresizingMask key="autoresizingMask"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="\(xibId)" id="\(cellId)">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="\(Self.tableCellId)" id="\(Self.tableCellContentId)">
                 \(rect.xibBound())
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     \(viewHeader)
         """
         
+      let constaints: (origin: String, size: String) = ("", "")
+      
+//      constaints = xibConstraintsAll(
+//        curId: Self.tableCellViewId,
+//        mainId: Self.tableCellContentId,
+//        first: true
+//      )
+      
+        let constraintClose = xibConstraintsClose(value: constaints.origin)
+      
         let connections = """
                     \(viewEnd)
                 </subviews>
+                \(constraintClose)
             </tableViewCellContentView>
             \(UIColor.clear.xib("backgroundColor"))
         """
@@ -205,19 +263,21 @@ extension FigmaNode {
         return (header, connections, end)
     }
     
-    
     // MARK: - Cell
        
     func collectionCellXib(rect: CGRect) -> (header: String, connections: String, end: String) {
         
         let name_ = name.xibFilterName(type: .collection) + "Cell"
         
-        let view = designFigureXib(id: xibID())
-        let viewHeader = view.header
-        let viewEnd    = view.end
-        
+      Self.tableCellId        = xibId
+      Self.tableCellViewId    = xibID()
+      
+      let view = designFigureXib(id: Self.tableCellViewId)
+      let viewHeader = view.header
+      let viewEnd    = view.end
+      
         let header = """
-        <collectionViewCell opaque="NO" clipsSubviews="\(clipsContent.xib())" multipleTouchEnabled="YES" contentMode="center" id="\(xibId)" customClass="\(name_)" customModule="\(customModule)" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="\(clipsContent.xib())" multipleTouchEnabled="YES" contentMode="center" id="\(Self.tableCellId)" customClass="\(name_)" customModule="\(customModule)" customModuleProvider="target">
             \(rect.xibBound())
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -227,9 +287,18 @@ extension FigmaNode {
                     \(viewHeader)
         """
         
+      let constaints: (origin: String, size: String) = ("", "")
+//      let constaints = xibConstraintsAll(
+//        curId: Self.tableCellViewId,
+//        mainId: Self.tableCellId
+//      )
+      
+        let constraintClose = xibConstraintsClose(value: constaints.origin)
+      
         let connections = """
                     \(viewEnd)
                 </subviews>
+                \(constraintClose)
             </view>
         """
         

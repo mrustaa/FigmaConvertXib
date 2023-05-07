@@ -1,11 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/drawable/500.xml" value="0.158203125" />
+        <entry key="app/src/main/res/drawable/_ellipse_1.xml" value="0.2921875" />
+        <entry key="app/src/main/res/drawable/_ellipse_38.xml" value="0.2921875" />
+        <entry key="app/src/main/res/drawable/_frame_1723.xml" value="0.2921875" />
+        <entry key="app/src/main/res/drawable/_frame_1725.xml" value="0.158203125" />
+        <entry key="app/src/main/res/drawable/_frame_1730.xml" value="0.2921875" />
+        <entry key="app/src/main/res/drawable/_frame_1733.xml" value="0.2921875" />
+        <entry key="app/src/main/res/drawable/_frame_1734.xml" value="0.2921875" />
+        <entry key="app/src/main/res/drawable/_frame_3183359.xml" value="0.2921875" />
+        <entry key="app/src/main/res/drawable/_frame_3183364.xml" value="0.2921875" />
+        <entry key="app/src/main/res/drawable/_rectangle_1266.xml" value="0.158203125" />
+        <entry key="app/src/main/res/drawable/_rectangle_24.xml" value="0.2921875" />
+        <entry key="app/src/main/res/drawable/gradient_rectangle.xml" value="0.2921875" />
+        <entry key="app/src/main/res/drawable/i_phone_11__pro__max__3.xml" value="0.2921875" />
+        <entry key="app/src/main/res/drawable/i_phone_11__pro__max__4.xml" value="0.2921875" />
+        <entry key="app/src/main/res/layout/activity_launch_screen.xml" value="0.216015625" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.216015625" />
+        <entry key="app/src/main/res/layout/activity_recycler.xml" value="0.216015625" />
+        <entry key="app/src/main/res/layout/cell_button.xml" value="0.216015625" />
+        <entry key="app/src/main/res/layout/cell_button_next.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/cell_image.xml" value="0.216015625" />
+        <entry key="app/src/main/res/layout/cell_new_personal_add.xml" value="1.0" />
+        <entry key="app/src/main/res/layout/cell_new_personal_avatar.xml" value="0.262109375" />
+        <entry key="app/src/main/res/layout/cell_new_product_button.xml" value="0.262109375" />
+        <entry key="app/src/main/res/layout/cell_new_product_card_info.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/cell_new_product_info.xml" value="0.262109375" />
+        <entry key="app/src/main/res/layout/cell_new_product_info_section.xml" value="0.55" />
+        <entry key="app/src/main/res/layout/cell_new_profile_order.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/cell_new_profile_segment.xml" value="0.262109375" />
+        <entry key="app/src/main/res/layout/cell_new_profile_user.xml" value="0.262109375" />
+        <entry key="app/src/main/res/layout/cell_new_search_bar.xml" value="0.262109375" />
+        <entry key="app/src/main/res/layout/cell_new_transfer_card_big.xml" value="0.262109375" />
+        <entry key="app/src/main/res/layout/cell_new_transfer_card_graph.xml" value="0.262109375" />
+        <entry key="app/src/main/res/layout/cell_new_transfer_card_info.xml" value="0.262109375" />
+        <entry key="app/src/main/res/layout/cell_new_transfer_card_normal.xml" value="0.262109375" />
+        <entry key="app/src/main/res/layout/cell_new_transfer_card_section.xml" value="0.262109375" />
+        <entry key="app/src/main/res/layout/cell_new_transfer_method.xml" value="0.262109375" />
+        <entry key="app/src/main/res/layout/cell_new_transfer_top_panel.xml" value="0.262109375" />
+        <entry key="app/src/main/res/layout/cell_offices.xml" value="0.262109375" />
+        <entry key="app/src/main/res/layout/cell_offices_checkbox.xml" value="0.262109375" />
+        <entry key="app/src/main/res/layout/cell_operation_accept.xml" value="0.262109375" />
+        <entry key="app/src/main/res/layout/cell_operation_agreement.xml" value="0.262109375" />
+        <entry key="app/src/main/res/layout/cell_operation_button.xml" value="0.262109375" />
+        <entry key="app/src/main/res/layout/cell_payments_section.xml" value="0.262109375" />
+        <entry key="app/src/main/res/layout/cell_product_details_segment.xml" value="0.262109375" />
+        <entry key="app/src/main/res/layout/cell_product_info_card_text.xml" value="0.262109375" />
+        <entry key="app/src/main/res/layout/cell_product_progress_info.xml" value="0.262109375" />
+        <entry key="app/src/main/res/layout/cell_products.xml" value="0.262109375" />
+        <entry key="app/src/main/res/layout/cell_text.xml" value="0.262109375" />
+        <entry key="app/src/main/res/layout/cell_title_subtitle.xml" value="0.262109375" />
+        <entry key="app/src/main/res/layout/result_android.xml" value="0.6191969671781017" />
+      </map>
+    </option>
+  </component>
   <component name="NullableNotNullManager">
     <option name="myDefaultNullable" value="org.jetbrains.annotations.Nullable" />
     <option name="myDefaultNotNull" value="androidx.annotation.NonNull" />
     <option name="myNullables">
       <value>
-        <list size="12">
+        <list size="15">
           <item index="0" class="java.lang.String" itemvalue="org.jetbrains.annotations.Nullable" />
           <item index="1" class="java.lang.String" itemvalue="javax.annotation.Nullable" />
           <item index="2" class="java.lang.String" itemvalue="javax.annotation.CheckForNull" />
@@ -18,12 +75,15 @@
           <item index="9" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.compatqual.NullableDecl" />
           <item index="10" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.compatqual.NullableType" />
           <item index="11" class="java.lang.String" itemvalue="com.android.annotations.Nullable" />
+          <item index="12" class="java.lang.String" itemvalue="org.eclipse.jdt.annotation.Nullable" />
+          <item index="13" class="java.lang.String" itemvalue="io.reactivex.annotations.Nullable" />
+          <item index="14" class="java.lang.String" itemvalue="io.reactivex.rxjava3.annotations.Nullable" />
         </list>
       </value>
     </option>
     <option name="myNotNulls">
       <value>
-        <list size="11">
+        <list size="15">
           <item index="0" class="java.lang.String" itemvalue="org.jetbrains.annotations.NotNull" />
           <item index="1" class="java.lang.String" itemvalue="javax.annotation.Nonnull" />
           <item index="2" class="java.lang.String" itemvalue="edu.umd.cs.findbugs.annotations.NonNull" />
@@ -35,6 +95,10 @@
           <item index="8" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.compatqual.NonNullDecl" />
           <item index="9" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.compatqual.NonNullType" />
           <item index="10" class="java.lang.String" itemvalue="com.android.annotations.NonNull" />
+          <item index="11" class="java.lang.String" itemvalue="org.eclipse.jdt.annotation.NonNull" />
+          <item index="12" class="java.lang.String" itemvalue="io.reactivex.annotations.NonNull" />
+          <item index="13" class="java.lang.String" itemvalue="io.reactivex.rxjava3.annotations.NonNull" />
+          <item index="14" class="java.lang.String" itemvalue="lombok.NonNull" />
         </list>
       </value>
     </option>

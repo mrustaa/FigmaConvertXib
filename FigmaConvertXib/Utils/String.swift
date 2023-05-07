@@ -22,12 +22,13 @@ extension String {
     
     /// 1 Заглавная
     func firstUppercase() -> String {
-        return prefix(1).capitalized + dropFirst()
+      guard let first = first else { return "" }
+      return String(first).uppercased() + dropFirst()
     }
-    
     /// 1 Строчная
     func firstLowercase() -> String {
-        return prefix(1).uppercased() + dropFirst()
+      guard let first = first else { return "" }
+      return String(first).lowercased() + dropFirst()
     }
     
     // поиск слова в тексте    ингнорирование заглавных сточных
@@ -46,3 +47,16 @@ extension String {
     }
 }
 
+
+//MARK: - Constants
+extension String {
+  static let empty: String = ""
+  static let whitespace: String = " "
+  static let slash: String = "/"
+  static let newLine: String = "\n"
+  static let endLine: String = "\r\n"
+  static let colon: String = ":"
+  static let semicolon: String = ";"
+  static let equal: String = "="
+  static let and: String = "&"
+}

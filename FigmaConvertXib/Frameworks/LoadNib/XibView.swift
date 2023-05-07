@@ -19,19 +19,19 @@ class XibView: UIView {
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         contentView = fromNib()
-        loadedFromNib()
+        setup()
     }
     
     public init() {
         super.init(frame: CGRect.zero)
         contentView = fromNib()
         frame = contentView?.frame ?? frame
-        loadedFromNib()
+        setup()
     }
     
     // MARK: - Postflight
     
-    open func loadedFromNib() {
+    open func setup() {
         
     }
     
