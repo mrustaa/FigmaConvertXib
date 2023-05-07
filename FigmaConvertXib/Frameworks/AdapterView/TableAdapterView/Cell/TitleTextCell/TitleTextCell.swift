@@ -45,10 +45,6 @@ class TitleTextCellData: TableAdapterCellData {
     
     var clss: AnyClass?
     
-    var separatorVisible: Bool
-    var touchAnimationHide: Bool
-    var editing: Bool
-    
     // MARK: Inits
     
     init(_ title: String? = nil,
@@ -64,19 +60,11 @@ class TitleTextCellData: TableAdapterCellData {
         
         self.clss = clss
         
-        self.separatorVisible = separator
-        self.touchAnimationHide = touchAnimationHide
-        self.editing = editing
-        
-        super.init(clickCallback)
+        super.init(separator, touchAnimationHide, editing, clickCallback)
     }
     
     override public func cellHeight() -> CGFloat {
-        if title != nil {
-            return 64
-        } else {
-            return 44
-        }
+        return title != nil ? 64 : 44
     }
     
     override public func canEditing() -> Bool {

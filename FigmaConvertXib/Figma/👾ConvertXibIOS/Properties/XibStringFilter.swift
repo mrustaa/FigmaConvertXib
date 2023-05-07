@@ -11,6 +11,15 @@ import Foundation
 
 extension String {
     
+  
+  func xibFilterRemoveKey() -> String {
+    var name = xibFilter()
+    for key in FigmaFileType.allCases {
+      name = name.findReplace(find: key.rawValue, replace: "")
+    }
+    return name
+  }
+  
     func xibFilter() -> String {
         
         let flt1 = self.findReplace(find: "&" , replace: "&amp;" )

@@ -43,10 +43,10 @@ extension FigmaNode {
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="\(tableID)" secondAttribute="trailing" id="\(xibID())"/>
-                                    <constraint firstItem="\(tableID)" firstAttribute="leading" secondItem="\(vcContentID)" secondAttribute="leading" id="\(xibID())"/>
-                                    <constraint firstAttribute="bottom" secondItem="\(tableID)" secondAttribute="bottom" id="\(xibID())"/>
-                                    <constraint firstItem="\(tableID)" firstAttribute="top" secondItem="\(vcContentID)" secondAttribute="top" id="\(xibID())"/>
+                                    <constraint                        firstAttribute="trailing" secondItem="\(tableID)"     secondAttribute="trailing" id="\(xibID())"/>
+                                    <constraint firstItem="\(tableID)" firstAttribute="leading"  secondItem="\(vcContentID)" secondAttribute="leading"  id="\(xibID())"/>
+                                    <constraint                        firstAttribute="bottom"   secondItem="\(tableID)"     secondAttribute="bottom"   id="\(xibID())"/>
+                                    <constraint firstItem="\(tableID)" firstAttribute="top"      secondItem="\(vcContentID)" secondAttribute="top"      id="\(xibID())"/>
                                 </constraints>
                                 <viewLayoutGuide key="safeArea" id="6qi-GV-N23"/>
                             </view>

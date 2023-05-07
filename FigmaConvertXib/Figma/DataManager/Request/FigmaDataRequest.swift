@@ -63,8 +63,15 @@ extension FigmaData {
         request.httpMethod = "GET"
         request.allHTTPHeaderFields = ["X-Figma-Token" : token]
         
+//      print( request.writeRequest() )
+      
         URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
                     guard let currentData: Data = data, error == nil else { return }
+          
+          if let httpResponse = response as? HTTPURLResponse {
+//            print( httpResponse.writeResponse(data: currentData) )
+          }
+          
             do {
                 if let json = try JSONSerialization.jsonObject(with: currentData, options: .allowFragments) as? [String : Any] {
                     DispatchQueue.main.async {
@@ -112,9 +119,13 @@ extension FigmaData {
         request.httpMethod = "GET"
         request.allHTTPHeaderFields = ["X-Figma-Token" : token]
         
+//      print( request.writeRequest() )
         URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
             guard let currentData: Data = data, error == nil else { return }
             
+          if let httpResponse = response as? HTTPURLResponse {
+//            print( httpResponse.writeResponse(data: currentData) )
+          }
             if type != .Me {
                 compJson?(currentData, nil)
             }

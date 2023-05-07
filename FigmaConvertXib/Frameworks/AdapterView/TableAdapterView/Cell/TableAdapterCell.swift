@@ -10,6 +10,9 @@ import UIKit
 
 open class TableAdapterCell: UITableViewCell {
     
+    open var didScrollCallback: (() -> ())? = nil
+    open var cellClickCallback: ((UIControl.Event) -> ())?
+  
     @IBInspectable var hideAnimation: Bool = false
     open var selectedView: UIView?
     
@@ -17,28 +20,30 @@ open class TableAdapterCell: UITableViewCell {
     
     public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupCommonProperties()
+        setup()
     }
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        setupCommonProperties()
+        setup()
     }
     
-    private func setupCommonProperties() {
-        // self.selectionStyle = .none
-    }
+    public func setup() {}
     
     open func fill(data: TableAdapterCellData?) {
-        
+      guard let data = data else { return }
+      
+      self.hideAnimation = data.touchAnimationHide
+      separator(hide: !data.separatorVisible)
     }
     
-    let selAlpha: CGFloat = 0.2 // 0.15
+    let selAlpha: CGFloat = 0.2
     
     open override func setSelected(_ selected: Bool, animated: Bool) {
         
         if selected {
             cellData?.cellClickCallback?()
+            cellClickCallback?(.touchUpInside)
         }
         
         if hideAnimation {
@@ -70,7 +75,9 @@ open class TableAdapterCell: UITableViewCell {
     }
     
     open override func setHighlighted(_ highlighted: Bool, animated: Bool) {
-        
+      
+      cellClickCallback?(.touchDown)
+      
         if hideAnimation {
             if highlighted {
                 UIView.animate(withDuration: 0.1) {

@@ -12,17 +12,23 @@ open class TableAdapterView: UITableView {
     
     @IBInspectable var separatorClr: UIColor?
     
+    // MARK: Callbacks
+  
     public var countCallback: TableAdapterCountCallback?
     public var cellIndexCallback: TableAdapterCellIndexCallback?
     public var heightIndexCallback: TableAdapterHeightIndexCallback?
     public var selectIndexCallback: TableAdapterSelectIndexCallback?
     public var deleteIndexCallback: TableAdapterDeleteIndexCallback?
     public var didScrollCallback: TableAdapterDidScrollCallback?
-    
+    public var touchBeganCallback: (() -> ())?
+    public var didRefreshCallback: (() -> ())?
+  
     var canEditing: Bool = false
     
     public var items: [TableAdapterItem] = []
     
+  // MARK: - Init
+  
     required public init?(coder: NSCoder) {
         super.init(coder: coder)
         update()
@@ -47,32 +53,16 @@ open class TableAdapterView: UITableView {
         backgroundColor = .clear
     }
     
-    public func set(items: [TableAdapterItem], animated: Bool = false, reload: Bool = true) {
-        self.clear()
-        items.forEach {
-            self.unsafeAdd(item: $0)
-            // $0.cellHandler?.delegate = self
-        }
-        if reload { reloadData(animated: animated) }
-    }
+  // MARK: Touches Began Event
+  
+  open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    super.touchesBegan(touches, with: event)
     
-    public func clear() {
-        items.removeAll()
-    }
-    
-    public func reloadData(animated: Bool = false) {
-        if animated {
-            self.reloadSections(IndexSet(integer: 0), with: .automatic)
-        } else {
-            self.reloadData()
-        }
-    }
-    
-
-    public func scrollToTop() {
-        self.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
-    }
-    
+    touchBeganCallback?()
+  }
+  
+  // MARK: Bussines Logic
+  
     public func unsafeAdd(item: TableAdapterItem) {
         items.append(item)
         registerNibIfNeeded(for: item)
@@ -83,96 +73,26 @@ open class TableAdapterView: UITableView {
         self.register(nib, forCellReuseIdentifier: item.cellReuseIdentifier)
     }
     
-    
-    private func cellAt(_ indexPath: IndexPath) -> TableAdapterCell? {
+    public func cellAt(_ indexPath: IndexPath) -> TableAdapterCell? {
         let item = items[indexPath.row]
         let cellIdentifier = item.cellReuseIdentifier
         let cell = self.dequeueReusableCell(withIdentifier: cellIdentifier) as? TableAdapterCell
         cell?.cellData = item.cellData
         return cell
     }
+  
+    func searchTable(cellClass: AnyClass) -> (indxPath: IndexPath, cell: TableAdapterCell, data: TableAdapterCellData)? {
+      var index = 0
+      for cell in self.visibleCells {
+        if let adCell = cell as? TableAdapterCell, let data = adCell.cellData {
+          if type(of: adCell) == cellClass {
+            let path = IndexPath(row: index, section: 0)
+            return (path, adCell, data)
+          }
+        }
+        index += 1
+      }
+      return nil
+    }
 }
 
-// MARK: DataSource
-
-extension TableAdapterView: UITableViewDataSource {
-    
-    /// count
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if !items.isEmpty {
-            return items.count
-        }
-        if let countCallback = countCallback {
-            return countCallback()
-        }
-        return 0
-    }
-    
-    /// cell
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if !items.isEmpty {
-            let item = items[indexPath.row]
-            let cell = cellAt(indexPath)
-            cell?.fill(data: item.cellData)
-            return cell ?? UITableViewCell()
-        }
-        if let cellIndexCallback = cellIndexCallback {
-            return cellIndexCallback(indexPath.row)
-        }
-        return UITableViewCell()
-    }
-    
-    
-    public func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        if !items.isEmpty {
-            let item: TableAdapterItem = items[indexPath.row]
-            return item.canEditing()
-        }
-        return false
-    }
-    
-    public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
-        if editingStyle == .delete {    
-            items.remove(at: indexPath.row)
-            self.beginUpdates()
-            self.deleteRows(at: [indexPath], with: .automatic)
-            self.endUpdates()
-            
-            deleteIndexCallback?(indexPath.row)
-        }
-    }
-    
-}
-
-// MARK: Delegate
-
-extension TableAdapterView: UITableViewDelegate {
-    
-    /// height
-    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if !items.isEmpty {
-            return items[indexPath.row].height()
-        }
-        if let heightIndexCallback = heightIndexCallback {
-            return heightIndexCallback(indexPath.row)
-        }
-        return 0
-    }
-    
-    /// select
-    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        selectIndexCallback?(indexPath.row)
-    }
-    
-}
-
-extension TableAdapterView: UIScrollViewDelegate {
-    
-    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        didScrollCallback?()
-    }
-    
-    
-}

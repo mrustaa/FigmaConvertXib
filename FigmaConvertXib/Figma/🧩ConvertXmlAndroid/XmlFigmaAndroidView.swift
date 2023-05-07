@@ -41,7 +41,7 @@ extension FigmaNode {
         
         case .component:
             
-            view = xibComponent()
+            view = xibAndroidComponent()
         
         default: break
         }
@@ -52,7 +52,7 @@ extension FigmaNode {
     
     // MARK: - Component
     
-    private func xibComponent() -> String {
+    private func xibAndroidComponent() -> String {
         
         var view: (header: String, end_settings: String, end: String) = ("", "", "")
         

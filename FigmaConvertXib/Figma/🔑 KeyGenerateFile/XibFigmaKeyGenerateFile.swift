@@ -8,11 +8,13 @@
 
 import UIKit
 
-enum FigmaFileType: String {
+enum FigmaFileType: String, CaseIterable {
     case cell       = "figmaXib:Cell"
     case collection = "figmaXib:Collection"
     case view       = "figmaXib:View"
+    case table      = "figmaXib:Table"
     case tableVC    = "figmaXib:TableVC"
+    case viper      = "figmaXib:Viper"
     case button     = "figmaXib:Button"
 }
 
@@ -45,14 +47,19 @@ extension FigmaNode {
         if type == .view {
             nameEnd = "View"
         } else if type == .tableVC {
-            nameEnd = "TableVC"
+            nameEnd = "ViewController"
+        } else if type == .viper {
+            nameEnd = "ViperVC"
         } else {
             nameEnd = "Cell"
         }
         
-        let name_ = name.xibFilterName(type: type) + nameEnd
+        var name_ = name.xibFilterName(type: type) + nameEnd
         // ---------------------------------------------------------------
-        
+        if type == .viper {
+          name_ = name_.findReplace(find: "ViperVC", replace: "")
+        }
+      
         /// Создать папку
         let path = FigmaData.pathXib()
         guard let folder = FigmaData.createFolder(path: path, name: name_) else { return }
@@ -63,26 +70,55 @@ extension FigmaNode {
         if type == .view {
             swiftFileCode = xibGenFileView()
         } else if type == .cell {
-            swiftFileCode = xibGenFileCell()
+            swiftFileCode = xibGenFileCellPlus()
         } else if type == .collection {
-            swiftFileCode = xibGenFileCollectionCell()
+            swiftFileCode = xibGenFileCollectionCellPlus()
         } else if type == .tableVC {
             swiftFileCode = xibGenFileViewСontroller()
+        } else if type == .viper {
+            
         }
         
-        /// Сохранить файл swift
-        let swiftName = (name_ + ".swift")
+        if type == .viper {
+            
+            /// Сохранить файл swift
+            let n = name.xibFilterName(type: type)
+          
+            FigmaData.save(text: xibGenFileViper_Configurator(),     toDirectory: folder, withFileName: (n + "Configurator" + ".swift"))
+            FigmaData.save(text: xibGenFileViper_Controller(),       toDirectory: folder, withFileName: (n + "Controller"   + ".swift"))
+            FigmaData.save(text: xibGenFileViper_Presenter(),        toDirectory: folder, withFileName: (n + "Presenter"    + ".swift"))
+            FigmaData.save(text: xibGenFileViper_Interactor(),       toDirectory: folder, withFileName: (n + "Interactor"   + ".swift"))
+            FigmaData.save(text: xibGenFileViper_Router(),           toDirectory: folder, withFileName: (n + "Router"       + ".swift"))
+          
+//            FigmaData.save(text: xibGenFileViper_Service(),         toDirectory: folder, withFileName: (n + "Service"      + ".swift"))
+//            FigmaData.save(text: xibGenFileViper_Localization(),    toDirectory: folder, withFileName: (n                  + ".swift"))
+            
+          guard let viewFolder = FigmaData.createFolder(path: folder, name: "View") else { return }
+          
+            FigmaData.save(text: xibNew(main: true, keyType: .table).view ,toDirectory: viewFolder, withFileName: (n + "View"         + ".xib"  ))
+            FigmaData.save(text: xibGenFileView(type: type),               toDirectory: viewFolder, withFileName: (n + "View"         + ".swift"))
+            
+            FigmaData.save(text: xibGenFileViper_Story(),                  toDirectory: folder, withFileName: (n + "Controller"   + ".storyboard"))
+            
+          return
+          
+        } else {
+            
+            /// Сохранить файл swift
+            let swiftName = (name_ + ".swift")
+            
+            FigmaData.save(text: swiftFileCode,
+                           toDirectory: folder,
+                           withFileName: swiftName)
+        }
         
-        FigmaData.save(text: swiftFileCode,
-                       toDirectory: folder,
-                       withFileName: swiftName)
         /// ---------------------------------------------------------------
 
         var xibFileCode = ""
         if type == .tableVC {
             xibFileCode = xibViewController(name: name_)
         } else {
-            xibFileCode = xibNew(main: true, keyType: type)
+          xibFileCode = xibNew(main: true, keyType: type).view
         }
         
         // ---------------------------------------------------------------
@@ -117,6 +153,9 @@ extension FigmaNode {
         if name.find(find: FigmaFileType.view.rawValue) {
             generateKeyFilesIOS(type: .view)
         }
+        if name.find(find: FigmaFileType.viper.rawValue) {
+            generateKeyFilesIOS(type: .viper)
+        }
         
         if type != .component {
             for node: FigmaNode in children {
@@ -130,7 +169,7 @@ extension FigmaNode {
         }
     }
     
-    func genArr(_ arr: [String], _ spaceNumber: Int, _ firstSpace: Bool) -> String {
+  func genArr(_ arr: [String], _ spaceNumber: Int, _ firstSpace: Bool, lastComma: Bool = false) -> String {
         
         var space_ = ""
         for _ in 1...spaceNumber {
@@ -144,10 +183,15 @@ extension FigmaNode {
             var i = 0
             for a in arr {
                 
+              var aa = a
+              if (i + 1) == arr.count, lastComma {
+                aa = a.findReplace(find: ",", replace: .empty)
+              }
+              
                 if i == 0, firstSpace {
-                    result += "\(a)\n"
+                    result += "\(aa)\n"
                 } else {
-                    result += "\(space_)\(a)\n"
+                    result += "\(space_)\(aa)\n"
                 }
                 
                 if (i + 1) == arr.count {

@@ -25,6 +25,8 @@ class XmlStringConvertCyrilic {
         var wordInLatin: String = ""
         for i in 0...characters.capacity-1 {
             
+          if characters.count == i { return wordInLatin }
+          
             let char: Character = characters[i]
             let charStr: String = "\(char)"
             

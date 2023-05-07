@@ -125,7 +125,7 @@ class FigmaViewController: StoryboardController {
 //                       withFileName: "result.xib")
         
         /// NEW resultNew.xib
-        FigmaData.save(text: result.node.xibNew(),
+        FigmaData.save(text: result.node.xibNew().view,
                        toDirectory: FigmaData.pathXib(),
                        withFileName: "result_ios.xib")
         

@@ -81,7 +81,6 @@ class FigmaConvertToViews: NSObject {
         view.frame = resultPageRealFrame
         page.realFrame = resultPageRealFrame
         
-        
         for child: FigmaNode in page.children {
             
             
